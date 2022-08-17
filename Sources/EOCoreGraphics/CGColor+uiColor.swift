@@ -22,10 +22,18 @@
 //  THE SOFTWARE.
         
 
-@_exported import EOSwift
-@_exported import EOFoundation
-@_exported import EOCoreGraphics
-@_exported import EOPropertyWrapper
-@_exported import EOUtils
-@_exported import EOConcurrency
-@_exported import EOCoreAnimation
+#if canImport(UIKit)
+import UIKit
+
+
+public extension CGColor {
+    
+    
+    /// Returns a respective UIColor.
+    var uiColor: UIColor {
+        return UIColor(cgColor: self)
+    }
+    
+}
+#endif
+

@@ -22,10 +22,31 @@
 //  THE SOFTWARE.
         
 
-@_exported import EOSwift
-@_exported import EOFoundation
-@_exported import EOCoreGraphics
-@_exported import EOPropertyWrapper
-@_exported import EOUtils
-@_exported import EOConcurrency
-@_exported import EOCoreAnimation
+import Foundation
+
+
+public extension NSPredicate {
+    
+    
+    /// Returns a new predicate formed by applying *not* operator to the current predicate.
+    var not: NSCompoundPredicate {
+        return NSCompoundPredicate(notPredicateWithSubpredicate: self)
+    }
+    
+    /// Returns a new predicate formed by applying *and* operator to the current predicate and the argument.
+    ///
+    /// - Parameter predicate: Some NSPredicate.
+    /// - Returns: Produced NSCompoundPredicate.
+    func and(_ predicate: NSPredicate) -> NSCompoundPredicate {
+        return NSCompoundPredicate(andPredicateWithSubpredicates: [self, predicate])
+    }
+    
+    /// Returns a new predicate formed by applying *or* operator to the current predicate and the argument.
+    ///
+    /// - Parameter predicate: Some NSPredicate.
+    /// - Returns: Produced NSCompoundPredicate.
+    func or(_ predicate: NSPredicate) -> NSCompoundPredicate {
+        return NSCompoundPredicate(orPredicateWithSubpredicates: [self, predicate])
+    }
+    
+}

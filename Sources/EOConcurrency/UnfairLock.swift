@@ -1,4 +1,5 @@
 //
+//
 //  MIT License
 //
 //  Copyright (c) 2022-Present EverythingAtOnce
@@ -20,12 +21,43 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
-        
+//
 
-@_exported import EOSwift
-@_exported import EOFoundation
-@_exported import EOCoreGraphics
-@_exported import EOPropertyWrapper
-@_exported import EOUtils
-@_exported import EOConcurrency
-@_exported import EOCoreAnimation
+import Foundation
+
+
+/// Wrapped unfair lock. Provides an API for working with the C unfair lock.
+///
+/// - Note: The *os_unfair_lock* mutex is currently the fastest lock available on the iOS.
+public final class UnfairLock {
+    
+    
+    /// Wrapper raw pointer to the C lock.
+    private var _lock: UnsafeMutablePointer<os_unfair_lock>
+    
+    /// Creates an instance of the unfair lock. Initializer does not block the current thread.
+    public init() {
+        _lock = UnsafeMutablePointer<os_unfair_lock>.allocate(capacity: 1)
+        _lock.initialize(to: os_unfair_lock())
+    }
+    
+    /// Release the resources.
+    deinit {
+        _lock.deallocate()
+    }
+    
+    
+    /// Executes a closure blocking the current thread and releasing it after the closure.
+    public func perform<Value>(_ closure: () throws -> Value) rethrows ->  Value {
+        
+        defer {
+            os_unfair_lock_unlock(_lock)
+        }
+        
+        os_unfair_lock_lock(_lock)
+        
+        return try closure()
+        
+    }
+    
+}

@@ -20,12 +20,41 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
-        
 
-@_exported import EOSwift
-@_exported import EOFoundation
-@_exported import EOCoreGraphics
-@_exported import EOPropertyWrapper
-@_exported import EOUtils
-@_exported import EOConcurrency
-@_exported import EOCoreAnimation
+import Foundation
+
+
+/// Property wrapper that trims a string.
+///
+/// Example:
+/// ```
+/// struct Person {
+///     @Trimmed name: String
+///     @Trimmed surname: String
+/// }
+///
+/// let person = Person(name: "Star  ", surname: "   Butterfly ")
+/// print(person.$name.value) // "Star  "
+/// print(person.name) // "Star"
+/// print(person.surname) // "Butterfly"
+/// ```
+@propertyWrapper public struct Trimmed {
+    
+    /// Raw string value.
+    public private(set) var value: String
+    
+    /// Creates an instance of a property wrapper.
+    public init(wrappedValue: String) {
+        self.value = wrappedValue
+    }
+    
+    public var wrappedValue: String {
+        get { value.trimmingCharacters(in: .whitespacesAndNewlines) }
+        set { value = newValue  }
+    }
+    
+    public var projectedValue: Trimmed {
+        return self
+    }
+    
+}
