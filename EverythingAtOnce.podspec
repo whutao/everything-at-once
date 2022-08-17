@@ -19,6 +19,8 @@ Pod::Spec.new do |spec|
   spec.source_files  = "Sources", "Sources/**/*.{swift}"
   
   spec.framework  = "Foundation"
+  
+  spec.swift_versions = ["5.0"]
 
   spec.requires_arc = true
 
