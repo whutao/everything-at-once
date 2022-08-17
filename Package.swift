@@ -8,17 +8,13 @@ let package = Package(
         .iOS(.v13),
     ],
     products: [
-        .library(
-            name: "EverythingAtOnce",
-            targets: ["EverythingAtOnce"]
-        ),
+        .library(name: "EOSwift", targets: ["EOSwift"]),
+        .library(name: "EverythingAtOnce", targets: ["EverythingAtOnce"]),
     ],
     dependencies: [],
     targets: [
-        .target(
-            name: "EverythingAtOnce",
-            dependencies: []
-        ),
+        .target(name: "EOSwift", dependencies: []),
+        .target(name: "EverythingAtOnce", dependencies: ["EOSwift"]),
         .testTarget(
             name: "everything-at-onceTests",
             dependencies: ["EverythingAtOnce"]
