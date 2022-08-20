@@ -33,11 +33,11 @@ public final class UnfairLock {
     
     
     /// Wrapper raw pointer to the C lock.
-    private var _lock: UnsafeMutablePointer<os_unfair_lock>
+    private var _lock: os_unfair_lock_t
     
     /// Creates an instance of the unfair lock. Initializer does not block the current thread.
     public init() {
-        _lock = UnsafeMutablePointer<os_unfair_lock>.allocate(capacity: 1)
+        _lock = os_unfair_lock_t.allocate(capacity: 1)
         _lock.initialize(to: os_unfair_lock())
     }
     
@@ -48,7 +48,7 @@ public final class UnfairLock {
     
     
     /// Executes a closure blocking the current thread and releasing it after the closure.
-    public func perform<Value>(_ closure: () throws -> Value) rethrows ->  Value {
+    public func perform<Value>(_ closure: () throws -> Value) rethrows -> Value {
         
         defer {
             os_unfair_lock_unlock(_lock)

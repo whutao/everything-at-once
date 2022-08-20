@@ -24,8 +24,9 @@
 
 @_exported import EOSwift
 @_exported import EOFoundation
+@_exported import EOCombine
+@_exported import EOConcurrency
+@_exported import EOCoreAnimation
 @_exported import EOCoreGraphics
 @_exported import EOPropertyWrapper
 @_exported import EOUtils
-@_exported import EOConcurrency
-@_exported import EOCoreAnimation

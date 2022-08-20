@@ -16,10 +16,12 @@ let package = Package(
         .library(name: "EOUtils", targets: ["EOUtils"]),
         .library(name: "EOConcurrency", targets: ["EOConcurrency"]),
         .library(name: "EOCoreAnimation", targets: ["EOCoreAnimation"]),
+        .library(name: "EOCombine", targets: ["EOCombine"]),
     ],
     dependencies: [],
     targets: [
         .target(name: "EOSwift", dependencies: []),
+        .target(name: "EOCombine", dependencies: ["EOSwift"]),
         .target(name: "EOFoundation", dependencies: ["EOSwift"]),
         .target(name: "EOCoreGraphics", dependencies: []),
         .target(name: "EOPropertyWrapper", dependencies: []),
