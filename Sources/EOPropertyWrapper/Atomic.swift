@@ -23,34 +23,34 @@
 //  THE SOFTWARE.
 //  
 
-import Foundation
-import EOConcurrency
-
-
-/// Atomic property can be safely read and written from different threads by sacrificing an access speed.
-@propertyWrapper public struct Atomic<Value> {
-    
-    
-    /// Lock used to synchronize reads and writes.
-    ///
-    /// As reads and writes are done fast, the *os_unfair_lock* will demonstrate the best performance here.
-    private let lock = UnfairLock()
-    
-    /// Wrapped value to be read/written.
-    private var value: Value
-    
-    /// Getter and setter for the wrapped value.
-    public var wrappedValue: Value {
-        get { lock.perform { value } }
-        set { lock.perform { value = newValue } }
-    }
-    
-    public var projectedValue: Atomic<Value> {
-        return self
-    }
-    
-    public init(wrappedValue: Value) {
-        self.value = wrappedValue
-    }
-    
-}
+//import Foundation
+//import EOConcurrency
+//
+//
+///// Atomic property can be safely read and written from different threads by sacrificing an access speed.
+//@propertyWrapper public struct Atomic<Value> {
+//
+//
+//    /// Lock used to synchronize reads and writes.
+//    ///
+//    /// As reads and writes are done fast, the *os_unfair_lock* will demonstrate the best performance here.
+//    private let lock = UnfairLock()
+//
+//    /// Wrapped value to be read/written.
+//    private var value: Value
+//
+//    /// Getter and setter for the wrapped value.
+//    public var wrappedValue: Value {
+//        get { lock.perform { value } }
+//        set { lock.perform { value = newValue } }
+//    }
+//
+//    public var projectedValue: Atomic<Value> {
+//        return self
+//    }
+//
+//    public init(wrappedValue: Value) {
+//        self.value = wrappedValue
+//    }
+//
+//}
