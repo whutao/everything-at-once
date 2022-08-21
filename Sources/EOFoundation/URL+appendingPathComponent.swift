@@ -21,4 +21,23 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
-//
+//  
+
+import Foundation
+
+
+extension URL {
+    
+    
+    /// Returns a URL constructed by appending the given (non-empty) path component to self.
+    public func appending(_ component: String) -> URL {
+        
+        if component.isEmpty {
+            return self
+        }
+        
+        return appendingPathComponent(component)
+        
+    }
+    
+}

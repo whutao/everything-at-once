@@ -5,28 +5,26 @@ import PackageDescription
 let package = Package(
     name: "EverythingAtOnce",
     platforms: [
-        .iOS(.v13),
+        .iOS(.v13), .macOS(.v10_15)
     ],
     products: [
         .library(name: "EverythingAtOnce", targets: ["EverythingAtOnce"]),
         .library(name: "EOSwift", targets: ["EOSwift"]),
         .library(name: "EOFoundation", targets: ["EOFoundation"]),
+        .library(name: "EOConcurrency", targets: ["EOConcurrency"]),
+        .library(name: "EOCombine", targets: ["EOCombine"]),
         .library(name: "EOCoreGraphics", targets: ["EOCoreGraphics"]),
         .library(name: "EOPropertyWrapper", targets: ["EOPropertyWrapper"]),
         .library(name: "EOUtils", targets: ["EOUtils"]),
-        .library(name: "EOConcurrency", targets: ["EOConcurrency"]),
-        .library(name: "EOCoreAnimation", targets: ["EOCoreAnimation"]),
-        .library(name: "EOCombine", targets: ["EOCombine"]),
     ],
     dependencies: [],
     targets: [
         .target(name: "EOSwift", dependencies: []),
-        .target(name: "EOCombine", dependencies: ["EOSwift"]),
         .target(name: "EOFoundation", dependencies: ["EOSwift"]),
+        .target(name: "EOCombine", dependencies: ["EOSwift", "EOFoundation"]),
         .target(name: "EOCoreGraphics", dependencies: []),
-        .target(name: "EOPropertyWrapper", dependencies: []),
-        .target(name: "EOUtils", dependencies: ["EOSwift"]),
-        .target(name: "EOCoreAnimation", dependencies: []),
+        .target(name: "EOPropertyWrapper", dependencies: ["EOConcurrency"]),
+        .target(name: "EOUtils", dependencies: ["EOSwift", "EOFoundation"]),
         .target(name: "EOConcurrency", dependencies: []),
         .target(
             name: "EverythingAtOnce",
@@ -37,15 +35,11 @@ let package = Package(
                 "EOPropertyWrapper",
                 "EOUtils",
                 "EOConcurrency",
-                "EOCoreAnimation"
             ]
         ),
         .testTarget(
             name: "EverythingAtOnceTests",
             dependencies: ["EverythingAtOnce"]
         ),
-    ],
-    swiftLanguageVersions: [
-        .v5,
     ]
 )
