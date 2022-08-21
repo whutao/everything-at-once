@@ -17,12 +17,12 @@ spec.source_files = 'Sources/**/*.{swift}'
 spec.framework = 'Foundation'
 spec.ios.deployment_target = '13.0'
 
-spec.subspec 'EOConcurrency' do |lib|
-    lib.source_files = 'Sources/EOConcurrency/*.{swift}'
+spec.subspec 'EOConcurrency' do |subspec|
+    subspec.source_files = 'Sources/EOConcurrency/*.{swift}'
 end
 
-spec.subspec 'EOPropertyWrapper' do |lib|
-    lib.source_files = 'Sources/EOPropertyWrapper/*.{swift}', 'Sources/EOConcurrency/*.{swift}'
+spec.subspec 'EOPropertyWrapper' do |subspec|
+    subspec.source_files = 'Sources/EOPropertyWrapper/*.{swift}', 'Sources/EOConcurrency/*.{swift}'
 end
 
 end
