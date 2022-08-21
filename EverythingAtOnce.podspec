@@ -2,7 +2,7 @@ Pod::Spec.new do |spec|
 
 spec.name = 'EverythingAtOnce'
 spec.module_name = 'EverythingAtOnce'
-spec.version = '0.0.7'
+spec.version = '0.0.8'
 spec.summary = 'A flexible set of extensions for many apple frameworks.'
 
 spec.author = { 'whutao' => 'nabroman42@gmail.com' }
@@ -17,7 +17,5 @@ spec.source_files = 'Sources/**/*.{swift}'
 spec.framework = 'Foundation'
 spec.ios.deployment_target = '13.0'
 spec.osx.deployment_target = '10.15'
-spec.watchos.deployment_target = '6.0'
-spec.tvos.deployment_target = '9.0'
 
 end

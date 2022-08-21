@@ -22,19 +22,20 @@ let package = Package(
         .target(name: "EOSwift", dependencies: []),
         .target(name: "EOFoundation", dependencies: ["EOSwift"]),
         .target(name: "EOCombine", dependencies: ["EOSwift", "EOFoundation"]),
+        .target(name: "EOConcurrency", dependencies: []),
         .target(name: "EOCoreGraphics", dependencies: []),
         .target(name: "EOPropertyWrapper", dependencies: ["EOConcurrency"]),
         .target(name: "EOUtils", dependencies: ["EOSwift", "EOFoundation"]),
-        .target(name: "EOConcurrency", dependencies: []),
         .target(
             name: "EverythingAtOnce",
             dependencies: [
                 "EOSwift",
                 "EOFoundation",
+                "EOCombine",
+                "EOConcurrency",
                 "EOCoreGraphics",
                 "EOPropertyWrapper",
                 "EOUtils",
-                "EOConcurrency",
             ]
         ),
         .testTarget(
