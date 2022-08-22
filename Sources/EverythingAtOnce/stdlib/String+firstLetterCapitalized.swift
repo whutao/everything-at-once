@@ -21,14 +21,11 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import Foundation
-
-
-public extension String {
+extension String {
     
     
     /// The copy of a string with a capitalized first letter.
-    var firstLetterCapitalized: String {
+    public var firstLetterCapitalized: String {
         
         guard isNotEmpty else {
             return self

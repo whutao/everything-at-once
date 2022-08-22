@@ -22,7 +22,7 @@
 //  THE SOFTWARE.
         
 
-public extension Optional {
+extension Optional {
     
     
     /// Instead of bare `??` operator.
@@ -39,7 +39,7 @@ public extension Optional {
     ///
     /// print(optionalString ?? "Default string")
     /// ```
-    func unwrapped(or defaultValue: Wrapped) -> Wrapped {
+    public func unwrapped(or defaultValue: Wrapped) -> Wrapped {
         
         if let wrapped = self {
             return wrapped
@@ -65,7 +65,7 @@ public extension Optional {
     /// // Always not nil.
     /// print(optionalString!)
     /// ```
-    func forceUnwrapped(because assumption: String) -> Wrapped {
+    public func forceUnwrapped(because assumption: String) -> Wrapped {
         
         if let wrapped = self {
             return wrapped
@@ -77,7 +77,7 @@ public extension Optional {
     
     
     /// Returns a wrapped value if an optional can be unwrapped. Otherwise, throw an `error`.
-    func unwrapped(or error: Error) throws -> Wrapped {
+    public func unwrapped(or error: Error) throws -> Wrapped {
         
         if let wrapped = self {
             return wrapped

@@ -26,11 +26,11 @@
 import UIKit
 
 
-public extension CGColor {
+extension CGColor {
     
     
     /// Returns a respective UIColor.
-    var uiColor: UIColor {
+    public var uiColor: UIColor {
         return UIColor(cgColor: self)
     }
     

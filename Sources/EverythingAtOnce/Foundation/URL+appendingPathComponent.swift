@@ -23,6 +23,7 @@
 //  THE SOFTWARE.
 //  
 
+#if canImport(Foundation)
 import Foundation
 
 
@@ -41,3 +42,4 @@ extension URL {
     }
     
 }
+#endif

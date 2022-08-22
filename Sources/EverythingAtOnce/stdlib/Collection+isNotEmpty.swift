@@ -22,11 +22,11 @@
 //  THE SOFTWARE.
         
 
-public extension Collection {
+extension Collection {
     
     
     /// A Boolean value indicating whether the collection is not empty.
-    var isNotEmpty: Bool {
+    public var isNotEmpty: Bool {
         return not(isEmpty)
     }
     

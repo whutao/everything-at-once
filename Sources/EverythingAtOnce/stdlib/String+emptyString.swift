@@ -22,10 +22,10 @@
 //  THE SOFTWARE.
         
 
-public extension String {
+extension String {
     
     
     /// Empty string aka `""`.
-    static let emptyString: String = ""
+    public static let emptyString: String = ""
     
 }

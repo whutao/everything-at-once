@@ -23,6 +23,7 @@
 //  THE SOFTWARE.
 //
 
+#if canImport(Foundation)
 import Foundation
 
 
@@ -61,3 +62,4 @@ public final class UnfairLock {
     }
     
 }
+#endif

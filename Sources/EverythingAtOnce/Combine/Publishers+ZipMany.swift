@@ -23,6 +23,7 @@
 //  THE SOFTWARE.
 //  
 
+#if canImport(Combine)
 import Combine
 
 
@@ -66,3 +67,4 @@ extension Publishers {
     }
     
 }
+#endif

@@ -22,7 +22,7 @@
 //  THE SOFTWARE.
         
 
-public extension Optional {
+extension Optional {
     
     
     /// Returns `false` if an optional contains a value, `true` otherwise.
@@ -39,7 +39,7 @@ public extension Optional {
     ///
     /// print(optionalString == nil)
     /// ```
-    var isNil: Bool {
+    public var isNil: Bool {
         return self == nil
     }
     
@@ -58,7 +58,7 @@ public extension Optional {
     ///
     /// print(optionalString != nil)
     /// ```
-    var isNotNil: Bool {
+    public var isNotNil: Bool {
         return self != nil
     }
     

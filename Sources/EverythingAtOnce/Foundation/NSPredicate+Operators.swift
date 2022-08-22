@@ -23,6 +23,7 @@
 //  THE SOFTWARE.
 //  
 
+#if canImport(Foundation)
 import Foundation
 
 
@@ -45,3 +46,4 @@ extension NSPredicate {
     }
     
 }
+#endif

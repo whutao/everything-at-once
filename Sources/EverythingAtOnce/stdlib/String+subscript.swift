@@ -22,7 +22,7 @@
 //  THE SOFTWARE.
 
 
-public extension String {
+extension String {
     
     
     subscript(_ i: Int) -> Character {
