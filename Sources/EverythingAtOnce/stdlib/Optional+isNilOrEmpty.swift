@@ -30,7 +30,7 @@
 import Foundation
 
 
-extension Optional where Wrapped: String {
+extension Optional where Wrapped == String {
     
     
     /// Returns `true` if an optional contains a non-empty string value, `false` otherwise.
@@ -48,7 +48,13 @@ extension Optional where Wrapped: String {
     /// print(optionalString == nil || optionalString == "")
     /// ```
     public var isNilOrEmpty: Bool {
-        return isNil || isEmpty
+        
+        if let string = self {
+            return string.isEmpty
+        }
+        
+        return true
+        
     }
     
 }
@@ -75,7 +81,13 @@ extension Optional where Wrapped: Collection {
     /// print(optionalCollection == nil || optionalCollection == [])
     /// ```
     public var isNilOrEmpty: Bool {
-        return isNil || isEmpty
+        
+        if let collection = self {
+            return collection.isEmpty
+        }
+        
+        return true
+        
     }
     
 }

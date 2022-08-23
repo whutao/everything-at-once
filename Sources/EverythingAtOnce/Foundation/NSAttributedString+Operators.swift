@@ -49,7 +49,7 @@ extension NSAttributedString {
     ///   - rhs: Second normal string.
     /// - Returns: A new instance as a combination of 2 strings.
     public static func + (lhs: NSAttributedString, rhs: String) -> NSAttributedString {
-        return lhs + NSAttributedString(attributedString: rhs)
+        return lhs + NSAttributedString(string: rhs)
     }
     
     /// Adds a usual string to an attributed string, producing a new attributed string.
@@ -59,7 +59,7 @@ extension NSAttributedString {
     ///   - rhs: Second attributed string.
     /// - Returns: A new instance as a combination of 2 strings.
     public static func + (lhs: String, rhs: NSAttributedString) -> NSAttributedString {
-        return NSAttributedString(attributedString: lhs) + rhs
+        return NSAttributedString(string: lhs) + rhs
     }
     
 }

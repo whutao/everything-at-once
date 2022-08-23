@@ -41,7 +41,7 @@ extension URL {
     /// - Returns: A thumbnail image.
     public func thumbnail(at time: Float64) throws -> UIImage {
         
-        let generator = AVAssetImageGenerator(asset: self)
+        let generator = AVAssetImageGenerator(asset: AVAsset(url: self))
         let time = CMTimeMakeWithSeconds(time, preferredTimescale: 1)
         
         var videoStartTime = CMTimeMake(value: 0, timescale: 0)
