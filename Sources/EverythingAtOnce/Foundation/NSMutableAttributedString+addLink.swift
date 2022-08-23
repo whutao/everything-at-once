@@ -1,4 +1,5 @@
 //
+//
 //  MIT License
 //
 //  Copyright (c) 2022-Present EverythingAtOnce
@@ -20,11 +21,38 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
+//
 
-extension String {
+#if canImport(UIKit)
+import UIKit
+
+
+extension NSMutableAttributedString {
+ 
     
-    
-    /// Empty string aka `""`.
-    public static let emptyString: String = ""
+    /// Make part of the string into a link.
+    ///
+    /// Only the first occurence will be considered.
+    ///
+    /// - Parameters:
+    ///   - url: Link address.
+    ///   - anchorText: A substring to make into a link.
+    func addLink(_ url: URL, toAnchorText anchorText: String) {
+        
+        let anchorRange: NSRange = mutableString.range(
+            of: anchorText,
+            options: [.caseInsensitive, .diacriticInsensitive, .widthInsensitive]
+        )
+        
+        guard not(anchorRange.location == NSNotFound) else {
+            
+            return
+            
+        }
+        
+        addAttribute(.link, value: url, range: anchorRange)
+        
+    }
     
 }
+#endif

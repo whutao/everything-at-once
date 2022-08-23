@@ -1,4 +1,5 @@
 //
+//
 //  MIT License
 //
 //  Copyright (c) 2022-Present EverythingAtOnce
@@ -20,11 +21,27 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
+//
 
-extension String {
+
+// MARK: All attributes
+
+#if canImport(Foundation)
+import Foundation
+
+extension NSAttributedString {
     
     
-    /// Empty string aka `""`.
-    public static let emptyString: String = ""
+    /// Dictionary of the attributes applied to the *whole* string.
+    public var attributes: Dictionary<NSAttributedString.Key, Any> {
+        
+        guard 0 < length else {
+            return [:]
+        }
+        
+        return attributes(at: 0, effectiveRange: nil)
+    
+    }
     
 }
+#endif

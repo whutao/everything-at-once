@@ -27,36 +27,39 @@
 import Foundation
 
 
-extension NSPredicate {
+extension NSAttributedString {
     
     
-    /// Operator notation for *not*.
+    /// Adds an attributed string to another attribued string, producing a new attributed string.
     ///
     /// - Parameters:
-    ///   - predicate: A predicate.
-    /// - Returns: A compound predicate as a negation of the given one.
-    public static prefix func ! (_ predicate: NSPredicate) -> NSCompoundPredicate {
-        return predicate.not
+    ///   - lhs: First attributed string.
+    ///   - rhs: Second attributed string.
+    /// - Returns: A new instance as a combination of 2 strings.
+    public static func + (lhs: NSAttributedString, rhs: NSAttributedString) -> NSAttributedString {
+        let string = NSMutableAttributedString(attributedString: lhs)
+        string.append(rhs)
+        return NSAttributedString(attributedString: string)
     }
     
-    /// Operator notation for *and*.
+    /// Adds an attributed string to a usual string, producing a new attributed string.
     ///
     /// - Parameters:
-    ///   - lhs: First predicate.
-    ///   - rhs: Second predicate.
-    /// - Returns: A compound predicate as a combination of the given ones.
-    public static func && (_ lhs: NSPredicate, _ rhs: NSPredicate) -> NSCompoundPredicate {
-        return lhs.and(rhs)
+    ///   - lhs: First attributed string.
+    ///   - rhs: Second normal string.
+    /// - Returns: A new instance as a combination of 2 strings.
+    public static func + (lhs: NSAttributedString, rhs: String) -> NSAttributedString {
+        return lhs + NSAttributedString(attributedString: rhs)
     }
     
-    /// Operator notation for *or*.
+    /// Adds a usual string to an attributed string, producing a new attributed string.
     ///
     /// - Parameters:
-    ///   - lhs: First predicate.
-    ///   - rhs: Second predicate.
-    /// - Returns: A compound predicate as a combination of the given ones.
-    public static func || (_ lhs: NSPredicate, _ rhs: NSPredicate) -> NSCompoundPredicate {
-        return lhs.or(rhs)
+    ///   - lhs: First normal string.
+    ///   - rhs: Second attributed string.
+    /// - Returns: A new instance as a combination of 2 strings.
+    public static func + (lhs: String, rhs: NSAttributedString) -> NSAttributedString {
+        return NSAttributedString(attributedString: lhs) + rhs
     }
     
 }

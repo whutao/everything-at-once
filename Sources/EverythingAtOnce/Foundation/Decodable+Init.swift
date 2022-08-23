@@ -1,4 +1,5 @@
 //
+//
 //  MIT License
 //
 //  Copyright (c) 2022-Present EverythingAtOnce
@@ -20,11 +21,23 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
+//  
 
-extension String {
+#if canImport(Foundation)
+import Foundation
+
+
+extension Decodable {
+ 
     
-    
-    /// Empty string aka `""`.
-    public static let emptyString: String = ""
+    /// Creates a model from JSON data.
+    ///
+    /// - Parameters:
+    ///   - data: Provided data.
+    ///   - decoder: JSONDecoder.
+    public init(from data: Data, usingJSONDecoder decoder: JSONDecoder = .init()) throws {
+        self = try decoder.decode(Self.self, from: data)
+    }
     
 }
+#endif

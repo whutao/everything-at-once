@@ -2,7 +2,7 @@ Pod::Spec.new do |spec|
 
 spec.name = 'EverythingAtOnce'
 spec.module_name = 'EverythingAtOnce'
-spec.version = '0.1.3'
+spec.version = '0.1.4'
 spec.summary = 'A flexible set of extensions for many apple frameworks.'
 
 spec.author = { 'whutao' => 'nabroman42@gmail.com' }

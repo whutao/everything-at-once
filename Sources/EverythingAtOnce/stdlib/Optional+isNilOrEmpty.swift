@@ -1,4 +1,5 @@
 //
+//
 //  MIT License
 //
 //  Copyright (c) 2022-Present EverythingAtOnce
@@ -20,45 +21,61 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
+//
 
-extension Optional {
+
+// MARK: String
+
+#if canImport(Foundation)
+import Foundation
+
+
+extension Optional where Wrapped: String {
     
     
-    /// Returns `false` if an optional contains a value, `true` otherwise.
+    /// Returns `true` if an optional contains a non-empty string value, `false` otherwise.
     ///
     /// A convenient way to write, for example:
     /// ```
-    /// let optionalString: String? = nil
+    /// let optionalString: String? = ""
     ///
-    /// print(optionalString.isNil)
+    /// print(optionalString.isNilOrEmpty)
     /// ```
     /// instead of:
     /// ```
-    /// let optionalString: String? = nil
+    /// let optionalString: String? = ""
     ///
-    /// print(optionalString == nil)
+    /// print(optionalString == nil || optionalString == "")
     /// ```
-    public var isNil: Bool {
-        return self == nil
+    public var isNilOrEmpty: Bool {
+        return isNil || isEmpty
     }
     
+}
+#endif
+
+
+// MARK: Collection
+
+extension Optional where Wrapped: Collection {
     
-    /// Returns `true` if an optional contains a value, `false` otherwise.
+    
+    /// Returns `true` if an optional contains a non-empty string value, `false` otherwise.
     ///
     /// A convenient way to write, for example:
     /// ```
-    /// let optionalString: String? = nil
+    /// let optionalCollection: Array<Int>? = []
     ///
-    /// print(optionalString.isNotNil)
+    /// print(optionalCollection.isNilOrEmpty)
     /// ```
     /// instead of:
     /// ```
-    /// let optionalString: String? = nil
+    /// let optionalCollection: Array<Int>? = []
     ///
-    /// print(optionalString != nil)
+    /// print(optionalCollection == nil || optionalCollection == [])
     /// ```
-    public var isNotNil: Bool {
-        return self != nil
+    public var isNilOrEmpty: Bool {
+        return isNil || isEmpty
     }
     
 }
