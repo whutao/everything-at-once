@@ -40,7 +40,7 @@ public struct UIViewControllerPreview<UIViewControllerBody: UIViewController>: U
     }
     
     public func makeUIViewController(context: Context) -> UIViewControllerBody {
-        viewController
+        return viewController
     }
     
     public func updateUIViewController(_ uiViewController: UIViewControllerBody, context: Context) {

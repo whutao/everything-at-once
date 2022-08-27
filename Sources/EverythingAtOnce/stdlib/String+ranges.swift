@@ -21,36 +21,27 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
-//
+//  
 
-#if canImport(UIKit)
-import UIKit
+#if canImport(Foundation)
+import Foundation
 
 
-extension NSMutableAttributedString {
- 
+extension String {
     
-    /// Make part of the string into a link.
-    ///
-    /// Only the first occurence will be considered.
+    
+    /// Inspects a string for the occurences of a regex pattern, and returns a list of ranges.
     ///
     /// - Parameters:
-    ///   - url: Link address.
-    ///   - anchorText: A substring to make into a link.
-    func addLink(_ url: URL, toAnchorText anchorText: String) {
+    ///   - pattern: Regex pattern. Can be a simple substring.
+    ///   - options: Regex options. Empty set by default.
+    /// - Returns: A list of matching result ranges.
+    public func ranges(
+        of pattern: String,
+        options: NSRegularExpression.Options = []
+    ) throws -> Array<NSRange> {
         
-        let anchorRange: NSRange = mutableString.range(
-            of: anchorText,
-            options: [.caseInsensitive, .diacriticInsensitive, .widthInsensitive]
-        )
-        
-        guard not(anchorRange.location == NSNotFound) else {
-            
-            return
-            
-        }
-        
-        addAttribute(.link, value: url, range: anchorRange)
+        return try matches(of: pattern, options: options).map(\.range)
         
     }
     

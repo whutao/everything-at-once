@@ -29,6 +29,7 @@
 #if canImport(Foundation)
 import Foundation
 
+
 extension NSAttributedString {
     
     
@@ -47,10 +48,28 @@ extension NSAttributedString {
 #endif
 
 
-// MARK: Add attribute
+// MARK: Add any attribute
 
 #if canImport(Foundation)
 import Foundation
+
+
+extension NSMutableAttributedString {
+    
+    /// Mutates and returns the source string with applied attribute at the specified range.
+    ///
+    /// - Parameters:
+    ///   - name: Key name.
+    ///   - value: Attribute value.
+    ///   - range: Text range to apply an attribute. Consideres the whole string if `nil` is provided.
+    /// - Returns: The source string with applied attribute.
+    @discardableResult public func addingAttribute(_ name: NSAttributedString.Key, value: Any?, at range: NSRange? = nil) -> NSMutableAttributedString {
+        self.addAttribute(name, value: value as Any, range: range ?? fullRange)
+        return self
+    }
+    
+}
+
 
 extension NSAttributedString {
     
@@ -66,12 +85,7 @@ extension NSAttributedString {
         
         let mutableAttributedString = NSMutableAttributedString(attributedString: self)
         
-        guard let value = value else {
-            return mutableAttributedString
-        }
-
-        mutableAttributedString.addAttribute(name, value: value, range: range ?? fullRange)
-        return mutableAttributedString
+        return mutableAttributedString.addingAttribute(name, value: value, at: range ?? fullRange)
         
     }
     
@@ -79,10 +93,13 @@ extension NSAttributedString {
 #endif
 
 
-// MARK: Add attributes
+// MARK: - Add attributes
 
 #if canImport(UIKit)
 import UIKit
+
+
+// MARK: Immutable
 
 extension NSAttributedString {
     
@@ -152,6 +169,100 @@ extension NSAttributedString {
         nsShadow.shadowBlurRadius = radius
         return shadow(nsShadow, at: range)
     }
+    
+    /// Returns a new attributed string with modified link (url) attribute at the specified range.
+    ///
+    /// - Parameters:
+    ///   - url: The url.
+    ///   - range: Text range to apply an attribute. Consideres the whole string if `nil` is provided.
+    /// - Returns: A copy of the source string with applied attribute.
+    public func link(_ url: URL?, at range: NSRange? = nil) -> NSMutableAttributedString {
+        return addAttribute(.link, value: url, at: range)
+    }
 
+}
+
+
+// MARK: Mutable
+
+extension NSMutableAttributedString {
+    
+    
+    /// Mutates and returns the attributed string with modified text font attribute at the specified range.
+    ///
+    /// - Parameters:
+    ///   - uiFont: Text font.
+    ///   - range: Text range to apply an attribute. Consideres the whole string if `nil` is provided.
+    /// - Returns: The source string with applied attribute.
+    @discardableResult public func withFont(_ uiFont: UIFont, at range: NSRange? = nil) -> NSMutableAttributedString {
+        return addingAttribute(.font, value: uiFont, at: range)
+    }
+    
+    /// Mutates and returns the attributed string with modified text color attribute at the specified range.
+    ///
+    /// - Parameters:
+    ///   - uiColor: Text color.
+    ///   - range: Text range to apply an attribute. Consideres the whole string if `nil` is provided.
+    /// - Returns: The source string with applied attribute.
+    @discardableResult public func withTextColor(_ uiColor: UIColor?, at range: NSRange? = nil) -> NSMutableAttributedString {
+        return addingAttribute(.foregroundColor, value: uiColor, at: range)
+    }
+    
+    /// Mutates and returns the attributed string with modified background color attribute at the specified range.
+    ///
+    /// - Parameters:
+    ///   - uiColor: Background color.
+    ///   - range: Text range to apply an attribute. Consideres the whole string if `nil` is provided.
+    /// - Returns: The source string with applied attribute.
+    @discardableResult public func withBackgroundColor(_ uiColor: UIColor?, at range: NSRange? = nil) -> NSMutableAttributedString {
+        return addingAttribute(.backgroundColor, value: uiColor, at: range)
+    }
+    
+    /// Mutates and returns the attributed string with modified paragraph attribute at the specified range.
+    ///
+    /// - Parameters:
+    ///   - style: Paragraph style.
+    ///   - range: Text range to apply an attribute. Consideres the whole string if `nil` is provided.
+    /// - Returns: The source string with applied attribute.
+    @discardableResult public func withParagraphStyle(_ style: NSParagraphStyle?, at range: NSRange? = nil) -> NSMutableAttributedString {
+        return addingAttribute(.paragraphStyle, value: style, at: range)
+    }
+    
+    /// Mutates and returns the attributed string with modified shadow attribute at the specified range.
+    ///
+    /// - Parameters:
+    ///   - nsShadow: Text shadow.
+    ///   - range: Text range to apply an attribute. Consideres the whole string if `nil` is provided.
+    /// - Returns: The source string with applied attribute.
+    @discardableResult public func withShadow(_ nsShadow: NSShadow?, at range: NSRange? = nil) -> NSMutableAttributedString {
+        return addingAttribute(.shadow, value: nsShadow, at: range)
+    }
+    
+    /// Mutates and returns the attributed string with modified shadow attribute at the specified range.
+    ///
+    /// - Parameters:
+    ///   - color: Shadow color. Can be set `nil`.
+    ///   - offset: Shadow offset.
+    ///   - radius: Shadow radius.
+    ///   - range: Text range to apply an attribute. Consideres the whole string if `nil` is provided.
+    /// - Returns: The source string with applied attribute.
+    @discardableResult public func withShadow(color: UIColor?, offset: CGSize = .zero, radius: CGFloat = .zero, at range: NSRange? = nil) -> NSMutableAttributedString {
+        let nsShadow = NSShadow()
+        nsShadow.shadowColor = color
+        nsShadow.shadowOffset = offset
+        nsShadow.shadowBlurRadius = radius
+        return shadow(nsShadow, at: range)
+    }
+    
+    /// Mutates and returns the attributed string with modified link (url) attribute at the specified range.
+    ///
+    /// - Parameters:
+    ///   - url: The url.
+    ///   - range: Text range to apply an attribute. Consideres the whole string if `nil` is provided.
+    /// - Returns: The source string with applied attribute.
+    @discardableResult public func withLink(_ url: URL?, at range: NSRange? = nil) -> NSMutableAttributedString {
+        return addingAttribute(.link, value: url, at: range)
+    }
+    
 }
 #endif

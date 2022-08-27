@@ -1,4 +1,5 @@
 //
+//
 //  MIT License
 //
 //  Copyright (c) 2022-Present EverythingAtOnce
@@ -20,33 +21,36 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
+//  
+
+#if canImport(Foundation)
+import Foundation
+
 
 extension String {
+ 
     
-    
-    /// Used to access and modify a character in the string.
-    subscript(_ i: Int) -> Character {
-        get {
-            return self[index(startIndex, offsetBy: i)]
-        }
-        set {
-            let i = index(startIndex, offsetBy: i)
-            replaceSubrange(i...i, with: [newValue])
-        }
-    }
-    
-    /// /// Used to access and modify a substring in the string.
-    subscript(_ range: CountableRange<Int>) -> String {
-        get {
-            let start = index(startIndex, offsetBy: range.lowerBound)
-            let end = index(start, offsetBy: range.upperBound - range.lowerBound)
-            return String(self[start..<end])
-        }
-        set {
-            let start = index(startIndex, offsetBy: range.lowerBound)
-            let end = index(start, offsetBy: range.upperBound - range.lowerBound)
-            replaceSubrange(start..<end, with: newValue.map(Character.init))
-        }
+    /// Inspects a string for the occurences of a regex pattern.
+    ///
+    /// - Parameters:
+    ///   - pattern: Regex pattern. Can be a simple substring.
+    ///   - options: Regex options. Empty set by default.
+    /// - Returns: A list of matching results.
+    public func matches(
+        of pattern: String,
+        options: NSRegularExpression.Options = []
+    ) throws -> Array<NSTextCheckingResult> {
+        
+        return try NSRegularExpression(
+            pattern: pattern,
+            options: options
+        )
+        .matches(
+            in: self,
+            range: NSRange(location: .zero, length: count)
+        )
+        
     }
     
 }
+#endif

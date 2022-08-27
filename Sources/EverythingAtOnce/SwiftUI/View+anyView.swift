@@ -1,4 +1,5 @@
 //
+//
 //  MIT License
 //
 //  Copyright (c) 2022-Present EverythingAtOnce
@@ -20,33 +21,19 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
+//  
 
-extension String {
+#if canImport(SwiftUI)
+import SwiftUI
+
+
+extension View {
     
     
-    /// Used to access and modify a character in the string.
-    subscript(_ i: Int) -> Character {
-        get {
-            return self[index(startIndex, offsetBy: i)]
-        }
-        set {
-            let i = index(startIndex, offsetBy: i)
-            replaceSubrange(i...i, with: [newValue])
-        }
-    }
-    
-    /// /// Used to access and modify a substring in the string.
-    subscript(_ range: CountableRange<Int>) -> String {
-        get {
-            let start = index(startIndex, offsetBy: range.lowerBound)
-            let end = index(start, offsetBy: range.upperBound - range.lowerBound)
-            return String(self[start..<end])
-        }
-        set {
-            let start = index(startIndex, offsetBy: range.lowerBound)
-            let end = index(start, offsetBy: range.upperBound - range.lowerBound)
-            replaceSubrange(start..<end, with: newValue.map(Character.init))
-        }
+    /// Returns a type erased view.
+    func anyView() -> AnyView {
+        return AnyView(self)
     }
     
 }
+#endif

@@ -1,4 +1,5 @@
 //
+//
 //  MIT License
 //
 //  Copyright (c) 2022-Present EverythingAtOnce
@@ -20,33 +21,30 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
+//  
 
-extension String {
+#if canImport(Foundation)
+import Foundation
+
+
+extension NSString {
     
     
-    /// Used to access and modify a character in the string.
-    subscript(_ i: Int) -> Character {
-        get {
-            return self[index(startIndex, offsetBy: i)]
-        }
-        set {
-            let i = index(startIndex, offsetBy: i)
-            replaceSubrange(i...i, with: [newValue])
-        }
-    }
-    
-    /// /// Used to access and modify a substring in the string.
-    subscript(_ range: CountableRange<Int>) -> String {
-        get {
-            let start = index(startIndex, offsetBy: range.lowerBound)
-            let end = index(start, offsetBy: range.upperBound - range.lowerBound)
-            return String(self[start..<end])
-        }
-        set {
-            let start = index(startIndex, offsetBy: range.lowerBound)
-            let end = index(start, offsetBy: range.upperBound - range.lowerBound)
-            replaceSubrange(start..<end, with: newValue.map(Character.init))
-        }
+    /// Inspects a string for the occurences of a regex pattern, and returns a list of ranges.
+    ///
+    /// - Parameters:
+    ///   - pattern: Regex pattern. Can be a simple substring.
+    ///   - options: Regex options. Empty set by default.
+    /// - Returns: A list of matching result ranges.
+    public func ranges(
+        of pattern: String,
+        options: NSRegularExpression.Options = []
+    ) throws -> Array<NSRange> {
+        
+        return try (self as String).ranges(of: pattern, options: options)
+        
     }
     
 }
+#endif
+

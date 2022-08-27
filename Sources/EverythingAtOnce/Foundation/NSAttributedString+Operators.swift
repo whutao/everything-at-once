@@ -39,7 +39,7 @@ extension NSAttributedString {
     public static func + (lhs: NSAttributedString, rhs: NSAttributedString) -> NSAttributedString {
         let string = NSMutableAttributedString(attributedString: lhs)
         string.append(rhs)
-        return NSAttributedString(attributedString: string)
+        return string
     }
     
     /// Adds an attributed string to a usual string, producing a new attributed string.

@@ -1,4 +1,5 @@
 //
+//
 //  MIT License
 //
 //  Copyright (c) 2022-Present EverythingAtOnce
@@ -20,33 +21,34 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
+//  
 
-extension String {
+#if canImport(UIKit) && canImport(CoreGraphics)
+import UIKit
+import CoreGraphics
+
+
+extension UIColor {
     
     
-    /// Used to access and modify a character in the string.
-    subscript(_ i: Int) -> Character {
-        get {
-            return self[index(startIndex, offsetBy: i)]
-        }
-        set {
-            let i = index(startIndex, offsetBy: i)
-            replaceSubrange(i...i, with: [newValue])
-        }
+    /// Build a color from RGB components in range 0...255.
+    public convenience init(red: Int, green: Int, blue: Int) {
+        self.init(
+            red: CGFloat(red) / 255,
+            green: CGFloat(green) / 255,
+            blue: CGFloat(blue) / 255,
+            alpha: 1.0
+        )
     }
     
-    /// /// Used to access and modify a substring in the string.
-    subscript(_ range: CountableRange<Int>) -> String {
-        get {
-            let start = index(startIndex, offsetBy: range.lowerBound)
-            let end = index(start, offsetBy: range.upperBound - range.lowerBound)
-            return String(self[start..<end])
-        }
-        set {
-            let start = index(startIndex, offsetBy: range.lowerBound)
-            let end = index(start, offsetBy: range.upperBound - range.lowerBound)
-            replaceSubrange(start..<end, with: newValue.map(Character.init))
-        }
+    /// Build a color from its hexadecimal representation as a signle integer.
+    public convenience init(hex: Int) {
+        self.init(
+            red: (hex >> 16) & 0xFF,
+            green: (hex >> 8) & 0xFF,
+            blue: hex & 0xFF
+        )
     }
     
 }
+#endif
