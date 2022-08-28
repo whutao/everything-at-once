@@ -21,44 +21,19 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
-//
+//  
 
-#if canImport(Foundation)
-import Foundation
+#if canImport(CoreFoundation) && canImport(CoreText)
+import CoreFoundation
+import CoreText
 
 
-/// Wrapped unfair lock. Provides an API for working with the C unfair lock.
-///
-/// - Note: The *os_unfair_lock* mutex is currently the fastest lock available on the iOS.
-public final class UnfairLock {
+extension CFAttributedString {
     
     
-    /// Wrapper raw pointer to the C lock.
-    private var lock: os_unfair_lock_t
-    
-    /// Creates an instance of the unfair lock. Initializer does not block the current thread.
-    public init() {
-        lock = os_unfair_lock_t.allocate(capacity: 1)
-        lock.initialize(to: os_unfair_lock())
-    }
-    
-    /// Release the resources.
-    deinit {
-        lock.deallocate()
-    }
-    
-    
-    /// Executes a closure blocking the current thread and releasing it after the closure.
-    public func perform<Value>(_ closure: () throws -> Value) rethrows -> Value {
-        
-        defer {
-            os_unfair_lock_unlock(lock)
-        }
-        
-        os_unfair_lock_lock(lock)
-        
-        return try closure()
-        
+    /// Creates a CoreText framesetter object directly from an attributed string.
+    public func ctFramesetter() -> CTFramesetter {
+        return CTFramesetterCreateWithAttributedString(self)
     }
     
 }

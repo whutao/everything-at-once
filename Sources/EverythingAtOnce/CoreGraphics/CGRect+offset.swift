@@ -21,44 +21,36 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
-//
+//  
 
-#if canImport(Foundation)
-import Foundation
+#if canImport(CoreGraphics)
+import CoreGraphics
 
 
-/// Wrapped unfair lock. Provides an API for working with the C unfair lock.
-///
-/// - Note: The *os_unfair_lock* mutex is currently the fastest lock available on the iOS.
-public final class UnfairLock {
+extension CGRect {
     
     
-    /// Wrapper raw pointer to the C lock.
-    private var lock: os_unfair_lock_t
-    
-    /// Creates an instance of the unfair lock. Initializer does not block the current thread.
-    public init() {
-        lock = os_unfair_lock_t.allocate(capacity: 1)
-        lock.initialize(to: os_unfair_lock())
+    /// Mutates a copy of this CGRect by shifting the origin by the offset.
+    public func offset(by point: CGPoint) -> CGRect {
+        var rect = self
+        rect.origin.x += point.x
+        rect.origin.y += point.y
+        return rect
     }
     
-    /// Release the resources.
-    deinit {
-        lock.deallocate()
+    /// Mutates a copy of this CGRect by shifting the origin by the offset.
+    public func offset(dx: CGFloat) -> CGRect {
+        return offset(by: CGPoint(x: dx, y: .zero))
     }
     
+    /// Mutates a copy of this CGRect by shifting the origin by the offset.
+    public func offset(dy: CGFloat) -> CGRect {
+        return offset(by: CGPoint(x: .zero, y: dy))
+    }
     
-    /// Executes a closure blocking the current thread and releasing it after the closure.
-    public func perform<Value>(_ closure: () throws -> Value) rethrows -> Value {
-        
-        defer {
-            os_unfair_lock_unlock(lock)
-        }
-        
-        os_unfair_lock_lock(lock)
-        
-        return try closure()
-        
+    /// Mutates a copy of this CGRect by shifting the origin by the offset.
+    public func offset(dx: CGFloat, dy: CGFloat) -> CGRect {
+        return offset(by: CGPoint(x: dx, y: dy))
     }
     
 }

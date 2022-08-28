@@ -21,45 +21,26 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
-//
+//  
 
-#if canImport(Foundation)
-import Foundation
+#if canImport(QuartzCore) && canImport(CoreGraphics)
+import QuartzCore
+import CoreGraphics
 
 
-/// Wrapped unfair lock. Provides an API for working with the C unfair lock.
-///
-/// - Note: The *os_unfair_lock* mutex is currently the fastest lock available on the iOS.
-public final class UnfairLock {
+extension CATransform3D {
     
     
-    /// Wrapper raw pointer to the C lock.
-    private var lock: os_unfair_lock_t
-    
-    /// Creates an instance of the unfair lock. Initializer does not block the current thread.
-    public init() {
-        lock = os_unfair_lock_t.allocate(capacity: 1)
-        lock.initialize(to: os_unfair_lock())
+    /// The respective CGAffineTransform.
+    public var cgAffineTransfrom: CGAffineTransform {
+        return CATransform3DGetAffineTransform(self)
     }
     
-    /// Release the resources.
-    deinit {
-        lock.deallocate()
-    }
-    
-    
-    /// Executes a closure blocking the current thread and releasing it after the closure.
-    public func perform<Value>(_ closure: () throws -> Value) rethrows -> Value {
-        
-        defer {
-            os_unfair_lock_unlock(lock)
-        }
-        
-        os_unfair_lock_lock(lock)
-        
-        return try closure()
-        
+    /// Whether a transform is an affine one.
+    public var isCGAffineTransfrom: Bool {
+        return CATransform3DIsAffine(self)
     }
     
 }
 #endif
+
