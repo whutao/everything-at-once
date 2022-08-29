@@ -31,12 +31,12 @@ extension CATransform3D {
 
     
     /// Identity transform.
-    public static var identity: CATransform3D {
+    @inlinable public static var identity: CATransform3D {
         return CATransform3DIdentity
     }
     
     /// Whether a transform is an identity one.
-    public var isIdentity: Bool {
+    @inlinable public var isIdentity: Bool {
         return CATransform3DIsIdentity(self)
     }
     

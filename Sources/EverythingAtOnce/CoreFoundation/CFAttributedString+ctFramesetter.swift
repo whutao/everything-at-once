@@ -32,7 +32,7 @@ extension CFAttributedString {
     
     
     /// Creates a CoreText framesetter object directly from an attributed string.
-    public func ctFramesetter() -> CTFramesetter {
+    @inlinable public func ctFramesetter() -> CTFramesetter {
         return CTFramesetterCreateWithAttributedString(self)
     }
     

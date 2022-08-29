@@ -32,12 +32,12 @@ extension CATransform3D {
     
     
     /// The respective CGAffineTransform.
-    public var cgAffineTransfrom: CGAffineTransform {
+    @inlinable public var cgAffineTransfrom: CGAffineTransform {
         return CATransform3DGetAffineTransform(self)
     }
     
     /// Whether a transform is an affine one.
-    public var isCGAffineTransfrom: Bool {
+    @inlinable public var isAffineTransfrom: Bool {
         return CATransform3DIsAffine(self)
     }
     

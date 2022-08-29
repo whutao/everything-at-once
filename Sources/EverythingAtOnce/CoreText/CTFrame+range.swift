@@ -23,18 +23,38 @@
 //  THE SOFTWARE.
 //  
 
-#if canImport(CoreGraphics) && canImport(CoreText)
-import CoreGraphics
+#if canImport(Foundation) && canImport(CoreText)
+import Foundation
 import CoreText
 
 
 extension CTFrame {
-
     
-    /// Draws an entire CTFrame in the provided context.
-    @inlinable public func draw(in context: CGContext) {
-        return CTFrameDraw(self, context)
+    
+    /// Returns the range of characters originally requested to fill the frame.
+    @inlinable public var stringNSRange: NSRange {
+        return NSRange(stringRange)
     }
-
+    
+    /// Returns the range of characters that actually fit in the frame.
+    @inlinable public var visibleStringNSRange: NSRange {
+        return NSRange(visibleStringRange)
+    }
+    
+    /// Returns the range of characters originally requested to fill the frame.
+    ///
+    /// A CFRange structure containing the backing store range of characters that were originally requested to fill the frame, or, if the function call is not successful, an empty range.
+    @inlinable public var stringRange: CFRange {
+        return CTFrameGetStringRange(self)
+    }
+    
+    /// Returns the range of characters that actually fit in the frame.
+    ///
+    /// This function can be used to cascade frames, because it returns the range of characters that can be seen in the frame. The next frame would start where this frame ends.
+    @inlinable public var visibleStringRange: CFRange {
+        return CTFrameGetVisibleStringRange(self)
+    }
+    
 }
 #endif
+

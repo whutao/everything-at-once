@@ -38,7 +38,7 @@ extension CATransform3D {
     ///   - lhs: First transform.
     ///   - rhs: Second transform.
     /// - Returns: A combination of 2 transforms.
-    public static func * (lhs: CATransform3D, rhs: CATransform3D) -> CATransform3D {
+    @inlinable public static func * (lhs: CATransform3D, rhs: CATransform3D) -> CATransform3D {
         return CATransform3DConcat(lhs, rhs)
     }
     

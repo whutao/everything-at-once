@@ -23,7 +23,7 @@
 //  THE SOFTWARE.
 //  
 
-#if canImport(CoreGraphics)
+#if canImport(CoreGraphics) && canImport(CoreText)
 import CoreGraphics
 import CoreText
 
@@ -32,7 +32,7 @@ extension CTFrame {
     
     
     /// Returns a path used to create a frame.
-    public func cgPath() -> CGPath {
+    @inlinable public func cgPath() -> CGPath {
         return CTFrameGetPath(self)
     }
     

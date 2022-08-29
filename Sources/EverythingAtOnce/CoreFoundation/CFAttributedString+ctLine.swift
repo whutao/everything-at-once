@@ -32,7 +32,7 @@ extension CFAttributedString {
     
     
     /// Creates a CoreText line object directly from an attributed string.
-    public func ctLine() -> CTLine {
+    @inlinable public func ctLine() -> CTLine {
         return CTLineCreateWithAttributedString(self)
     }
     

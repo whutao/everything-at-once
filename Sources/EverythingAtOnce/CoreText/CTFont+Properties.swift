@@ -28,13 +28,23 @@ import CoreGraphics
 import CoreText
 
 
-extension CTFrame {
-
+extension CTFont {
     
-    /// Draws an entire CTFrame in the provided context.
-    @inlinable public func draw(in context: CGContext) {
-        return CTFrameDraw(self, context)
+    
+    /// Returns the font size in points.
+    ///
+    /// The point size of the given font reference. This is the point size provided when the font was created.
+    @inlinable public var size: CGFloat {
+        return CTFontGetSize(self)
     }
-
+    
+    /// Returns the cap-height metric of the given font.
+    ///
+    /// The font cap-height metric scaled according to the point size and matrix of the font reference.
+    @inlinable public var capHeight: CGFloat {
+        return CTFontGetCapHeight(self)
+    }
+    
 }
 #endif
+

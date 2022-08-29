@@ -23,18 +23,23 @@
 //  THE SOFTWARE.
 //  
 
-#if canImport(CoreGraphics) && canImport(CoreText)
-import CoreGraphics
+#if canImport(CoreText)
 import CoreText
 
 
 extension CTFrame {
-
     
-    /// Draws an entire CTFrame in the provided context.
-    @inlinable public func draw(in context: CGContext) {
-        return CTFrameDraw(self, context)
+    
+    /// Returns an array of lines stored in the frame.
+    ///
+    /// A CFArray object containing the CTLine objects that make up the frame, or, if there are no lines in the frame, an array with no elements.
+    @inlinable public var lines: Array<CTLine> {
+        if let array = CTFrameGetLines(self) as? Array<CTLine> {
+            return array
+        }
+        return []
     }
-
+    
 }
 #endif
+

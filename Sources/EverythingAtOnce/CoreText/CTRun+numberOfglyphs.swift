@@ -23,19 +23,19 @@
 //  THE SOFTWARE.
 //  
 
-#if canImport(CoreGraphics)
-import CoreGraphics
+#if canImport(CoreText)
 import CoreText
 
 
-extension CTFont {
+extension CTRun {
     
     
-    /// Returns the font size in points.
-    public var size: CGFloat {
-        return CTFontGetSize(self)
+    /// Gets the glyph count for the run.
+    ///
+    /// - Returns: The number of glyphs that the run contains, or if there are no glyphs in this run, a value of 0.
+    @inlinable public var numberOfglyphs: CFIndex {
+        return CTRunGetGlyphCount(self)
     }
     
 }
 #endif
-

@@ -23,18 +23,23 @@
 //  THE SOFTWARE.
 //  
 
-#if canImport(CoreGraphics) && canImport(CoreText)
-import CoreGraphics
-import CoreText
+#if canImport(Foundation)
+import Foundation
 
 
-extension CTFrame {
-
+extension NSRange {
+ 
     
-    /// Draws an entire CTFrame in the provided context.
-    @inlinable public func draw(in context: CGContext) {
-        return CTFrameDraw(self, context)
+    /// Creates an instance from the CFRange.
+    ///
+    /// Replaces *kCFNotFound* with *NSNotFound* if needed.
+    @inlinable public init(_ cfRange: CFRange) {
+        if cfRange.location == kCFNotFound {
+            self = NSMakeRange(NSNotFound, cfRange.length)
+        } else {
+            self = NSMakeRange(cfRange.location, cfRange.length)
+        }
     }
-
+    
 }
 #endif
