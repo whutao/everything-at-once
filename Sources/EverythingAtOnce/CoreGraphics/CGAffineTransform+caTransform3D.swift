@@ -23,25 +23,18 @@
 //  THE SOFTWARE.
 //  
 
-#if canImport(QuartzCore)
+#if canImport(CoreGraphics) && canImport(QuartzCore)
+import CoreGraphics
 import QuartzCore
 
 
-extension CATransform3D {
+extension CGAffineTransform {
     
     
-    /// Concatenates `lhs` to `rhs` and returns the result: `t = lhs * rhs`.
-    ///
-    /// - Warning: The operation is not commutative due to the matrix multiplication rules.
-    ///
-    /// - Parameters:
-    ///   - lhs: First transform.
-    ///   - rhs: Second transform.
-    /// - Returns: A combination of 2 transforms.
-    @inlinable public static func * (lhs: CATransform3D, rhs: CATransform3D) -> CATransform3D {
-        return CATransform3DConcat(lhs, rhs)
+    /// Returns a transform with the same effect as this affine transform.
+    @inlinable public var caTransform3D: CATransform3D {
+        return CATransform3DMakeAffineTransform(self)
     }
     
 }
 #endif
-

@@ -23,25 +23,25 @@
 //  THE SOFTWARE.
 //  
 
-#if canImport(QuartzCore)
-import QuartzCore
+#if canImport(UIKit)
+import UIKit
 
 
-extension CATransform3D {
+extension UIScreen {
     
     
-    /// Concatenates `lhs` to `rhs` and returns the result: `t = lhs * rhs`.
+    /// The corner radius of the display.
     ///
-    /// - Warning: The operation is not commutative due to the matrix multiplication rules.
-    ///
-    /// - Parameters:
-    ///   - lhs: First transform.
-    ///   - rhs: Second transform.
-    /// - Returns: A combination of 2 transforms.
-    @inlinable public static func * (lhs: CATransform3D, rhs: CATransform3D) -> CATransform3D {
-        return CATransform3DConcat(lhs, rhs)
+    /// - Warning: Uses a private property of `UIScreen` and hence may return 0 if Apple will decide to change the API later.
+    public var cornerRadius: CGFloat {
+        
+        if let radius = value(forKey: "_displayCornerRadius") as? CGFloat {
+            return radius
+        }
+        
+        return .zero
+        
     }
     
 }
 #endif
-

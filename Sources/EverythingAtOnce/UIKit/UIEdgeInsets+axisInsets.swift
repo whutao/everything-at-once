@@ -23,25 +23,22 @@
 //  THE SOFTWARE.
 //  
 
-#if canImport(QuartzCore)
-import QuartzCore
+#if canImport(UIKit)
+import UIKit
 
 
-extension CATransform3D {
+extension UIEdgeInsets {
     
     
-    /// Concatenates `lhs` to `rhs` and returns the result: `t = lhs * rhs`.
-    ///
-    /// - Warning: The operation is not commutative due to the matrix multiplication rules.
-    ///
-    /// - Parameters:
-    ///   - lhs: First transform.
-    ///   - rhs: Second transform.
-    /// - Returns: A combination of 2 transforms.
-    @inlinable public static func * (lhs: CATransform3D, rhs: CATransform3D) -> CATransform3D {
-        return CATransform3DConcat(lhs, rhs)
+    /// A sum of insets on the vertical axis.
+    public var verticalInsets: CGFloat {
+        return self.top + self.bottom
+    }
+    
+    /// A sum of insets on the horizontal axis.
+    public var horizontalInsets: CGFloat {
+        return self.left + self.right
     }
     
 }
 #endif
-

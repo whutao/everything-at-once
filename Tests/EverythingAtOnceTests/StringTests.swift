@@ -122,5 +122,13 @@ final class StringTests: XCTestCase {
         
     }
     
+    func testPredicates() {
+        
+//        let predicate: NSPredicate = .equalPredicate(keyPath: #keyPath(CGSize.width), value: 40)
+//
+//        print(predicate)
+        
+    }
+    
 }
 #endif

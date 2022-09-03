@@ -23,9 +23,8 @@
 //  THE SOFTWARE.
 //  
 
-#if canImport(UIKit) && canImport(CoreGraphics)
+#if canImport(UIKit)
 import UIKit
-import CoreGraphics
 
 
 extension UIColor {

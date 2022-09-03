@@ -23,25 +23,17 @@
 //  THE SOFTWARE.
 //  
 
-#if canImport(QuartzCore)
-import QuartzCore
+#if canImport(UIKit)
+import UIKit
 
 
-extension CATransform3D {
+extension UIView {
+ 
     
-    
-    /// Concatenates `lhs` to `rhs` and returns the result: `t = lhs * rhs`.
-    ///
-    /// - Warning: The operation is not commutative due to the matrix multiplication rules.
-    ///
-    /// - Parameters:
-    ///   - lhs: First transform.
-    ///   - rhs: Second transform.
-    /// - Returns: A combination of 2 transforms.
-    @inlinable public static func * (lhs: CATransform3D, rhs: CATransform3D) -> CATransform3D {
-        return CATransform3DConcat(lhs, rhs)
+    /// Detaches all gesture recognizers from this view.
+    public func removeAllGestureRecognizers() {
+        gestureRecognizers?.forEach { removeGestureRecognizer($0) }
     }
     
 }
 #endif
-
