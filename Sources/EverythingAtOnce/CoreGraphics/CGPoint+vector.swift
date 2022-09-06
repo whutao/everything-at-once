@@ -23,16 +23,16 @@
 //  THE SOFTWARE.
 //  
 
-#if canImport(UIKit)
-import UIKit
+#if canImport(CoreGraphics)
+import CoreGraphics
 
 
-extension UIView {
- 
+extension CGPoint {
     
-    /// Detaches all gesture recognizers from this view.
-    public func removeAllGestureRecognizers() {
-        gestureRecognizers?.forEach(removeGestureRecognizer)
+    
+    /// Creates a directed vector to other point.
+    public func vector(to other: CGPoint) -> CGVector {
+        return CGVector(dx: other.x - self.x, dy: self.y - other.y)
     }
     
 }
