@@ -1,11 +1,11 @@
-// swift-tools-version: 5.6
+// swift-tools-version: 5.7
 import PackageDescription
 
 
 let package = Package(
     name: "EverythingAtOnce",
     platforms: [
-        .iOS(.v13), .macOS(.v10_15)
+        .iOS(.v13)
     ],
     products: [
         .library(name: "EverythingAtOnce", targets: ["EverythingAtOnce"]),
