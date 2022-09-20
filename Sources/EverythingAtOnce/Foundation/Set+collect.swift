@@ -37,7 +37,7 @@ extension _DisposeBag {
     
     @resultBuilder public struct CancellableBuilder {
         
-        static func buildBlock(_ cancellables: AnyCancellable...) -> Array<AnyCancellable> {
+        public static func buildBlock(_ cancellables: AnyCancellable...) -> Array<AnyCancellable> {
             return cancellables
         }
         
