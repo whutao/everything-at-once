@@ -32,7 +32,7 @@ extension UIApplication {
     
     
     /// Returns the current key window of the app if present.
-    public var keyWindow: UIWindow? {
+    public var currentKeyWindow: UIWindow? {
         
         if #available(iOS 15, *) {
             

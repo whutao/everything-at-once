@@ -34,8 +34,7 @@ extension UIApplication {
     public var topViewController: UIViewController? {
         
         return UIApplication.shared
-            .keyWindow
-            .first
+            .currentKeyWindow
             .flatMap(topViewController(forWindow:))
         
     }
