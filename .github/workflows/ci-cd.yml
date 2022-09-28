@@ -1,0 +1,57 @@
+name: Package CI
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - '*'
+
+jobs:
+
+  # =============================================
+  #           Swift language linter
+  # =============================================
+  swift-linter:
+    name: "Swift linter"
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v3
+      - uses: norio-nomura/action-swiftlint@3.2.1
+  
+  # =============================================
+  #           Source files changes tracker
+  # =============================================
+  source-changes:
+      name: "Source files changes"
+      needs: [swift-linter]
+      runs-on: ubuntu-latest
+      outputs:
+        swift: ${{ steps.filter.outputs.swift }}
+      steps:
+        - uses: actions/checkout@v2
+        - uses: dorny/paths-filter@v2
+          id: filter
+          with:
+            filters: |
+              swift:
+                - Sources
+  
+  # =============================================
+  #           Test files changes tracker
+  # =============================================
+  test-changes:
+      name: "Test files changes"
+      needs: [swift-linter]
+      runs-on: ubuntu-latest
+      outputs:
+        swift: ${{ steps.filter.outputs.swift }}
+      steps:
+        - uses: actions/checkout@v2
+        - uses: dorny/paths-filter@v2
+          id: filter
+          with:
+            filters: |
+              swift:
+                - Tests
