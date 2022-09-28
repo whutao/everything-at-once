@@ -26,6 +26,7 @@ jobs:
   source-changes:
       name: "Source files changes"
       needs: [swift-linter]
+      timeout-minutes: 10
       runs-on: ubuntu-latest
       outputs:
         swift: ${{ steps.filter.outputs.swift }}
@@ -44,6 +45,7 @@ jobs:
   test-changes:
       name: "Test files changes"
       needs: [swift-linter]
+      timeout-minutes: 10
       runs-on: ubuntu-latest
       outputs:
         swift: ${{ steps.filter.outputs.swift }}

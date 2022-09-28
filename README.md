@@ -1,6 +1,6 @@
-
+[![CI/CD](https://github.com/whutao/everything-at-once/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/whutao/everything-at-once/actions/workflows/ci-cd.yml)
 [![Swift](https://img.shields.io/badge/Swift-5.6-orange.svg)](https://swift.org)
-[![SPM compatible](https://img.shields.io/badge/SPM-Compatible-brightgreen.svg?style=flat)](https://swift.org/package-manager/)
+[![SPM compatible](https://img.shields.io/badge/SPM-Compatible-brightgreen--====.svg?style=flat)](https://swift.org/package-manager/)
 [![Cocoapods](https://img.shields.io/cocoapods/v/EverythingAtOnce.svg)](https://cocoapods.org/pods/EverythingAtOnce)
 [![MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)
 
@@ -25,7 +25,7 @@ end
 Replace `YOUR_TARGET_NAME` and then, in the `Podfile` directory, type:
 
 ```bash
-$ pod install
+pod install
 ```
 
 ### [Swift Package Manager](https://swift.org/package-manager)
@@ -37,7 +37,7 @@ let package = Package(
     name: "YOUR_PROJECT_NAME",
     targets: [],
     dependencies: [
-        .package(url: "https://github.com/whutao/everything-at-once.git", from: "0.1.5")
+        .package(url: "https://github.com/whutao/everything-at-once.git", from: "TAG")
     ]
 )
 ```
