@@ -47,7 +47,8 @@ extension Publishers {
             self.upstreams = upstreams
         }
         
-        public func receive<S: Subscriber>(subscriber: S) where Self.Failure == S.Failure, Self.Output == S.Input {
+        public func receive<S: Subscriber>(subscriber: S)
+        where Self.Failure == S.Failure, Self.Output == S.Input {
             
             let initial = Just<Array<Element>>([])
                 .setFailureType(to: E.self)

@@ -29,7 +29,8 @@ import SwiftUI
 
 
 /// SwiftUI preview for UIKit view controllers.
-public struct UIViewControllerPreview<UIViewControllerBody: UIViewController>: UIViewControllerRepresentable {
+public struct UIViewControllerPreview<UIViewControllerBody>: UIViewControllerRepresentable
+where UIViewControllerBody: UIViewController {
     
     
     private let viewController: UIViewControllerBody

@@ -63,7 +63,11 @@ extension NSMutableAttributedString {
     ///   - value: Attribute value.
     ///   - range: Text range to apply an attribute. Consideres the whole string if `nil` is provided.
     /// - Returns: The source string with applied attribute.
-    @discardableResult public func addingAttribute(_ name: NSAttributedString.Key, value: Any?, at range: NSRange? = nil) -> NSMutableAttributedString {
+    @discardableResult public func addingAttribute(
+        _ name: NSAttributedString.Key,
+        value: Any?,
+        at range: NSRange? = nil
+    ) -> NSMutableAttributedString {
         self.addAttribute(name, value: value as Any, range: range ?? fullRange)
         return self
     }
@@ -81,7 +85,11 @@ extension NSAttributedString {
     ///   - value: Attribute value.
     ///   - range: Text range to apply an attribute. Consideres the whole string if `nil` is provided.
     /// - Returns: A copy of the source string with applied attribute.
-    public func addAttribute(_ name: NSAttributedString.Key, value: Any?, at range: NSRange? = nil) -> NSMutableAttributedString {
+    public func addAttribute(
+        _ name: NSAttributedString.Key,
+        value: Any?,
+        at range: NSRange? = nil
+    ) -> NSMutableAttributedString {
         
         let mutableAttributedString = NSMutableAttributedString(attributedString: self)
         
@@ -110,7 +118,10 @@ extension NSAttributedString {
     ///   - uiFont: Text font.
     ///   - range: Text range to apply an attribute. Consideres the whole string if `nil` is provided.
     /// - Returns: A copy of the source string with applied attribute.
-    public func font(_ uiFont: UIFont, at range: NSRange? = nil) -> NSMutableAttributedString {
+    public func font(
+        _ uiFont: UIFont,
+        at range: NSRange? = nil
+    ) -> NSMutableAttributedString {
         return addAttribute(.font, value: uiFont, at: range)
     }
     
@@ -120,7 +131,10 @@ extension NSAttributedString {
     ///   - uiColor: Text color.
     ///   - range: Text range to apply an attribute. Consideres the whole string if `nil` is provided.
     /// - Returns: A copy of the source string with applied attribute.
-    public func textColor(_ uiColor: UIColor?, at range: NSRange? = nil) -> NSMutableAttributedString {
+    public func textColor(
+        _ uiColor: UIColor?,
+        at range: NSRange? = nil
+    ) -> NSMutableAttributedString {
         return addAttribute(.foregroundColor, value: uiColor, at: range)
     }
     
@@ -130,7 +144,10 @@ extension NSAttributedString {
     ///   - uiColor: Background color.
     ///   - range: Text range to apply an attribute. Consideres the whole string if `nil` is provided.
     /// - Returns: A copy of the source string with applied attribute.
-    public func backgroundColor(_ uiColor: UIColor?, at range: NSRange? = nil) -> NSMutableAttributedString {
+    public func backgroundColor(
+        _ uiColor: UIColor?,
+        at range: NSRange? = nil
+    ) -> NSMutableAttributedString {
         return addAttribute(.backgroundColor, value: uiColor, at: range)
     }
     
@@ -140,7 +157,10 @@ extension NSAttributedString {
     ///   - style: Paragraph style.
     ///   - range: Text range to apply an attribute. Consideres the whole string if `nil` is provided.
     /// - Returns: A copy of the source string with applied attribute.
-    public func paragraph(_ style: NSParagraphStyle?, at range: NSRange? = nil) -> NSMutableAttributedString {
+    public func paragraph(
+        _ style: NSParagraphStyle?,
+        at range: NSRange? = nil
+    ) -> NSMutableAttributedString {
         return addAttribute(.paragraphStyle, value: style, at: range)
     }
     
@@ -150,7 +170,10 @@ extension NSAttributedString {
     ///   - nsShadow: Text shadow.
     ///   - range: Text range to apply an attribute. Consideres the whole string if `nil` is provided.
     /// - Returns: A copy of the source string with applied attribute.
-    public func shadow(_ nsShadow: NSShadow?, at range: NSRange? = nil) -> NSMutableAttributedString {
+    public func shadow(
+        _ nsShadow: NSShadow?,
+        at range: NSRange? = nil
+    ) -> NSMutableAttributedString {
         return addAttribute(.shadow, value: nsShadow, at: range)
     }
     
@@ -162,7 +185,12 @@ extension NSAttributedString {
     ///   - radius: Shadow radius.
     ///   - range: Text range to apply an attribute. Consideres the whole string if `nil` is provided.
     /// - Returns: A copy of the source string with applied attribute.
-    public func shadow(color: UIColor?, offset: CGSize = .zero, radius: CGFloat = .zero, at range: NSRange? = nil) -> NSMutableAttributedString {
+    public func shadow(
+        color: UIColor?,
+        offset: CGSize = .zero,
+        radius: CGFloat = .zero,
+        at range: NSRange? = nil
+    ) -> NSMutableAttributedString {
         let nsShadow = NSShadow()
         nsShadow.shadowColor = color
         nsShadow.shadowOffset = offset
@@ -194,7 +222,10 @@ extension NSMutableAttributedString {
     ///   - uiFont: Text font.
     ///   - range: Text range to apply an attribute. Consideres the whole string if `nil` is provided.
     /// - Returns: The source string with applied attribute.
-    @discardableResult public func withFont(_ uiFont: UIFont, at range: NSRange? = nil) -> NSMutableAttributedString {
+    @discardableResult public func withFont(
+        _ uiFont: UIFont,
+        at range: NSRange? = nil
+    ) -> NSMutableAttributedString {
         return addingAttribute(.font, value: uiFont, at: range)
     }
     
@@ -204,7 +235,10 @@ extension NSMutableAttributedString {
     ///   - uiColor: Text color.
     ///   - range: Text range to apply an attribute. Consideres the whole string if `nil` is provided.
     /// - Returns: The source string with applied attribute.
-    @discardableResult public func withTextColor(_ uiColor: UIColor?, at range: NSRange? = nil) -> NSMutableAttributedString {
+    @discardableResult public func withTextColor(
+        _ uiColor: UIColor?,
+        at range: NSRange? = nil
+    ) -> NSMutableAttributedString {
         return addingAttribute(.foregroundColor, value: uiColor, at: range)
     }
     
@@ -214,7 +248,10 @@ extension NSMutableAttributedString {
     ///   - uiColor: Background color.
     ///   - range: Text range to apply an attribute. Consideres the whole string if `nil` is provided.
     /// - Returns: The source string with applied attribute.
-    @discardableResult public func withBackgroundColor(_ uiColor: UIColor?, at range: NSRange? = nil) -> NSMutableAttributedString {
+    @discardableResult public func withBackgroundColor(
+        _ uiColor: UIColor?,
+        at range: NSRange? = nil
+    ) -> NSMutableAttributedString {
         return addingAttribute(.backgroundColor, value: uiColor, at: range)
     }
     
@@ -224,7 +261,10 @@ extension NSMutableAttributedString {
     ///   - style: Paragraph style.
     ///   - range: Text range to apply an attribute. Consideres the whole string if `nil` is provided.
     /// - Returns: The source string with applied attribute.
-    @discardableResult public func withParagraphStyle(_ style: NSParagraphStyle?, at range: NSRange? = nil) -> NSMutableAttributedString {
+    @discardableResult public func withParagraphStyle(
+        _ style: NSParagraphStyle?,
+        at range: NSRange? = nil
+    ) -> NSMutableAttributedString {
         return addingAttribute(.paragraphStyle, value: style, at: range)
     }
     
@@ -234,7 +274,10 @@ extension NSMutableAttributedString {
     ///   - nsShadow: Text shadow.
     ///   - range: Text range to apply an attribute. Consideres the whole string if `nil` is provided.
     /// - Returns: The source string with applied attribute.
-    @discardableResult public func withShadow(_ nsShadow: NSShadow?, at range: NSRange? = nil) -> NSMutableAttributedString {
+    @discardableResult public func withShadow(
+        _ nsShadow: NSShadow?,
+        at range: NSRange? = nil
+    ) -> NSMutableAttributedString {
         return addingAttribute(.shadow, value: nsShadow, at: range)
     }
     
@@ -246,7 +289,12 @@ extension NSMutableAttributedString {
     ///   - radius: Shadow radius.
     ///   - range: Text range to apply an attribute. Consideres the whole string if `nil` is provided.
     /// - Returns: The source string with applied attribute.
-    @discardableResult public func withShadow(color: UIColor?, offset: CGSize = .zero, radius: CGFloat = .zero, at range: NSRange? = nil) -> NSMutableAttributedString {
+    @discardableResult public func withShadow(
+        color: UIColor?,
+        offset: CGSize = .zero,
+        radius: CGFloat = .zero,
+        at range: NSRange? = nil
+    ) -> NSMutableAttributedString {
         let nsShadow = NSShadow()
         nsShadow.shadowColor = color
         nsShadow.shadowOffset = offset
@@ -260,7 +308,10 @@ extension NSMutableAttributedString {
     ///   - url: The url.
     ///   - range: Text range to apply an attribute. Consideres the whole string if `nil` is provided.
     /// - Returns: The source string with applied attribute.
-    @discardableResult public func withLink(_ url: URL?, at range: NSRange? = nil) -> NSMutableAttributedString {
+    @discardableResult public func withLink(
+        _ url: URL?,
+        at range: NSRange? = nil
+    ) -> NSMutableAttributedString {
         return addingAttribute(.link, value: url, at: range)
     }
     

@@ -41,7 +41,10 @@ extension NSAttributedString {
     ///   - pattern: Regex pattern. Can be a simple substring.
     ///   - options: Regex options. Empty set by default.
     /// - Returns: A list of matching result ranges.
-    public func ranges(of pattern: String, options: NSRegularExpression.Options) throws -> Array<NSRange> {
+    public func ranges(
+        of pattern: String,
+        options: NSRegularExpression.Options
+    ) throws -> Array<NSRange> {
         return try string.ranges(of: pattern, options: options)
     }
     

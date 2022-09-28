@@ -41,7 +41,12 @@ extension CATransform3D {
     ///   - y: Y value of a vector.
     ///   - z: Z value of a vector.
     /// - Returns: A rotated transform.
-    @inlinable public func rotated(by angle: CGFloat, x: CGFloat, y: CGFloat, z: CGFloat) -> CATransform3D {
+    @inlinable public func rotated(
+        by angle: CGFloat,
+        x: CGFloat,
+        y: CGFloat,
+        z: CGFloat
+    ) -> CATransform3D {
         return CATransform3DRotate(self, angle, x, y, z)
     }
     
@@ -52,7 +57,11 @@ extension CATransform3D {
     ///   - dy: Translation along Y axis.
     ///   - dz: Translation along Z axis.
     /// - Returns: A translated transform.
-    @inlinable public func translated(dx: CGFloat, dy: CGFloat, dz: CGFloat) -> CATransform3D {
+    @inlinable public func translated(
+        dx: CGFloat,
+        dy: CGFloat,
+        dz: CGFloat
+    ) -> CATransform3D {
         return CATransform3DTranslate(self, dx, dy, dz)
     }
     
@@ -63,7 +72,11 @@ extension CATransform3D {
     ///   - y: Scale along Y axis.
     ///   - z: Scale along Z axis.
     /// - Returns: A scaled transform.
-    @inlinable public func scaled(x: CGFloat, y: CGFloat, z: CGFloat) -> CATransform3D {
+    @inlinable public func scaled(
+        x: CGFloat,
+        y: CGFloat,
+        z: CGFloat
+    ) -> CATransform3D {
         return CATransform3DScale(self, x, y, z)
     }
     
@@ -92,7 +105,12 @@ extension CATransform3D {
     ///   - y: Y value of a vector.
     ///   - z: Z value of a vector.
     /// - Returns: A transform.
-    @inlinable public static func rotate(by angle: CGFloat, x: CGFloat, y: CGFloat, z: CGFloat) -> CATransform3D {
+    @inlinable public static func rotate(
+        by angle: CGFloat,
+        x: CGFloat,
+        y: CGFloat,
+        z: CGFloat
+    ) -> CATransform3D {
         return CATransform3DIdentity.rotated(by: angle, x: x, y: y, z: z)
     }
     
@@ -103,7 +121,11 @@ extension CATransform3D {
     ///   - dy: Translation along Y axis.
     ///   - dz: Translation along Z axis.
     /// - Returns: A transform.
-    @inlinable public static func translate(dx: CGFloat, dy: CGFloat, dz: CGFloat) -> CATransform3D {
+    @inlinable public static func translate(
+        dx: CGFloat,
+        dy: CGFloat,
+        dz: CGFloat
+    ) -> CATransform3D {
         return CATransform3DIdentity.translated(dx: dx, dy: dy, dz: dz)
     }
     
@@ -114,7 +136,11 @@ extension CATransform3D {
     ///   - dy: Scale along Y axis.
     ///   - dz: Scale along Z axis.
     /// - Returns: A transform.
-    @inlinable public static func scale(x: CGFloat, y: CGFloat, z: CGFloat) -> CATransform3D {
+    @inlinable public static func scale(
+        x: CGFloat,
+        y: CGFloat,
+        z: CGFloat
+    ) -> CATransform3D {
         return CATransform3DIdentity.scaled(x: x, y: y, z: z)
     }
     

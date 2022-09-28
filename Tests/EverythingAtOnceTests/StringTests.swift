@@ -32,7 +32,13 @@ final class StringTests: XCTestCase {
     
     
     /// Sample string.
-    private let citation: String = "They were all dead. The final gunshot was an exclamation mark to everything that had led to this point. I released my finger from the trigger. And then it was all over. The storm seemed to lose its frenzy. The ragged clouds gave way to the stars above."
+    private let citation: String = """
+        They were all dead. The final gunshot was an exclamation
+        mark to everything that had led to this point. I released
+        my finger from the trigger. And then it was all over.
+        The storm seemed to lose its frenzy.
+        The ragged clouds gave way to the stars above.
+    """
     
     
     func testSubstringRanges() throws {

@@ -1,9 +1,13 @@
 disabled_rules:
+  - trailing_whitespace
   - shorthand_operator
   - syntactic_sugar
   - force_cast
   - force_try
-  - force_unwrap
+  - force_unwrapping
+  - legacy_constructor
+  - nesting
+  - unused_closure_parameter
 
 line_length:
   ignores_comments: true
@@ -23,6 +27,13 @@ vertical_whitespace:
   
 large_tuple:
   warning: 3
+  
+identifier_name:
+  min_length: 1
+  max_length:
+    warning: 40
+    error: 50
+  allowed_symbols: ["_"]
 
 type_name:
   min_length:
