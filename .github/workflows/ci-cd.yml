@@ -23,37 +23,54 @@ jobs:
   # =============================================
   #           Source files changes tracker
   # =============================================
-  source-changes:
-      name: "Source files changes"
-      needs: [swift-linter]
-      timeout-minutes: 10
-      runs-on: ubuntu-latest
-      outputs:
-        swift: ${{ steps.filter.outputs.swift }}
-      steps:
-        - uses: actions/checkout@v2
-        - uses: dorny/paths-filter@v2
-          id: filter
-          with:
-            filters: |
-              swift:
-                - Sources
+  sources-changes:
+    name: "Source files changes"
+    needs: [swift-linter]
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    outputs:
+      swift: ${{ steps.filter.outputs.swift }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            swift:
+              - Sources
   
   # =============================================
   #           Test files changes tracker
   # =============================================
-  test-changes:
-      name: "Test files changes"
-      needs: [swift-linter]
-      timeout-minutes: 10
-      runs-on: ubuntu-latest
-      outputs:
-        swift: ${{ steps.filter.outputs.swift }}
-      steps:
-        - uses: actions/checkout@v2
-        - uses: dorny/paths-filter@v2
-          id: filter
-          with:
-            filters: |
-              swift:
-                - Tests
+  tests-changes:
+    name: "Test files changes"
+    needs: [swift-linter]
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    outputs:
+      swift: ${{ steps.filter.outputs.swift }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            swift:
+              - Tests
+                
+  # =============================================
+  #           Run unit tests
+  # =============================================
+  unit-tests:
+    name: "Unit tests"
+    needs: [sources-changes, tests-changes]
+    if: ${{ (needs.sources-changes.outputs.swift != 'true') && (needs.test-changes.outputs.swift != 'true') }}
+    timeout-minutes: 20
+    runs-on: macos-latest
+    steps:
+      - uses: fwal/setup-swift@2040b795e5c453c3a05fcb8316496afc8a74f192
+        with:
+          swift-version: "5.7"
+      - uses: actions/checkout@v3
+      - run: swift build
+      - run: swift test
