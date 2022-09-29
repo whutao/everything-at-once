@@ -7,64 +7,68 @@ on:
     tags:
       - '*'
 
+concurrency: 
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
 
-  # # =============================================
-  # #           Swift language linter
-  # # =============================================
-  # swift-linter:
-  #   name: "Swift linter"
-  #   runs-on: ubuntu-latest
-  #   timeout-minutes: 10
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - uses: norio-nomura/action-swiftlint@3.2.1
+  # =============================================
+  #           Swift language linter
+  # =============================================
+  swift-linter:
+    name: "Swift linter"
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v3
+      - uses: norio-nomura/action-swiftlint@3.2.1
   
-  # # =============================================
-  # #           Source files changes tracker
-  # # =============================================
-  # sources-changes:
-  #   name: "Source files changes"
-  #   needs: [swift-linter]
-  #   timeout-minutes: 10
-  #   runs-on: ubuntu-latest
-  #   outputs:
-  #     swift: ${{ steps.filter.outputs.swift }}
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: dorny/paths-filter@v2
-  #       id: filter
-  #       with:
-  #         filters: |
-  #           swift:
-  #             - Sources
+  # =============================================
+  #           Source files changes tracker
+  # =============================================
+  sources-changes:
+    name: "Source files changes"
+    needs: [swift-linter]
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    outputs:
+      swift: ${{ steps.filter.outputs.swift }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            swift:
+              - Sources
   
-  # # =============================================
-  # #           Test files changes tracker
-  # # =============================================
-  # tests-changes:
-  #   name: "Test files changes"
-  #   needs: [swift-linter]
-  #   timeout-minutes: 10
-  #   runs-on: ubuntu-latest
-  #   outputs:
-  #     swift: ${{ steps.filter.outputs.swift }}
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: dorny/paths-filter@v2
-  #       id: filter
-  #       with:
-  #         filters: |
-  #           swift:
-  #             - Tests
+  # =============================================
+  #           Test files changes tracker
+  # =============================================
+  tests-changes:
+    name: "Test files changes"
+    needs: [swift-linter]
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    outputs:
+      swift: ${{ steps.filter.outputs.swift }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            swift:
+              - Tests
                 
   # =============================================
   #           Run unit tests
   # =============================================
   unit-tests:
     name: "Unit tests"
-    # needs: [sources-changes, tests-changes]
-    # if: ${{ (needs.sources-changes.outputs.swift != 'true') && (needs.test-changes.outputs.swift != 'true') }}
+    needs: [sources-changes, tests-changes]
+    if: ${{ (needs.sources-changes.outputs.swift != 'true') && (needs.test-changes.outputs.swift != 'true') }}
     timeout-minutes: 20
     runs-on: macos-latest
     steps:
