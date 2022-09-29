@@ -120,7 +120,7 @@ final class StringTests: XCTestCase {
                 options: .longestEffectiveRangeNotRequired
             ) { attributes, range, shouldStopFurtherProcessing in
                 
-                print("\(range): \(attributes.debugDescription)\n")
+                // print("\(range): \(attributes.debugDescription)\n")
                 
             }
             
