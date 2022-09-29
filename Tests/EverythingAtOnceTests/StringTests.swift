@@ -93,48 +93,5 @@ final class StringTests: XCTestCase {
         
     }
     
-    func testNSMutableAttributedStringMutationPerformance() throws {
-        
-        let mutableAttributedString = NSMutableAttributedString(
-            string: String(repeating: citation, count: 30)
-        )
-        .withFont(.systemFont(ofSize: 10))
-        .withTextColor(.darkText)
-        .withBackgroundColor(.white)
-        .withParagraphStyle(.default)
-        
-        try mutableAttributedString
-            .mutableString
-            .ranges(of: "was", options: [.caseInsensitive])
-            .forEach { range in
-                mutableAttributedString
-                    .withFont(.systemFont(ofSize: 20), at: range)
-                    .withTextColor(.brown, at: range)
-                    .withLink(URL(string: "meow")!, at: range)
-            }
-        
-        measure {
-         
-            mutableAttributedString.enumerateAttributes(
-                in: mutableAttributedString.fullRange,
-                options: .longestEffectiveRangeNotRequired
-            ) { attributes, range, shouldStopFurtherProcessing in
-                
-                // print("\(range): \(attributes.debugDescription)\n")
-                
-            }
-            
-        }
-        
-    }
-    
-    func testPredicates() {
-        
-//        let predicate: NSPredicate = .equalPredicate(keyPath: #keyPath(CGSize.width), value: 40)
-//
-//        print(predicate)
-        
-    }
-    
 }
 #endif
