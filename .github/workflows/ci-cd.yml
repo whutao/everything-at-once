@@ -65,8 +65,17 @@ jobs:
     name: "Unit tests"
     # needs: [sources-changes, tests-changes]
     # if: ${{ (needs.sources-changes.outputs.swift != 'true') && (needs.test-changes.outputs.swift != 'true') }}
-    timeout-minutes: 20
+    timeout-minutes: 30
     runs-on: macos-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        os-version: [
+          13.0, 13.1, 13.2, 13.3, 13.4, 13.5, 13.6, 13.7,
+          14.0, 14.1, 14.2, 14.3, 14.4, 14.5, 14.6,
+          15.0, 15.1, 15.2, 15.3, 15.4, 15.5,
+        ]
+        device: ['iPhone 11', 'iPhone 13']
     steps:
       - uses: fwal/setup-swift@v1.14.0
         with:
@@ -79,5 +88,5 @@ jobs:
             -workspace .swiftpm/xcode/package.xcworkspace \
             -scheme EverythingAtOnce \
             -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 13,OS=15.2' \
+            -destination 'platform=iOS Simulator,name=iPhone 13,OS=${{ matrix.os-version }}' \
             test
