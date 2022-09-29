@@ -78,8 +78,10 @@ jobs:
           swift-version: "5.5"
       - uses: maxim-lobanov/setup-xcode@v1
       - uses: actions/checkout@v3
+      - name: Install Ruby
+        run: gem install xcode-install
       - name: Download simulators
-        run: xcodebuild -downloadAllPlatforms
+        run: xcversion simulators --install='iOS ${{ matrix.os-version }}'
       - name: Execute tests
         run: |
           xcodebuild \
