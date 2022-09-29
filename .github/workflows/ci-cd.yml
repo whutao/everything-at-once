@@ -70,7 +70,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        device: ['iPhone 11', 'iPhone 13']
+        device: ['iPhone 11']
         os-version: [13.0, 14.3, 15.2]
     steps:
       - uses: fwal/setup-swift@v1.14.0
@@ -78,6 +78,8 @@ jobs:
           swift-version: "5.5"
       - uses: maxim-lobanov/setup-xcode@v1
       - uses: actions/checkout@v3
+      - name: Download simulators
+        run: xcodebuild -downloadAllPlatforms
       - name: Execute tests
         run: |
           xcodebuild \
