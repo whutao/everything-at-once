@@ -23,7 +23,6 @@
 //  THE SOFTWARE.
 //  
 
-#if canImport(Foundation)
 @testable import EverythingAtOnce
 import XCTest
 
@@ -79,19 +78,17 @@ final class StringTests: XCTestCase {
         
     }
     
-    func testSubscriptPerformance() {
+    func testCapitalizing() {
         
-        var string: String = String(repeating: citation, count: 300)
+        let empty: String = .emptyString
+        XCTAssertEqual(empty.firstLetterCapitalized, empty)
         
-        measure {
-            
-            let range: Range<Int> = 4000..<8000
-            let substring: String = String(repeating: "O", count: range.indices.count)
-            string[range] = substring
-            
-        }
+        let string1: String = "qwerty"
+        XCTAssertEqual(string1.firstLetterCapitalized, "Qwerty")
+        
+        let string2: String = "QWERTY"
+        XCTAssertEqual(string2.firstLetterCapitalized, "QWERTY")
         
     }
     
 }
-#endif
