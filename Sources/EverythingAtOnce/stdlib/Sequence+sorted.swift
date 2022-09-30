@@ -29,7 +29,7 @@ extension Sequence {
     /// Returns the elements of the sequence, sorted in the increasing order using the given keypath.
     public func sorted<Value: Comparable>(
         by keyPath: KeyPath<Self.Element, Value>
-    ) -> [Self.Element] {
+    ) -> Array<Self.Element> {
         
         return self.sorted(by: keyPath, using: <)
         
@@ -39,7 +39,7 @@ extension Sequence {
     public func sorted<Value: Comparable>(
         by keyPath1: KeyPath<Self.Element, Value>,
         and keyPath2: KeyPath<Self.Element, Value>
-    ) -> [Self.Element] {
+    ) -> Array<Self.Element> {
         
         return self.sorted(by: keyPath1, and: keyPath2, using: <)
         

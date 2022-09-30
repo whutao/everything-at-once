@@ -30,6 +30,11 @@ import Foundation
 extension NSString {
     
     
+    /// Full range of the string text.
+    public var fullRange: NSRange {
+        return NSRange(location: 0, length: length)
+    }
+    
     /// Inspects a string for the occurences of a regex pattern, and returns a list of ranges.
     ///
     /// - Parameters:
