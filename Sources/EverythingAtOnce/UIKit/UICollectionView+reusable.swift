@@ -83,7 +83,7 @@ extension UICollectionView {
 	///   - cell: Cell class to dequeue. Uses the class name as a reuse identifier.
 	///   - indexPath: The index path specifying the location of the cell.
 	/// - Returns: A cell object with identifier matching the cell class name.
-	func dequeue<T: UICollectionViewCell>(_ cell: T.Type, for indexPath: IndexPath) -> T {
+	public func dequeue<T: UICollectionViewCell>(_ cell: T.Type, for indexPath: IndexPath) -> T {
 		return dequeueReusableCell(withReuseIdentifier: String(describing: T.self), for: indexPath) as! T
 	}
 	
@@ -98,7 +98,7 @@ extension UICollectionView {
 	/// - Parameters:
 	///   - indexPath: The index path specifying the location of the cell.
 	/// - Returns: A cell object with identifier matching the cell class name.
-	func dequeue<T: UICollectionViewCell>(for indexPath: IndexPath) -> T {
+	public func dequeue<T: UICollectionViewCell>(for indexPath: IndexPath) -> T {
 		return dequeueReusableCell(withReuseIdentifier: String(describing: T.self), for: indexPath) as! T
 	}
 	
