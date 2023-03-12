@@ -26,36 +26,32 @@
 #if canImport(Foundation)
 import Foundation
 
-extension NSPredicate {
+/// Operator notation for *not*.
+///
+/// - Parameters:
+///   - predicate: A predicate.
+/// - Returns: A compound predicate as a negation of the given one.
+public prefix func ! (_ predicate: NSPredicate) -> NSCompoundPredicate {
+	return predicate.not
+}
 
-	/// Operator notation for *not*.
-	///
-	/// - Parameters:
-	///   - predicate: A predicate.
-	/// - Returns: A compound predicate as a negation of the given one.
-	public static prefix func ! (_ predicate: NSPredicate) -> NSCompoundPredicate {
-		return predicate.not
-	}
+/// Operator notation for *and*.
+///
+/// - Parameters:
+///   - lhs: First predicate.
+///   - rhs: Second predicate.
+/// - Returns: A compound predicate as a combination of the given ones.
+public func && (_ lhs: NSPredicate, _ rhs: NSPredicate) -> NSCompoundPredicate {
+	return lhs.and(rhs)
+}
 
-	/// Operator notation for *and*.
-	///
-	/// - Parameters:
-	///   - lhs: First predicate.
-	///   - rhs: Second predicate.
-	/// - Returns: A compound predicate as a combination of the given ones.
-	public static func && (_ lhs: NSPredicate, _ rhs: NSPredicate) -> NSCompoundPredicate {
-		return lhs.and(rhs)
-	}
-
-	/// Operator notation for *or*.
-	///
-	/// - Parameters:
-	///   - lhs: First predicate.
-	///   - rhs: Second predicate.
-	/// - Returns: A compound predicate as a combination of the given ones.
-	public static func || (_ lhs: NSPredicate, _ rhs: NSPredicate) -> NSCompoundPredicate {
-		return lhs.or(rhs)
-	}
-
+/// Operator notation for *or*.
+///
+/// - Parameters:
+///   - lhs: First predicate.
+///   - rhs: Second predicate.
+/// - Returns: A compound predicate as a combination of the given ones.
+public func || (_ lhs: NSPredicate, _ rhs: NSPredicate) -> NSCompoundPredicate {
+	return lhs.or(rhs)
 }
 #endif

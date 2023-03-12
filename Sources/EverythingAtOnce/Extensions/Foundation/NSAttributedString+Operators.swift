@@ -21,46 +21,40 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
-//
+//  
 
 #if canImport(Foundation)
 import Foundation
 
-// MARK: - Lock
-
-/// Wrapped unfair lock. Provides an API for working with the C unfair lock.
+/// Adds an attributed string to another attribued string, producing a new attributed string.
 ///
-/// - Note: The *os_unfair_lock* mutex is currently the fastest lock available on the iOS.
-public final class UnfairLock {
-	
-	// MARK: Private properties
+/// - Parameters:
+///   - lhs: First attributed string.
+///   - rhs: Second attributed string.
+/// - Returns: A new instance as a combination of 2 strings.
+public func + (lhs: NSAttributedString, rhs: NSAttributedString) -> NSAttributedString {
+	let string = NSMutableAttributedString(attributedString: lhs)
+	string.append(rhs)
+	return string
+}
 
-	/// Wrapper raw pointer to the C lock.
-	private var lock: os_unfair_lock_t
-	
-	// MARK: Init/deinit
-	
-	/// Creates an instance of the unfair lock. Initializer does not block the current thread.
-	public init() {
-		lock = os_unfair_lock_t.allocate(capacity: 1)
-		lock.initialize(to: os_unfair_lock())
-	}
+/// Adds an attributed string to a usual string, producing a new attributed string.
+///
+/// - Parameters:
+///   - lhs: First attributed string.
+///   - rhs: Second normal string.
+/// - Returns: A new instance as a combination of 2 strings.
+public func + (lhs: NSAttributedString, rhs: String) -> NSAttributedString {
+	return lhs + NSAttributedString(string: rhs)
+}
 
-	/// Release the resources.
-	deinit {
-		lock.deallocate()
-	}
-	
-	// MARK: Exposed properties
-
-	/// Executes a closure blocking the current thread and releasing it after the closure.
-	public func perform<Value>(_ closure: () throws -> Value) rethrows -> Value {
-		defer {
-			os_unfair_lock_unlock(lock)
-		}
-		os_unfair_lock_lock(lock)
-		return try closure()
-	}
-
+/// Adds a usual string to an attributed string, producing a new attributed string.
+///
+/// - Parameters:
+///   - lhs: First normal string.
+///   - rhs: Second attributed string.
+/// - Returns: A new instance as a combination of 2 strings.
+public func + (lhs: String, rhs: NSAttributedString) -> NSAttributedString {
+	return NSAttributedString(string: lhs) + rhs
 }
 #endif

@@ -21,46 +21,43 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
-//
+//  
 
 #if canImport(Foundation)
 import Foundation
 
-// MARK: - Lock
+// MARK: - Property wrapper
 
-/// Wrapped unfair lock. Provides an API for working with the C unfair lock.
-///
-/// - Note: The *os_unfair_lock* mutex is currently the fastest lock available on the iOS.
-public final class UnfairLock {
-	
-	// MARK: Private properties
-
-	/// Wrapper raw pointer to the C lock.
-	private var lock: os_unfair_lock_t
-	
-	// MARK: Init/deinit
-	
-	/// Creates an instance of the unfair lock. Initializer does not block the current thread.
-	public init() {
-		lock = os_unfair_lock_t.allocate(capacity: 1)
-		lock.initialize(to: os_unfair_lock())
-	}
-
-	/// Release the resources.
-	deinit {
-		lock.deallocate()
-	}
+/// Atomic property can be safely read and written from different threads by sacrificing an access speed.
+@propertyWrapper public struct Atomic<Value> {
 	
 	// MARK: Exposed properties
-
-	/// Executes a closure blocking the current thread and releasing it after the closure.
-	public func perform<Value>(_ closure: () throws -> Value) rethrows -> Value {
-		defer {
-			os_unfair_lock_unlock(lock)
-		}
-		os_unfair_lock_lock(lock)
-		return try closure()
+	
+	/// Getter and setter for the wrapped value.
+	public var wrappedValue: Value {
+		get { lock.perform { value } }
+		set { lock.perform { value = newValue } }
 	}
-
+	
+	public var projectedValue: Atomic<Value> {
+		return self
+	}
+	
+	// MARK: Private properties
+	
+	/// Lock used to synchronize reads and writes.
+	///
+	/// As reads and writes are done fast, the *os_unfair_lock* will demonstrate the best performance here.
+	private let lock = UnfairLock()
+	
+	/// Wrapped value to be read/written.
+	private var value: Value
+	
+	// MARK: Init
+	
+	public init(wrappedValue: Value) {
+		self.value = wrappedValue
+	}
+	
 }
 #endif
