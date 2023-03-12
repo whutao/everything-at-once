@@ -20,19 +20,16 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
-        
 
 #if canImport(UIKit) && canImport(CoreGraphics)
 import UIKit
 
-
 extension CGColor {
-    
-    
-    /// Returns a respective UIColor.
-    public var uiColor: UIColor {
-        return UIColor(cgColor: self)
-    }
-    
+
+	/// Returns a respective UIColor.
+	public var uiColor: UIColor {
+		return UIColor(cgColor: self)
+	}
+
 }
 #endif

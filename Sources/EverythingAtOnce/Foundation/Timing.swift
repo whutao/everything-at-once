@@ -27,71 +27,68 @@
 import Foundation
 #endif
 
-
 #if canImport(Foundation)
 
 /// Performs a block of code each `seconds` interval.
 @discardableResult public func every(
-    _ seconds: TimeInterval,
-    _ block: (() -> Void)?
+	_ seconds: TimeInterval,
+	_ block: (() -> Void)?
 ) -> Timer {
-    
-    return .scheduledTimer(
-        withTimeInterval: seconds,
-        repeats: true
-    ) { _ in
-        block?()
-    }
-    
-}
 
+	return .scheduledTimer(
+		withTimeInterval: seconds,
+		repeats: true
+	) { _ in
+		block?()
+	}
+
+}
 
 /// Performs a block of code each `seconds` interval.
 @discardableResult public func every(
-    _ seconds: TimeInterval,
-    _ block: ((Timer) -> Void)?
+	_ seconds: TimeInterval,
+	_ block: ((Timer) -> Void)?
 ) -> Timer {
-    
-    return .scheduledTimer(
-        withTimeInterval: seconds,
-        repeats: true
-    ) { timer in
-        block?(timer)
-    }
-    
+
+	return .scheduledTimer(
+		withTimeInterval: seconds,
+		repeats: true
+	) { timer in
+		block?(timer)
+	}
+
 }
 
 /// Performs a block of code after `seconds` interval.
 @discardableResult public func after(
-    _ seconds: TimeInterval,
-    _ block: (() -> Void)?
+	_ seconds: TimeInterval,
+	_ block: (() -> Void)?
 ) -> Timer {
-    
-    return .scheduledTimer(
-        withTimeInterval: seconds,
-        repeats: false
-    ) { timer in
-        block?()
-        timer.invalidate()
-    }
-    
-}
 
+	return .scheduledTimer(
+		withTimeInterval: seconds,
+		repeats: false
+	) { timer in
+		block?()
+		timer.invalidate()
+	}
+
+}
 
 /// Performs a block of code after `seconds` interval.
 @discardableResult public func after(
-    _ seconds: TimeInterval,
-    _ block: ((Timer) -> Void)?
+	_ seconds: TimeInterval,
+	_ block: ((Timer) -> Void)?
 ) -> Timer {
-    
-    return .scheduledTimer(
-        withTimeInterval: seconds,
-        repeats: false
-    ) { timer in
-        block?(timer)
-        timer.invalidate()
-    }
-    
+
+	return .scheduledTimer(
+		withTimeInterval: seconds,
+		repeats: false
+	) { timer in
+		block?(timer)
+		timer.invalidate()
+	}
+
 }
 
 #endif

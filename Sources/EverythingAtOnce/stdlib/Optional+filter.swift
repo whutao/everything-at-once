@@ -24,21 +24,20 @@
 //  
 
 extension Optional {
-    
-    
-    /// Returns the same optional if a provided closure is valid for the wrapped argument. The result is `.none` if either the closure fails or the optional is nil.
-    ///
-    /// ```
-    /// let string: String? = "Meow"
-    /// let x = string.filter { $0.count > 2 } // .some(3)
-    /// let y = string.filter { $0.count > 10 } // .none
-    /// ```
-    ///
-    /// - Parameters:
-    ///   - predicate: Closure to be applied to the wrapped value.
-    /// - Returns: An optional.
-    public func filter(_ predicate: (Wrapped) -> Bool) -> Self {
-        return map(predicate) == .some(true) ? self : .none
-    }
-    
+
+	/// Returns the same optional if a provided closure is valid for the wrapped argument. The result is `.none` if either the closure fails or the optional is nil.
+	///
+	/// ```
+	/// let string: String? = "Meow"
+	/// let x = string.filter { $0.count > 2 } // .some(3)
+	/// let y = string.filter { $0.count > 10 } // .none
+	/// ```
+	///
+	/// - Parameters:
+	///   - predicate: Closure to be applied to the wrapped value.
+	/// - Returns: An optional.
+	public func filter(_ predicate: (Wrapped) -> Bool) -> Self {
+		return map(predicate) == .some(true) ? self : .none
+	}
+
 }

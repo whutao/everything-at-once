@@ -26,31 +26,29 @@
 #if canImport(Foundation)
 import Foundation
 
-
 extension String {
- 
-    
-    /// Inspects a string for the occurences of a regex pattern.
-    ///
-    /// - Parameters:
-    ///   - pattern: Regex pattern. Can be a simple substring.
-    ///   - options: Regex options. Empty set by default.
-    /// - Returns: A list of matching results.
-    public func matches(
-        of pattern: String,
-        options: NSRegularExpression.Options = []
-    ) throws -> Array<NSTextCheckingResult> {
-        
-        return try NSRegularExpression(
-            pattern: pattern,
-            options: options
-        )
-        .matches(
-            in: self,
-            range: NSRange(location: .zero, length: count)
-        )
-        
-    }
-    
+
+	/// Inspects a string for the occurences of a regex pattern.
+	///
+	/// - Parameters:
+	///   - pattern: Regex pattern. Can be a simple substring.
+	///   - options: Regex options. Empty set by default.
+	/// - Returns: A list of matching results.
+	public func matches(
+		of pattern: String,
+		options: NSRegularExpression.Options = []
+	) throws -> [NSTextCheckingResult] {
+
+		return try NSRegularExpression(
+			pattern: pattern,
+			options: options
+		)
+		.matches(
+			in: self,
+			range: NSRange(location: .zero, length: count)
+		)
+
+	}
+
 }
 #endif

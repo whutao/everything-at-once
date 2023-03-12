@@ -26,59 +26,57 @@
 #if canImport(SwiftUI)
 import SwiftUI
 
-
 public extension PreviewDevice {
-    
-    
-    static let iPhone6: PreviewDevice = .init(rawValue: "iPhone 6")
-    
-    static let iPhone6s: PreviewDevice = .init(rawValue: "iPhone 6s")
-    
-    static let iPhone6Plus: PreviewDevice = .init(rawValue: "iPhone 6 Plus")
-    
-    static let iPhone6sPlus: PreviewDevice = .init(rawValue: "iPhone 6s Plus")
-    
-    static let iPhoneSE1stGeneration: PreviewDevice = .init(rawValue: "iPhone SE (1st generation)")
-    
-    static let iPhoneSE2ndGeneration: PreviewDevice = .init(rawValue: "iPhone SE (2nd generation)")
-    
-    static let iPhone7: PreviewDevice = .init(rawValue: "iPhone 7")
-    
-    static let iPhone7Plus: PreviewDevice = .init(rawValue: "iPhone 7 Plus")
-    
-    static let iPhone8: PreviewDevice = .init(rawValue: "iPhone 8")
-    
-    static let iPhone8Plus: PreviewDevice = .init(rawValue: "iPhone 8 Plus")
-    
-    static let iPhoneX: PreviewDevice = .init(rawValue: "iPhone X")
-    
-    static let iPhoneXs: PreviewDevice = .init(rawValue: "iPhone Xs")
-    
-    static let iPhoneXsMax: PreviewDevice = .init(rawValue: "iPhone Xs Max")
-    
-    static let iPhoneXr: PreviewDevice = .init(rawValue: "iPhone Xʀ")
-    
-    static let iPhone11: PreviewDevice = .init(rawValue: "iPhone 11")
-    
-    static let iPhone11Pro: PreviewDevice = .init(rawValue: "iPhone 11 Pro")
-    
-    static let iPhone11ProMax: PreviewDevice = .init(rawValue: "iPhone 11 Pro Max")
-    
-    static let iPhone12mini: PreviewDevice = .init(rawValue: "iPhone 12 mini")
-    
-    static let iPhone12: PreviewDevice = .init(rawValue: "iPhone 12")
-    
-    static let iPhone12Pro: PreviewDevice = .init(rawValue: "iPhone 12 Pro")
-    
-    static let iPhone12ProMax: PreviewDevice = .init(rawValue: "iPhone 12 Pro Max")
-    
-    static let iPhone13: PreviewDevice = .init(rawValue: "iPhone 13")
-    
-    static let iPhone13Pro: PreviewDevice = .init(rawValue: "iPhone 13 Pro")
-    
-    static let iPhone13ProMax: PreviewDevice = .init(rawValue: "iPhone 13 Pro Max")
-    
-    static let iPhone13mini: PreviewDevice = .init(rawValue: "iPhone 13 mini")
-    
+
+	static let iPhone6: PreviewDevice = .init(rawValue: "iPhone 6")
+
+	static let iPhone6s: PreviewDevice = .init(rawValue: "iPhone 6s")
+
+	static let iPhone6Plus: PreviewDevice = .init(rawValue: "iPhone 6 Plus")
+
+	static let iPhone6sPlus: PreviewDevice = .init(rawValue: "iPhone 6s Plus")
+
+	static let iPhoneSE1stGeneration: PreviewDevice = .init(rawValue: "iPhone SE (1st generation)")
+
+	static let iPhoneSE2ndGeneration: PreviewDevice = .init(rawValue: "iPhone SE (2nd generation)")
+
+	static let iPhone7: PreviewDevice = .init(rawValue: "iPhone 7")
+
+	static let iPhone7Plus: PreviewDevice = .init(rawValue: "iPhone 7 Plus")
+
+	static let iPhone8: PreviewDevice = .init(rawValue: "iPhone 8")
+
+	static let iPhone8Plus: PreviewDevice = .init(rawValue: "iPhone 8 Plus")
+
+	static let iPhoneX: PreviewDevice = .init(rawValue: "iPhone X")
+
+	static let iPhoneXs: PreviewDevice = .init(rawValue: "iPhone Xs")
+
+	static let iPhoneXsMax: PreviewDevice = .init(rawValue: "iPhone Xs Max")
+
+	static let iPhoneXr: PreviewDevice = .init(rawValue: "iPhone Xʀ")
+
+	static let iPhone11: PreviewDevice = .init(rawValue: "iPhone 11")
+
+	static let iPhone11Pro: PreviewDevice = .init(rawValue: "iPhone 11 Pro")
+
+	static let iPhone11ProMax: PreviewDevice = .init(rawValue: "iPhone 11 Pro Max")
+
+	static let iPhone12mini: PreviewDevice = .init(rawValue: "iPhone 12 mini")
+
+	static let iPhone12: PreviewDevice = .init(rawValue: "iPhone 12")
+
+	static let iPhone12Pro: PreviewDevice = .init(rawValue: "iPhone 12 Pro")
+
+	static let iPhone12ProMax: PreviewDevice = .init(rawValue: "iPhone 12 Pro Max")
+
+	static let iPhone13: PreviewDevice = .init(rawValue: "iPhone 13")
+
+	static let iPhone13Pro: PreviewDevice = .init(rawValue: "iPhone 13 Pro")
+
+	static let iPhone13ProMax: PreviewDevice = .init(rawValue: "iPhone 13 Pro Max")
+
+	static let iPhone13mini: PreviewDevice = .init(rawValue: "iPhone 13 mini")
+
 }
 #endif

@@ -26,55 +26,41 @@
 #if canImport(UIKit)
 import UIKit
 
-
 extension UIApplication {
-    
-    
-    /// The currently top-most view controller in the view hierarchy of the key window.
-    public var topViewController: UIViewController? {
-        
-        return UIApplication.shared
-            .currentKeyWindow
-            .flatMap(topViewController(forWindow:))
-        
-    }
-    
-    /// The currently top-most view controller in the view hierarchy of the specified window.
-    public func topViewController(forWindow window: UIWindow) -> UIViewController? {
-        return topViewController(base: window.rootViewController)
-    }
-    
-    /// The currently top-most view controller in the view hierarchy starting from the `baseViewController`.
-    public func topViewController(base baseViewController: UIViewController?) -> UIViewController? {
-        
-        // Consider navigation presention.
-        if let navigationController = baseViewController as? UINavigationController {
-            
-            return topViewController(base: navigationController.visibleViewController)
-            
-        }
-        
-        // Consider tab presentation.
-        if let tabBarController = baseViewController as? UITabBarController {
-            
-            if let selectedViewController = tabBarController.selectedViewController {
-                
-                return topViewController(base: selectedViewController)
-                
-            }
-            
-        }
-        
-        // Consider modal presentation.
-        if let presentedViewController = baseViewController?.presentedViewController {
-            
-            return topViewController(base: presentedViewController)
-            
-        }
-        
-        return baseViewController
-        
-    }
-    
+
+	/// The currently top-most view controller in the view hierarchy of the key window.
+	public var topViewController: UIViewController? {
+		return UIApplication.shared
+			.currentKeyWindow
+			.flatMap(topViewController(forWindow:))
+	}
+
+	/// The currently top-most view controller in the view hierarchy of the specified window.
+	public func topViewController(forWindow window: UIWindow) -> UIViewController? {
+		return topViewController(base: window.rootViewController)
+	}
+
+	/// The currently top-most view controller in the view hierarchy starting from the `baseViewController`.
+	public func topViewController(base baseViewController: UIViewController?) -> UIViewController? {
+		// Consider navigation presention.
+		if let navigationController = baseViewController as? UINavigationController {
+			return topViewController(base: navigationController.visibleViewController)
+		}
+
+		// Consider tab presentation.
+		if let tabBarController = baseViewController as? UITabBarController {
+			if let selectedViewController = tabBarController.selectedViewController {
+				return topViewController(base: selectedViewController)
+			}
+		}
+
+		// Consider modal presentation.
+		if let presentedViewController = baseViewController?.presentedViewController {
+			return topViewController(base: presentedViewController)
+		}
+
+		return baseViewController
+	}
+
 }
 #endif

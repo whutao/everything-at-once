@@ -27,28 +27,25 @@
 import Foundation
 import Combine
 
-
 /// An alias for the cancellable bag.
 public typealias _DisposeBag = Set<AnyCancellable>
 
-
 extension _DisposeBag {
-    
-    
-    @resultBuilder public struct CancellableBuilder {
-        
-        public static func buildBlock(_ cancellables: AnyCancellable...) -> Array<AnyCancellable> {
-            return cancellables
-        }
-        
-    }
-    
-    /// Adds input cancellables into the bag.
-    public mutating func collect(
-        @CancellableBuilder _ cancellables: () -> Array<AnyCancellable>
-    ) {
-        formUnion(cancellables())
-    }
-    
+
+	@resultBuilder public struct CancellableBuilder {
+
+		public static func buildBlock(_ cancellables: AnyCancellable...) -> [AnyCancellable] {
+			return cancellables
+		}
+
+	}
+
+	/// Adds input cancellables into the bag.
+	public mutating func collect(
+		@CancellableBuilder _ cancellables: () -> Array<AnyCancellable>
+	) {
+		formUnion(cancellables())
+	}
+
 }
 #endif

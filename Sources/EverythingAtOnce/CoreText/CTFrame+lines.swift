@@ -26,19 +26,17 @@
 #if canImport(CoreText)
 import CoreText
 
-
 extension CTFrame {
-    
-    
-    /// Returns an array of lines stored in the frame.
-    ///
-    /// A CFArray object containing the CTLine objects that make up the frame, or, if there are no lines in the frame, an array with no elements.
-    @inlinable public var lines: Array<CTLine> {
-        if let array = CTFrameGetLines(self) as? Array<CTLine> {
-            return array
-        }
-        return []
-    }
-    
+
+	/// Returns an array of lines stored in the frame.
+	///
+	/// A CFArray object containing the CTLine objects that make up the frame, or, if there are no lines in the frame, an array with no elements.
+	@inlinable public var lines: [CTLine] {
+		if let array = CTFrameGetLines(self) as? [CTLine] {
+			return array
+		}
+		return []
+	}
+
 }
 #endif

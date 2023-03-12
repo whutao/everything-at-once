@@ -26,29 +26,26 @@
 #if canImport(Foundation)
 import Foundation
 
-
 extension Data {
-    
-    
-    /// Creates JSON data from the foundation object.
-    ///
-    /// - Parameters:
-    ///   - options: JSON writing options. Default is `[]`.
-    /// - Throws: Serialization error if occurs.
-    public init(from jsonObject: AnyObject, options: JSONSerialization.WritingOptions = []) throws {
-        self = try JSONSerialization.data(withJSONObject: jsonObject, options: options)
-    }
-    
-    
-    /// Creates a foundation object from the JSON raw data.
-    ///
-    /// - Parameters:
-    ///   - options: JSON reading options. Default is `[]`.
-    /// - Throws: Serialization error if occurs.
-    /// - Returns: A Foundation object from the JSON data in data.
-    public func jsonObject(options: JSONSerialization.ReadingOptions = []) throws -> AnyObject {
-        return try JSONSerialization.jsonObject(with: self, options: options) as AnyObject
-    }
-    
+
+	/// Creates JSON data from the foundation object.
+	///
+	/// - Parameters:
+	///   - options: JSON writing options. Default is `[]`.
+	/// - Throws: Serialization error if occurs.
+	public init(from jsonObject: AnyObject, options: JSONSerialization.WritingOptions = []) throws {
+		self = try JSONSerialization.data(withJSONObject: jsonObject, options: options)
+	}
+
+	/// Creates a foundation object from the JSON raw data.
+	///
+	/// - Parameters:
+	///   - options: JSON reading options. Default is `[]`.
+	/// - Throws: Serialization error if occurs.
+	/// - Returns: A Foundation object from the JSON data in data.
+	public func jsonObject(options: JSONSerialization.ReadingOptions = []) throws -> AnyObject {
+		return try JSONSerialization.jsonObject(with: self, options: options) as AnyObject
+	}
+
 }
 #endif

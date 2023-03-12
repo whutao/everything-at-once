@@ -26,10 +26,8 @@
 @testable import EverythingAtOnce
 import XCTest
 
-
 final class StringTests: XCTestCase {
-    
-    
+
     /// Sample string.
     private let citation: String = """
         They were all dead. The final gunshot was an exclamation
@@ -38,28 +36,27 @@ final class StringTests: XCTestCase {
         The storm seemed to lose its frenzy.
         The ragged clouds gave way to the stars above.
     """
-    
-    
+
     func testSubstringRanges() throws {
-        
-        let substrings: Array<String> = ["was", "The", "ad"]
-        
+
+        let substrings: [String] = ["was", "The", "ad"]
+
         try substrings.forEach { substring in
-            
+
             try citation
                 .ranges(of: substring)
                 .map { NSString(string: citation).substring(with: $0) }
                 .map { $0 as String }
                 .forEach { XCTAssertEqual($0, substring) }
-            
+
         }
-        
+
     }
-    
+
     func testSubscripts() throws {
-        
+
         var string: String = citation
-        
+
         let character: Character = "+"
         let i: Int = 10
         XCTAssertNotEqual(string[i], character)
@@ -67,7 +64,7 @@ final class StringTests: XCTestCase {
         XCTAssertEqual(string[i], character)
         string[i] = "~"
         XCTAssertNotEqual(string[i], character)
-        
+
         let range: Range<Int> = 40..<80
         let substring: String = String(repeating: "O", count: range.indices.count)
         XCTAssertNotEqual(string[range], substring)
@@ -75,20 +72,20 @@ final class StringTests: XCTestCase {
         XCTAssertEqual(string[range], substring)
         string[range] = String(repeating: "P", count: range.indices.count)
         XCTAssertNotEqual(string[range], substring)
-        
+
     }
-    
+
     func testCapitalizing() {
-        
+
         let empty: String = .emptyString
         XCTAssertEqual(empty.firstLetterCapitalized, empty)
-        
+
         let string1: String = "qwerty"
         XCTAssertEqual(string1.firstLetterCapitalized, "Qwerty")
-        
+
         let string2: String = "QWERTY"
         XCTAssertEqual(string2.firstLetterCapitalized, "QWERTY")
-        
+
     }
-    
+
 }

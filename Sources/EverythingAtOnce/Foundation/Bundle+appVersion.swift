@@ -26,15 +26,16 @@
 #if canImport(Foundation)
 import Foundation
 
-extension Decodable {
+extension Bundle {
 
-	/// Creates a model from JSON data.
-	///
-	/// - Parameters:
-	///   - data: Provided data.
-	///   - decoder: JSONDecoder.
-	public init(from data: Data, usingJSONDecoder decoder: JSONDecoder = .init()) throws {
-		self = try decoder.decode(Self.self, from: data)
+	/// Property for key `CFBundleVersion`.
+	public var bundleVersion: String? {
+		return object(forInfoDictionaryKey: "CFBundleVersion") as? String
+	}
+
+	/// Property for key `CFBundleShortVersionString`.
+	public var shortVersion: String? {
+		return object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
 	}
 
 }

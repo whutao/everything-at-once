@@ -26,17 +26,13 @@
 #if canImport(Combine)
 import Combine
 
-
 extension Publisher {
-    
-    
-    /// Transforms all elements from the upstream publisher
-    /// into the `Void` i.e ignores the publisher value.
-    public func mapEmpty() -> Publishers.Map<Self, Void> {
-        
-        return map { _ in }
-        
-    }
-    
+
+	/// Transforms all elements from the upstream publisher
+	/// into the `Void` i.e ignores the publisher value.
+	public func mapEmpty() -> Publishers.Map<Self, Void> {
+		return map { _ in }
+	}
+
 }
 #endif

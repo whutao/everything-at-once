@@ -22,9 +22,8 @@
 //  THE SOFTWARE.
 
 extension String {
-    
-    
-    /// Empty string aka `""`.
-    public static let emptyString: String = ""
-    
+
+	/// Empty string aka `""`.
+	public static let emptyString: String = ""
+
 }

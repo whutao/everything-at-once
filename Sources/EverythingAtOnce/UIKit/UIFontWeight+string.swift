@@ -26,27 +26,25 @@
 #if canImport(UIKit)
 import UIKit
 
-
 extension UIFont.Weight {
- 
-    
-    /// String uppercased representation of system defined font weights.
-    ///
-    /// For instance, `.bold` is converted to `"Bold"`.
-    public var string: String? {
-        switch self {
-        case .thin: return "Thin"
-        case .ultraLight: return "ExtraLight"
-        case .light: return "Light"
-        case .regular: return "Regular"
-        case .medium: return "Medium"
-        case .semibold: return "Semibold"
-        case .bold: return "Bold"
-        case .heavy: return "Heavy"
-        case .black: return "Black"
-        default: return nil
-        }
-    }
-    
+
+	/// String uppercased representation of system defined font weights.
+	///
+	/// For instance, `.bold` is converted to `"Bold"`.
+	public var string: String? {
+		switch self {
+		case .thin: return "Thin"
+		case .ultraLight: return "ExtraLight"
+		case .light: return "Light"
+		case .regular: return "Regular"
+		case .medium: return "Medium"
+		case .semibold: return "Semibold"
+		case .bold: return "Bold"
+		case .heavy: return "Heavy"
+		case .black: return "Black"
+		default: return nil
+		}
+	}
+
 }
 #endif

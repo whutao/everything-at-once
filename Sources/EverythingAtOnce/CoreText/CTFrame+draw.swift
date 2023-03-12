@@ -27,14 +27,12 @@
 import CoreGraphics
 import CoreText
 
-
 extension CTFrame {
 
-    
-    /// Draws an entire CTFrame in the provided context.
-    @inlinable public func draw(in context: CGContext) {
-        return CTFrameDraw(self, context)
-    }
+	/// Draws an entire CTFrame in the provided context.
+	@inlinable public func draw(in context: CGContext) {
+		return CTFrameDraw(self, context)
+	}
 
 }
 #endif

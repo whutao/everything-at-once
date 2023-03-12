@@ -27,19 +27,17 @@
 import QuartzCore
 import CoreGraphics
 
-
 extension CATransform3D {
-    
-    
-    /// The respective CGAffineTransform.
-    @inlinable public var cgAffineTransfrom: CGAffineTransform {
-        return CATransform3DGetAffineTransform(self)
-    }
-    
-    /// Whether a transform is an affine one.
-    @inlinable public var isAffineTransfrom: Bool {
-        return CATransform3DIsAffine(self)
-    }
-    
+
+	/// The respective CGAffineTransform.
+	@inlinable public var cgAffineTransfrom: CGAffineTransform {
+		return CATransform3DGetAffineTransform(self)
+	}
+
+	/// Whether a transform is an affine one.
+	@inlinable public var isAffineTransfrom: Bool {
+		return CATransform3DIsAffine(self)
+	}
+
 }
 #endif

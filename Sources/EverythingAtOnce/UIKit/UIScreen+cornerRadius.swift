@@ -26,22 +26,17 @@
 #if canImport(UIKit)
 import UIKit
 
-
 extension UIScreen {
-    
-    
-    /// The corner radius of the display.
-    ///
-    /// - Warning: Uses a private property of `UIScreen` and hence may return 0 if Apple will decide to change the API later.
-    public var cornerRadius: CGFloat {
-        
-        if let radius = value(forKey: "_displayCornerRadius") as? CGFloat {
-            return radius
-        }
-        
-        return .zero
-        
-    }
-    
+
+	/// The corner radius of the display.
+	///
+	/// - Warning: Uses a private property of `UIScreen` and hence may return 0 if Apple will decide to change the API later.
+	public var cornerRadius: CGFloat {
+		if let radius = value(forKey: "_displayCornerRadius") as? CGFloat {
+			return radius
+		}
+		return .zero
+	}
+
 }
 #endif

@@ -26,14 +26,12 @@
 #if canImport(UIKit)
 import UIKit
 
-
 extension UIView {
- 
-    
-    /// Detaches all gesture recognizers from this view.
-    public func removeAllGestureRecognizers() {
-        gestureRecognizers?.forEach(removeGestureRecognizer)
-    }
-    
+
+	/// Detaches all gesture recognizers from this view.
+	public func removeAllGestureRecognizers() {
+		gestureRecognizers?.forEach(removeGestureRecognizer)
+	}
+
 }
 #endif

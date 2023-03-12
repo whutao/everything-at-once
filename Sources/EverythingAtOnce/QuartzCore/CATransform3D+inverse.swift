@@ -26,14 +26,12 @@
 #if canImport(QuartzCore)
 import QuartzCore
 
-
 extension CATransform3D {
-    
-    
-    /// The inverse transform.
-    @inlinable public var inverse: CATransform3D {
-        return CATransform3DInvert(self)
-    }
-    
+
+	/// The inverse transform.
+	@inlinable public var inverse: CATransform3D {
+		return CATransform3DInvert(self)
+	}
+
 }
 #endif

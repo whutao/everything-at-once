@@ -26,14 +26,12 @@
 #if canImport(SwiftUI)
 import SwiftUI
 
-
 extension View {
-    
-    
-    /// Returns a type erased view.
-    func eraseToAnyView() -> AnyView {
-        return AnyView(self)
-    }
-    
+
+	/// Returns a type erased view.
+	public func eraseToAnyView() -> AnyView {
+		return AnyView(self)
+	}
+
 }
 #endif

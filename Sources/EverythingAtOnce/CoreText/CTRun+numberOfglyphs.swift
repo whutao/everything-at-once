@@ -26,16 +26,14 @@
 #if canImport(CoreText)
 import CoreText
 
-
 extension CTRun {
-    
-    
-    /// Gets the glyph count for the run.
-    ///
-    /// - Returns: The number of glyphs that the run contains, or if there are no glyphs in this run, a value of 0.
-    @inlinable public var numberOfglyphs: CFIndex {
-        return CTRunGetGlyphCount(self)
-    }
-    
+
+	/// Gets the glyph count for the run.
+	///
+	/// - Returns: The number of glyphs that the run contains, or if there are no glyphs in this run, a value of 0.
+	@inlinable public var numberOfglyphs: CFIndex {
+		return CTRunGetGlyphCount(self)
+	}
+
 }
 #endif

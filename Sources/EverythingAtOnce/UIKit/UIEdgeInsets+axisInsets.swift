@@ -26,19 +26,17 @@
 #if canImport(UIKit)
 import UIKit
 
-
 extension UIEdgeInsets {
-    
-    
-    /// A sum of insets on the vertical axis.
-    public var verticalInsets: CGFloat {
-        return self.top + self.bottom
-    }
-    
-    /// A sum of insets on the horizontal axis.
-    public var horizontalInsets: CGFloat {
-        return self.left + self.right
-    }
-    
+
+	/// A sum of insets on the vertical axis.
+	public var verticalInsets: CGFloat {
+		return self.top + self.bottom
+	}
+
+	/// A sum of insets on the horizontal axis.
+	public var horizontalInsets: CGFloat {
+		return self.left + self.right
+	}
+
 }
 #endif

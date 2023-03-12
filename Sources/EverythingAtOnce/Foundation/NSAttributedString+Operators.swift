@@ -26,41 +26,39 @@
 #if canImport(Foundation)
 import Foundation
 
-
 extension NSAttributedString {
-    
-    
-    /// Adds an attributed string to another attribued string, producing a new attributed string.
-    ///
-    /// - Parameters:
-    ///   - lhs: First attributed string.
-    ///   - rhs: Second attributed string.
-    /// - Returns: A new instance as a combination of 2 strings.
-    public static func + (lhs: NSAttributedString, rhs: NSAttributedString) -> NSAttributedString {
-        let string = NSMutableAttributedString(attributedString: lhs)
-        string.append(rhs)
-        return string
-    }
-    
-    /// Adds an attributed string to a usual string, producing a new attributed string.
-    ///
-    /// - Parameters:
-    ///   - lhs: First attributed string.
-    ///   - rhs: Second normal string.
-    /// - Returns: A new instance as a combination of 2 strings.
-    public static func + (lhs: NSAttributedString, rhs: String) -> NSAttributedString {
-        return lhs + NSAttributedString(string: rhs)
-    }
-    
-    /// Adds a usual string to an attributed string, producing a new attributed string.
-    ///
-    /// - Parameters:
-    ///   - lhs: First normal string.
-    ///   - rhs: Second attributed string.
-    /// - Returns: A new instance as a combination of 2 strings.
-    public static func + (lhs: String, rhs: NSAttributedString) -> NSAttributedString {
-        return NSAttributedString(string: lhs) + rhs
-    }
-    
+
+	/// Adds an attributed string to another attribued string, producing a new attributed string.
+	///
+	/// - Parameters:
+	///   - lhs: First attributed string.
+	///   - rhs: Second attributed string.
+	/// - Returns: A new instance as a combination of 2 strings.
+	public static func + (lhs: NSAttributedString, rhs: NSAttributedString) -> NSAttributedString {
+		let string = NSMutableAttributedString(attributedString: lhs)
+		string.append(rhs)
+		return string
+	}
+
+	/// Adds an attributed string to a usual string, producing a new attributed string.
+	///
+	/// - Parameters:
+	///   - lhs: First attributed string.
+	///   - rhs: Second normal string.
+	/// - Returns: A new instance as a combination of 2 strings.
+	public static func + (lhs: NSAttributedString, rhs: String) -> NSAttributedString {
+		return lhs + NSAttributedString(string: rhs)
+	}
+
+	/// Adds a usual string to an attributed string, producing a new attributed string.
+	///
+	/// - Parameters:
+	///   - lhs: First normal string.
+	///   - rhs: Second attributed string.
+	/// - Returns: A new instance as a combination of 2 strings.
+	public static func + (lhs: String, rhs: NSAttributedString) -> NSAttributedString {
+		return NSAttributedString(string: lhs) + rhs
+	}
+
 }
 #endif

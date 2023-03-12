@@ -27,14 +27,12 @@
 import CoreFoundation
 import CoreText
 
-
 extension CFAttributedString {
-    
-    
-    /// Creates a CoreText line object directly from an attributed string.
-    @inlinable public func ctLine() -> CTLine {
-        return CTLineCreateWithAttributedString(self)
-    }
-    
+
+	/// Creates a CoreText line object directly from an attributed string.
+	@inlinable public func ctLine() -> CTLine {
+		return CTLineCreateWithAttributedString(self)
+	}
+
 }
 #endif

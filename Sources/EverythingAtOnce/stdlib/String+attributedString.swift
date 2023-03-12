@@ -26,14 +26,12 @@
 #if canImport(Foundation)
 import Foundation
 
-
 extension String {
- 
-    
-    /// Builds and returs a raw NSAttributedString with this string as text.
-    public var attributedString: NSAttributedString {
-        return NSAttributedString(string: self)
-    }
-    
+
+	/// Builds and returs a raw NSAttributedString with this string as text.
+	public var attributedString: NSAttributedString {
+		return NSAttributedString(string: self)
+	}
+
 }
 #endif

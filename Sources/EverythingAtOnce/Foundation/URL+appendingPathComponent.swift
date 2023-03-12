@@ -26,20 +26,18 @@
 #if canImport(Foundation)
 import Foundation
 
-
 extension URL {
-    
-    
-    /// Returns a URL constructed by appending the given (non-empty) path component to self.
-    public func appending(_ component: String) -> URL {
-        
-        if component.isEmpty {
-            return self
-        }
-        
-        return appendingPathComponent(component)
-        
-    }
-    
+
+	/// Returns a URL constructed by appending the given (non-empty) path component to self.
+	public func appending(_ component: String) -> URL {
+
+		if component.isEmpty {
+			return self
+		}
+
+		return appendingPathComponent(component)
+
+	}
+
 }
 #endif

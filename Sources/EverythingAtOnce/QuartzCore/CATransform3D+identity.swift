@@ -26,19 +26,17 @@
 #if canImport(QuartzCore)
 import QuartzCore
 
-
 extension CATransform3D {
 
-    
-    /// Identity transform.
-    @inlinable public static var identity: CATransform3D {
-        return CATransform3DIdentity
-    }
-    
-    /// Whether a transform is an identity one.
-    @inlinable public var isIdentity: Bool {
-        return CATransform3DIsIdentity(self)
-    }
-    
+	/// Identity transform.
+	@inlinable public static var identity: CATransform3D {
+		return CATransform3DIdentity
+	}
+
+	/// Whether a transform is an identity one.
+	@inlinable public var isIdentity: Bool {
+		return CATransform3DIsIdentity(self)
+	}
+
 }
 #endif

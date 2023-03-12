@@ -27,14 +27,12 @@
 import CoreFoundation
 import CoreText
 
-
 extension CFAttributedString {
-    
-    
-    /// Creates a CoreText framesetter object directly from an attributed string.
-    @inlinable public func ctFramesetter() -> CTFramesetter {
-        return CTFramesetterCreateWithAttributedString(self)
-    }
-    
+
+	/// Creates a CoreText framesetter object directly from an attributed string.
+	@inlinable public func ctFramesetter() -> CTFramesetter {
+		return CTFramesetterCreateWithAttributedString(self)
+	}
+
 }
 #endif

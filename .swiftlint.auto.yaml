@@ -1,0 +1,194 @@
+
+# version 1.0
+# You can find the documentation here :
+# https://realm.github.io/SwiftLint/rule-directory.html
+
+################
+#disabled_rules#
+################
+
+disabled_rules: # Rule identifiers to exclude from running
+- extension_access_modifier # Prefer to use extension access modifiers
+- force_cast #Force cast should be avoided.
+- force_try # Force tries should be avoided.
+- force_unwrapping # Force unwrapping should be avoided. later as an error
+- function_default_parameter_at_end # Prefer to locate parameters with defaults toward the end of the parameter list.
+- generic_type_name # Generic type name should only contain alphanumeric characters, start with an uppercase character and span between 1 and 20 characters in length.
+- implicit_return # Prefer implicit returns in closures, functions and getters.
+- indentation_width # Indent code using either one tab or the configured amount of spaces, unindent to match previous indentations. Don’t indent the first line.
+- inclusive_language # ...
+- nesting # Types should be nested at most 1 level deep, and functions should be nested at most 2 levels deep.
+- notification_center_detachment # An object should only remove itself as an observer in deinit.
+- vertical_parameter_alignment # This one is buggy cannot use with autocorrect
+- let_var_whitespace # Lines should not span too many characters.
+- legacy_objc_type # Prefer Swift value types to bridged Objective-C reference types
+- missing_docs # Declarations should be documented.
+- multiline_arguments # Arguments should be either on the same line, or one per line.
+- multiline_arguments_brackets # Multiline arguments should have their surrounding brackets in a new line.
+- multiline_literal_brackets # Multiline literals should have their surrounding brackets in a new line.
+- multiline_parameters # Functions and methods parameters should be either on the same line, or one per line.
+- multiline_parameters_brackets # Multiline parameters should have their surrounding brackets in a new line.
+- multiline_function_chains # JN's rule: Chained function calls should be either on the same line, or one per line.
+- no_extension_access_modifier # Prefer not to use extension access modifiers
+- no_grouping_extension # Extensions shouldn’t be used to group code within the same source file.
+- nslocalizedstring_require_bundle # Calls to NSLocalizedString should specify the bundle which contains the strings file.
+- object_literal # Prefer object literals over image and color inits.
+- override_in_extension # Extensions shouldn’t override declarations.
+- overridden_super_call # Some overridden methods should always call super
+- private_subject # Combine Subject should be private.
+- prefixed_toplevel_constant # Top-level constants should be prefixed by k.
+- prohibited_super_call # Some methods should not call super
+- required_deinit # Classes should have an explicit deinit method.
+- redundant_optional_initialization
+- redundant_string_enum_value # String enum values can be omitted when they are equal to the enumcase name.
+- shorthand_operator # Prefer shorthand operators (+=, -=, *=, /=) over doing the operation and assigning.
+- strict_fileprivate # fileprivate should be avoided.
+- strong_iboutlet # @IBOutlets shouldn’t be declared as weak.
+- sorted_first_last # Prefer using min() or max() over sorted().first or sorted().last
+- switch_case_on_newline # Cases inside a switch should always be on a newline
+- test_case_accessibility # Test cases should only contain private non-test members.
+- trailing_closure # Trailing closure syntax should be used whenever possible.
+- unavailable_function # Unimplemented functions should be marked as unavailable.
+- vertical_parameter_alignment_on_call # Function parameters should be aligned vertically if they’re in multiple lines in a method call.
+- unowned_variable_capture # Prefer capturing references as weak to avoid potential crashes. To implement perhaps later
+
+#framework about Unit Testing not use
+- prefer_nimble # Prefer Nimble matchers over XCTAssert functions.
+- nimble_operator # Prefer Nimble operator overloads over free matcher functions.
+- quick_discouraged_call # Discouraged call inside ‘describe’ and/or ‘context’ block.
+- quick_discouraged_focused_test # Discouraged focused test. Other tests won’t run while this one is focused.
+- quick_discouraged_pending_test # Discouraged pending test. This test won’t run while it’s marked as pending.
+- single_test_class # Test files should contain a single QuickSpec or XCTestCase class.
+
+
+##############
+#opt_in_rules#
+##############
+
+opt_in_rules: # some rules are only opt-in
+- array_init # Prefer using Array(seq) over seq.map { $0 } to convert a sequence into an Array.
+- closure_body_length # Closure bodies should not span too many lines.
+- contains_over_filter_count # Prefer contains over comparing filter(where:).count to 0.
+- contains_over_filter_is_empty # Prefer contains over using filter(where:).isEmpty
+- contains_over_first_not_nil # Prefer contains over first(where:) != nil and firstIndex(where:) != nil.
+- contains_over_range_nil_comparison # Prefer contains over range(of:) != nil and range(of:) == nil
+- convenience_type # Only enum can have static variables only
+- discouraged_object_literal # Prefer initializers over object literals.
+- discouraged_optional_boolean # Prefer non-optional booleans over optional booleans.
+- empty_collection_literal # Prefer checking isEmpty over comparing collection to an empty array or dictionary literal.
+- empty_count # Prefer checking isEmpty over comparing count to zero.
+- empty_string # Prefer checking isEmpty over comparing string to an empty string literal.
+- empty_xctest_method # Empty XCTest method should be avoided.
+- enum_case_associated_values_count # Number of associated values in an enum case should be low
+- expiring_todo # TODOs and FIXMEs should be resolved prior to their expiry date.
+- fatal_error_message # A fatalError call should have a message.
+- file_name_no_space # File name should not contain any whitespace.
+- file_types_order # Specifies how the types within a file should be ordered.
+- first_where # Prefer using .first(where:) over .filter { }.first in collections.
+- flatmap_over_map_reduce # Prefer flatMap over map followed by reduce([], +).
+- for_where # where clauses are preferred over a single if inside a for.
+- ibinspectable_in_extension # Extensions shouldn’t add @IBInspectable properties.
+- indentation_width # Indent code using either one tab or the configured amount of spaces, unindent to match previous indentations. Don’t indent the first line.
+- identical_operands # Comparing two identical operands is likely a mistake.
+- implicit_getter # Computed read-only properties and subscripts should avoid using the get keyword.
+- implicitly_unwrapped_optional # Implicitly unwrapped optionals should be avoided when possible.
+- inert_defer # If defer is at the end of its parent scope, it will be executed right where it is anyway.
+- is_disjoint # Prefer using Set.isDisjoint(with:) over Set.intersection(_:).isEmpty.
+- large_tuple # Tuples shouldn’t have too many members. Create a custom type instead.
+- last_where # Prefer using .last(where:) over .filter { }.last in collections.
+- legacy_hashing # Prefer using the hash(into:) function instead of overriding hashValue
+- legacy_multiple # Prefer using the isMultiple(of:) function instead of using the remainder operator (%).
+- legacy_random # Prefer using type.random(in:) over legacy functions.
+- lower_acl_than_parent # Ensure definitions have a lower access control level than their enclosing parent
+- multiple_closures_with_trailing_closure # Trailing closure syntax should not be used when passing more than one closure argument.
+- no_fallthrough_only # Fallthroughs can only be used if the case contains at least one other statement.
+- nslocalizedstring_key # Static strings should be used as key/comment in NSLocalizedString in order for genstrings to work.
+- nsobject_prefer_isequal # NSObject subclasses should implement isEqual instead of ==.
+- operator_whitespace # Operators should be surrounded by a single whitespace when defining them.
+- orphaned_doc_comment # A doc comment should be attached to a declaration.
+- overridden_super_call # Some overridden methods should always call super
+- pattern_matching_keywords # Combine multiple pattern matching bindings by moving keywords out of tuples.
+- private_action # IBActions should be private.
+- private_outlet # IBOutlets should be private to avoid leaking UIKit to higher layers.
+- private_unit_test # Unit tests marked private are silently skipped.
+- prohibited_interface_builder # Creating views using Interface Builder should be avoided.
+- raw_value_for_camel_cased_codable_enum # Camel cased cases of Codable String enums should have raw value.
+- reduce_boolean # Prefer using .allSatisfy() or .contains() over reduce(true) or reduce(false)
+- reduce_into # Prefer reduce(into:_:) over reduce(_:_:) for copy-on-write types
+- redundant_set_access_control # Property setter access level shouldn’t be explicit if it’s the same as the variable access level.
+- required_enum_case # Enums conforming to a specified protocol must implement a specific case(s).
+- static_operator # Operators should be declared as static functions, not free functions.
+- superfluous_disable_command # SwiftLint ‘disable’ commands are superfluous when the disabled rule would not have triggered a violation in the disabled region. Use “ - ” if you wish to document a command.
+- switch_case_alignment # Case statements should vertically align with their enclosing switch statement, or indented if configured otherwise.
+- todo # TODOs and FIXMEs should be resolved.
+- type_contents_order # Specifies the order of subtypes, properties, methods & more within a type.
+- unneeded_break_in_switch # Avoid using unneeded break statements.
+- unused_capture_list # Unused reference in a capture list should be removed.
+- unused_declaration # Declarations should be referenced at least once within all files linted.
+- unused_enumerated # When the index or the item is not used, .enumerated() can be removed.
+- unused_optional_binding # Prefer != nil over let _ =
+- unused_setter_value # Setter value is not used.
+- valid_ibinspectable # @IBInspectable should be applied to variables only, have its type explicit and be of a supported type
+- weak_delegate # Delegates should be weak to avoid reference cycles. Can be put inside swiftlint.auto later
+- xct_specific_matcher # Prefer specific XCTest matchers over XCTAssertEqual and XCTAssertNotEqual
+- xctfail_message # An XCTFail call should include a description of the assertion.
+- yoda_condition # The variable should be placed on the left, the constant on the right of a comparison operator.
+
+################
+#customed rules#
+################
+
+cyclomatic_complexity: # Complexity of function bodies should be limited.
+ ignores_case_statements: true
+
+# Specifies the order of subtypes, properties, methods & more within a type.
+type_contents_order:
+ order: [[SwiftLintFramework.TypeContent.case], [SwiftLintFramework.TypeContent.typeAlias, SwiftLintFramework.TypeContent.associatedType], [SwiftLintFramework.TypeContent.subtype], [SwiftLintFramework.TypeContent.typeProperty], [SwiftLintFramework.TypeContent.instanceProperty], [SwiftLintFramework.TypeContent.ibInspectable], [SwiftLintFramework.TypeContent.ibOutlet], [SwiftLintFramework.TypeContent.initializer],[SwiftLintFramework.TypeContent.deinitializer], [SwiftLintFramework.TypeContent.viewLifeCycleMethod],  [SwiftLintFramework.TypeContent.subscript]]
+
+line_length: # Lines should not span too many characters.
+ warning: 160
+ error: 200
+ ignores_function_declarations: true
+ ignores_comments: true
+ ignores_interpolated_strings: true
+ ignores_urls: true
+ 
+function_parameter_count:
+ warning: 5
+ error: 10
+
+file_length:
+ warning: 500
+ error: 1200
+
+type_body_length: # Type bodies should not span too many lines.
+ warning: 300
+ error: 800
+
+function_body_length: # Functions bodies should not span too many lines.
+ warning: 200
+ error: 400
+
+large_tuple:
+ warning: 2 # only warning
+ error: 4 # only error
+
+type_name:
+ min_length: 1 # only warning
+ max_length: # warning and error
+  warning: 65
+  error: 70
+ excluded: iPhone # excluded via string
+ allowed_symbols: ["_"] # these are allowed in type names
+identifier_name: #Identifier names should only contain alphanumeric characters and start with a lowercase character or should only contain capital letters. In an exception to the above, variable names may start with a capital letter when they are declared static and immutable. Variable names should not be too long or too short.
+ min_length: # only min_length
+  warning: 1 # only error
+ max_length: # only min_length
+  warning: 50 # only error
+ excluded: # excluded via string array
+  - id
+  - URL
+ reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji, sonarqube, markdown, github-actions-logging)
+
+# configurable rules can be customized from this configuration file
+# binary rules can set their severity level

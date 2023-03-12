@@ -26,28 +26,26 @@
 #if canImport(UIKit)
 import UIKit
 
-
 extension UIColor {
-    
-    
-    /// Build a color from RGB components in range 0...255.
-    public convenience init(red: Int, green: Int, blue: Int) {
-        self.init(
-            red: CGFloat(red) / 255,
-            green: CGFloat(green) / 255,
-            blue: CGFloat(blue) / 255,
-            alpha: 1.0
-        )
-    }
-    
-    /// Build a color from its hexadecimal representation as a signle integer.
-    public convenience init(hex: Int) {
-        self.init(
-            red: (hex >> 16) & 0xFF,
-            green: (hex >> 8) & 0xFF,
-            blue: hex & 0xFF
-        )
-    }
-    
+
+	/// Build a color from RGB components in range 0...255.
+	public convenience init(red: Int, green: Int, blue: Int) {
+		self.init(
+			red: CGFloat(red) / 255,
+			green: CGFloat(green) / 255,
+			blue: CGFloat(blue) / 255,
+			alpha: 1.0
+		)
+	}
+
+	/// Build a color from its hexadecimal representation as a signle integer.
+	public convenience init(hex: Int) {
+		self.init(
+			red: (hex >> 16) & 0xFF,
+			green: (hex >> 8) & 0xFF,
+			blue: hex & 0xFF
+		)
+	}
+
 }
 #endif

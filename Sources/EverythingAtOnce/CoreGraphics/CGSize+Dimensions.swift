@@ -26,19 +26,17 @@
 #if canImport(CoreGraphics)
 import CoreGraphics
 
-
 extension CGSize {
- 
-    
-    /// Returns the smallest side.
-    public var minDimension: CGFloat {
-        return min(width, height)
-    }
-    
-    /// Returns the largest side.
-    public var maxDimension: CGFloat {
-        return max(width, height)
-    }
-    
+
+	/// Returns the smallest side.
+	public var minDimension: CGFloat {
+		return min(width, height)
+	}
+
+	/// Returns the largest side.
+	public var maxDimension: CGFloat {
+		return max(width, height)
+	}
+
 }
 #endif

@@ -27,12 +27,11 @@
 import UIKit
 #endif
 
-
 // MARK: Register
 
 #if canImport(UIKit)
 extension UICollectionView {
-	
+
 	/// Registers a class for use in creating new collection view cells.
 	/// - Parameter cell: Cell class.
 	public func register<T: UICollectionViewCell>(cellClass cell: T.Type) {
@@ -41,7 +40,7 @@ extension UICollectionView {
 			forCellWithReuseIdentifier: String(describing: T.self)
 		)
 	}
-	
+
 	/// Registers a class for use in creating new collection header views.
 	/// - Parameter headerClass: Header class.
 	public func register<T: UICollectionReusableView>(headerClass: T.Type) {
@@ -51,7 +50,7 @@ extension UICollectionView {
 			withReuseIdentifier: String(describing: T.self)
 		)
 	}
-	
+
 	/// Registers a class for use in creating new collection footer views.
 	/// - Parameter footerClass: Footer class.
 	public func register<T: UICollectionReusableView>(footerClass: T.Type) {
@@ -61,16 +60,15 @@ extension UICollectionView {
 			withReuseIdentifier: String(describing: T.self)
 		)
 	}
-	
+
 }
 #endif
-
 
 // MARK: Dequeue
 
 #if canImport(UIKit)
 extension UICollectionView {
-	
+
 	/// Returns a reusable table-view cell object for the specified class and adds it to the table.
 	/// It is assumed that the cell has been registred before. Otherwise, a fatal error will be raised.
 	///
@@ -86,7 +84,7 @@ extension UICollectionView {
 	public func dequeue<T: UICollectionViewCell>(_ cell: T.Type, for indexPath: IndexPath) -> T {
 		return dequeueReusableCell(withReuseIdentifier: String(describing: T.self), for: indexPath) as! T
 	}
-	
+
 	/// Returns a reusable table-view cell object for the specified class and adds it to the table.
 	/// It is assumed that the cell has been registred before. Otherwise, a fatal error will be raised.
 	///
@@ -101,6 +99,6 @@ extension UICollectionView {
 	public func dequeue<T: UICollectionViewCell>(for indexPath: IndexPath) -> T {
 		return dequeueReusableCell(withReuseIdentifier: String(describing: T.self), for: indexPath) as! T
 	}
-	
+
 }
 #endif

@@ -22,17 +22,16 @@
 //  THE SOFTWARE.
 
 extension String {
-    
-    
-    /// The copy of a string with a capitalized first letter.
-    public var firstLetterCapitalized: String {
-        
-        guard isNotEmpty else {
-            return self
-        }
-        
-        return prefix(1).capitalized + dropFirst()
-        
-    }
-    
+
+	/// The copy of a string with a capitalized first letter.
+	public var firstLetterCapitalized: String {
+
+		guard isNotEmpty else {
+			return self
+		}
+
+		return prefix(1).capitalized + dropFirst()
+
+	}
+
 }

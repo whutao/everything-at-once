@@ -20,59 +20,55 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
-        
+
 #if canImport(Foundation)
 import Foundation
-
 
 // MARK: Convenience
 
 extension NSCompoundPredicate {
-    
-    
-    /// Returns a new predicate formed by applying *not* operator to the given predicate.
-    public convenience init(not nsPredicate: NSPredicate) {
-        self.init(notPredicateWithSubpredicate: nsPredicate)
-    }
-    
-    /// Returns a new predicate formed by applying *and* operator to the given predicates.
-    public convenience init(and nsPredicates: NSPredicate...) {
-        self.init(andPredicateWithSubpredicates: nsPredicates)
-    }
-    
-    /// Returns a new predicate formed by applying *or* operator to the given predicates.
-    public convenience init(or nsPredicates: NSPredicate...) {
-        self.init(orPredicateWithSubpredicates: nsPredicates)
-    }
-    
-}
 
+	/// Returns a new predicate formed by applying *not* operator to the given predicate.
+	public convenience init(not nsPredicate: NSPredicate) {
+		self.init(notPredicateWithSubpredicate: nsPredicate)
+	}
+
+	/// Returns a new predicate formed by applying *and* operator to the given predicates.
+	public convenience init(and nsPredicates: NSPredicate...) {
+		self.init(andPredicateWithSubpredicates: nsPredicates)
+	}
+
+	/// Returns a new predicate formed by applying *or* operator to the given predicates.
+	public convenience init(or nsPredicates: NSPredicate...) {
+		self.init(orPredicateWithSubpredicates: nsPredicates)
+	}
+
+}
 
 // MARK: Boolean algebra
 
 extension NSPredicate {
-    
-    
-    /// Returns a new predicate formed by applying *not* operator to the current predicate.
-    public var not: NSCompoundPredicate {
-        return NSCompoundPredicate(not: self)
-    }
-    
-    /// Returns a new predicate formed by applying *and* operator to the current predicate and the argument.
-    ///
-    /// - Parameter predicate: Some NSPredicate.
-    /// - Returns: Produced NSCompoundPredicate.
-    public func and(_ predicate: NSPredicate) -> NSCompoundPredicate {
-        return NSCompoundPredicate(and: self, predicate)
-    }
-    
-    /// Returns a new predicate formed by applying *or* operator to the current predicate and the argument.
-    ///
-    /// - Parameter predicate: Some NSPredicate.
-    /// - Returns: Produced NSCompoundPredicate.
-    public func or(_ predicate: NSPredicate) -> NSCompoundPredicate {
-        return NSCompoundPredicate(or: self, predicate)
-    }
-    
+
+	/// Returns a new predicate formed by applying *not* operator to the current predicate.
+	public var not: NSCompoundPredicate {
+		return NSCompoundPredicate(not: self)
+	}
+
+	/// Returns a new predicate formed by applying *and* operator to the current predicate and the argument.
+	///
+	/// - Parameter predicate: Some NSPredicate.
+	/// - Returns: Produced NSCompoundPredicate.
+	public func and(_ predicate: NSPredicate) -> NSCompoundPredicate {
+		return NSCompoundPredicate(and: self, predicate)
+	}
+
+	/// Returns a new predicate formed by applying *or* operator to the current predicate and the argument.
+	///
+	/// - Parameter predicate: Some NSPredicate.
+	/// - Returns: Produced NSCompoundPredicate.
+	public func or(_ predicate: NSPredicate) -> NSCompoundPredicate {
+		return NSCompoundPredicate(or: self, predicate)
+	}
+
 }
 #endif

@@ -23,18 +23,27 @@
 //  THE SOFTWARE.
 //  
 
-#if canImport(Foundation)
-import Foundation
+#if canImport(UIKit)
+import UIKit
 
-extension Decodable {
+extension UIBezierPath {
 
-	/// Creates a model from JSON data.
-	///
-	/// - Parameters:
-	///   - data: Provided data.
-	///   - decoder: JSONDecoder.
-	public init(from data: Data, usingJSONDecoder decoder: JSONDecoder = .init()) throws {
-		self = try decoder.decode(Self.self, from: data)
+	/// Path line between 2 points.
+	public convenience init(from source: CGPoint, to destination: CGPoint) {
+		self.init()
+		move(to: source)
+		addLine(to: destination)
+	}
+
+	/// Path build from lines between points.
+	public convenience init(points: [CGPoint]) {
+		self.init()
+		if let firstPoint = points.first {
+			move(to: firstPoint)
+			points.dropFirst().forEach { point in
+				addLine(to: point)
+			}
+		}
 	}
 
 }

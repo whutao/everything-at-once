@@ -27,16 +27,14 @@
 import CoreGraphics
 import CoreText
 
-
 extension CTLine {
-    
-    
-    /// Draws a complete line in the provided context.
-    ///
-    /// This is a convenience function because the line could be drawn run-by-run by getting the glyph runs, getting the glyphs out of them, and calling a function such as `showGlyphs(_:atPositions:count:)`. This call can leave the graphics context in any state and does not flush the context after the draw operation.
-    @inlinable public func draw(in context: CGContext) {
-        return CTLineDraw(self, context)
-    }
-    
+
+	/// Draws a complete line in the provided context.
+	///
+	/// This is a convenience function because the line could be drawn run-by-run by getting the glyph runs, getting the glyphs out of them, and calling a function such as `showGlyphs(_:atPositions:count:)`. This call can leave the graphics context in any state and does not flush the context after the draw operation.
+	@inlinable public func draw(in context: CGContext) {
+		return CTLineDraw(self, context)
+	}
+
 }
 #endif

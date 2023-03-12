@@ -27,30 +27,28 @@
 import UIKit
 import AVFoundation
 
-
 extension URL {
-    
-    
-    /// Generates a thumbnail image from the asset URL.
-    ///
-    /// The URL can be either local or remote. Call the method in an async queue if using the remote URL.
-    ///
-    /// - Parameters:
-    ///   - time: Second at which to take the thumbnail.
-    /// - Throws: An NSError if an image cannot be extracted from the URL.
-    /// - Returns: A thumbnail image.
-    public func thumbnail(at time: Float64) throws -> UIImage {
-        
-        let generator = AVAssetImageGenerator(asset: AVAsset(url: self))
-        let time = CMTimeMakeWithSeconds(time, preferredTimescale: 1)
-        
-        var videoStartTime = CMTimeMake(value: 0, timescale: 0)
-        
-        let cgImage = try generator.copyCGImage(at: time, actualTime: &videoStartTime)
-        
-        return UIImage(cgImage: cgImage)
-        
-    }
-    
+
+	/// Generates a thumbnail image from the asset URL.
+	///
+	/// The URL can be either local or remote. Call the method in an async queue if using the remote URL.
+	///
+	/// - Parameters:
+	///   - time: Second at which to take the thumbnail.
+	/// - Throws: An NSError if an image cannot be extracted from the URL.
+	/// - Returns: A thumbnail image.
+	public func thumbnail(at time: Float64) throws -> UIImage {
+
+		let generator = AVAssetImageGenerator(asset: AVAsset(url: self))
+		let time = CMTimeMakeWithSeconds(time, preferredTimescale: 1)
+
+		var videoStartTime = CMTimeMake(value: 0, timescale: 0)
+
+		let cgImage = try generator.copyCGImage(at: time, actualTime: &videoStartTime)
+
+		return UIImage(cgImage: cgImage)
+
+	}
+
 }
 #endif

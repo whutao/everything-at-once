@@ -26,29 +26,27 @@
 #if canImport(Foundation)
 import Foundation
 
-
 extension NSString {
-    
-    
-    /// Full range of the string text.
-    public var fullRange: NSRange {
-        return NSRange(location: 0, length: length)
-    }
-    
-    /// Inspects a string for the occurences of a regex pattern, and returns a list of ranges.
-    ///
-    /// - Parameters:
-    ///   - pattern: Regex pattern. Can be a simple substring.
-    ///   - options: Regex options. Empty set by default.
-    /// - Returns: A list of matching result ranges.
-    public func ranges(
-        of pattern: String,
-        options: NSRegularExpression.Options = []
-    ) throws -> Array<NSRange> {
-        
-        return try (self as String).ranges(of: pattern, options: options)
-        
-    }
-    
+
+	/// Full range of the string text.
+	public var fullRange: NSRange {
+		return NSRange(location: 0, length: length)
+	}
+
+	/// Inspects a string for the occurences of a regex pattern, and returns a list of ranges.
+	///
+	/// - Parameters:
+	///   - pattern: Regex pattern. Can be a simple substring.
+	///   - options: Regex options. Empty set by default.
+	/// - Returns: A list of matching result ranges.
+	public func ranges(
+		of pattern: String,
+		options: NSRegularExpression.Options = []
+	) throws -> [NSRange] {
+
+		return try (self as String).ranges(of: pattern, options: options)
+
+	}
+
 }
 #endif

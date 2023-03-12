@@ -26,46 +26,42 @@
 #if canImport(Combine)
 import Combine
 
-
 extension Publishers {
-    
-    
-    /// A publisher created by applying the zip function to an arbitrary number of upstream publishers. Converts the result to an array of the results of upstream publishers.
-    public struct ZipMany<Element, E: Error>: Publisher {
-        
-        /// Output type.
-        public typealias Output = Array<Element>
-        
-        /// Error type.
-        public typealias Failure = E
-        
-        /// Wrapped upstream publishers.
-        private let upstreams: Array<AnyPublisher<Element, E>>
-        
-        /// Creates an instance of `ZipMany` publisher.
-        public init(_ upstreams: Array<AnyPublisher<Element, E>>) {
-            self.upstreams = upstreams
-        }
-        
-        public func receive<S: Subscriber>(subscriber: S)
-        where Self.Failure == S.Failure, Self.Output == S.Input {
-            
-            let initial = Just<Array<Element>>([])
-                .setFailureType(to: E.self)
-                .eraseToAnyPublisher()
-            
-            let zipped = upstreams.reduce(into: initial) { result, upstream in
-                result = result.zip(upstream) { elements, element in
-                    elements + [element]
-                }
-                .eraseToAnyPublisher()
-            }
-            
-            zipped.subscribe(subscriber)
-            
-        }
-        
-    }
-    
+
+	/// A publisher created by applying the zip function to an arbitrary number of upstream publishers. Converts the result to an array of the results of upstream publishers.
+	public struct ZipMany<Element, E: Error>: Publisher {
+
+		/// Output type.
+		public typealias Output = [Element]
+
+		/// Error type.
+		public typealias Failure = E
+
+		/// Wrapped upstream publishers.
+		private let upstreams: [AnyPublisher<Element, E>]
+
+		/// Creates an instance of `ZipMany` publisher.
+		public init(_ upstreams: [AnyPublisher<Element, E>]) {
+			self.upstreams = upstreams
+		}
+
+		public func receive<S: Subscriber>(subscriber: S)
+		where Self.Failure == S.Failure, Self.Output == S.Input {
+			let initial = Just<[Element]>([])
+				.setFailureType(to: E.self)
+				.eraseToAnyPublisher()
+
+			let zipped = upstreams.reduce(into: initial) { result, upstream in
+				result = result.zip(upstream) { elements, element in
+					elements + [element]
+				}
+				.eraseToAnyPublisher()
+			}
+
+			zipped.subscribe(subscriber)
+		}
+
+	}
+
 }
 #endif

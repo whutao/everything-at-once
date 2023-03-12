@@ -27,14 +27,12 @@
 import CoreGraphics
 import CoreText
 
-
 extension CTFrame {
-    
-    
-    /// Returns a path used to create a frame.
-    @inlinable public func cgPath() -> CGPath {
-        return CTFrameGetPath(self)
-    }
-    
+
+	/// Returns a path used to create a frame.
+	@inlinable public func cgPath() -> CGPath {
+		return CTFrameGetPath(self)
+	}
+
 }
 #endif

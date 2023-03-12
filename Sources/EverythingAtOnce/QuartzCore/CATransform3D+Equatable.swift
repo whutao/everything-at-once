@@ -26,13 +26,11 @@
 #if canImport(QuartzCore)
 import QuartzCore
 
-
 extension CATransform3D: Equatable {
-    
-    
-    @inlinable public static func == (lhs: CATransform3D, rhs: CATransform3D) -> Bool {
-        return CATransform3DEqualToTransform(lhs, rhs)
-    }
-    
+
+	@inlinable public static func == (lhs: CATransform3D, rhs: CATransform3D) -> Bool {
+		return CATransform3DEqualToTransform(lhs, rhs)
+	}
+
 }
 #endif

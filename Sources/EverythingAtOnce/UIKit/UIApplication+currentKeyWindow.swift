@@ -23,37 +23,28 @@
 //  THE SOFTWARE.
 //  
 
-
 #if canImport(UIKit)
 import UIKit
 
-
 extension UIApplication {
-    
-    
-    /// Returns the current key window of the app if present.
-    @available(iOS 13, *)
-    public var currentKeyWindow: UIWindow? {
-        
-        if #available(iOS 15, *) {
-            
-            return UIApplication.shared.connectedScenes
-                .filter { $0.activationState == .foregroundActive }
-                .first { $0 is UIWindowScene }
-                .flatMap { $0 as? UIWindowScene }?
-                .windows
-                .first(where: \.isKeyWindow)
-            
-        } else {
-            
-            return UIApplication.shared
-                .windows
-                .filter(\.isKeyWindow)
-                .first
-            
-        }
-        
-    }
-    
+
+	/// Returns the current key window of the app if present.
+	@available(iOS 13, *)
+	public var currentKeyWindow: UIWindow? {
+		if #available(iOS 15, *) {
+			return UIApplication.shared.connectedScenes
+				.filter { $0.activationState == .foregroundActive }
+				.first { $0 is UIWindowScene }
+				.flatMap { $0 as? UIWindowScene }?
+				.windows
+				.first(where: \.isKeyWindow)
+		} else {
+			return UIApplication.shared
+				.windows
+				.filter(\.isKeyWindow)
+				.first
+		}
+	}
+
 }
 #endif

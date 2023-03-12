@@ -22,11 +22,10 @@
 //  THE SOFTWARE.
 
 extension String {
-    
-    
-    /// A Boolean value indicating whether a string has any characters.
-    public var isNotEmpty: Bool {
-        return not(isEmpty)
-    }
-    
+
+	/// A Boolean value indicating whether a string has any characters.
+	public var isNotEmpty: Bool {
+		return not(isEmpty)
+	}
+
 }

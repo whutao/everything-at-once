@@ -26,20 +26,18 @@
 #if canImport(Foundation)
 import Foundation
 
-
 extension NSRange {
- 
-    
-    /// Creates an instance from the CFRange.
-    ///
-    /// Replaces *kCFNotFound* with *NSNotFound* if needed.
-    @inlinable public init(_ cfRange: CFRange) {
-        if cfRange.location == kCFNotFound {
-            self = NSMakeRange(NSNotFound, cfRange.length)
-        } else {
-            self = NSMakeRange(cfRange.location, cfRange.length)
-        }
-    }
-    
+
+	/// Creates an instance from the CFRange.
+	///
+	/// Replaces *kCFNotFound* with *NSNotFound* if needed.
+	@inlinable public init(_ cfRange: CFRange) {
+		if cfRange.location == kCFNotFound {
+			self = NSRange(location: NSNotFound, length: cfRange.length)
+		} else {
+			self = NSRange(location: cfRange.location, length: cfRange.length)
+		}
+	}
+
 }
 #endif

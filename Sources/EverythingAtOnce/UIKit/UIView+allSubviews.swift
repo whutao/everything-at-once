@@ -26,21 +26,19 @@
 #if canImport(UIKit)
 import UIKit
 
-
 extension UIView {
-    
-    
-    /// Returns all subviews in the hierarchy.
-    public func allSubviews() -> Array<UIView> {
-        return subviews.reduce([]) { $0 + $1.allSubviews() }
-    }
-    
-    /// Returns all subviews in the hierarchy of the specified type.
-    public func allSubviews<U: UIView>(ofType subviewType: U.Type) -> Array<U> {
-        return subviews
-            .compactMap { $0 as? U }
-            .reduce([]) { $0 + $1.allSubviews(ofType: subviewType.self) }
-    }
-    
+
+	/// Returns all subviews in the hierarchy.
+	public func allSubviews() -> [UIView] {
+		return subviews.reduce([]) { $0 + $1.allSubviews() }
+	}
+
+	/// Returns all subviews in the hierarchy of the specified type.
+	public func allSubviews<U: UIView>(ofType subviewType: U.Type) -> [U] {
+		return subviews
+			.compactMap { $0 as? U }
+			.reduce([]) { $0 + $1.allSubviews(ofType: subviewType.self) }
+	}
+
 }
 #endif
