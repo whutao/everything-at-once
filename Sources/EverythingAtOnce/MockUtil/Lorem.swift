@@ -30,10 +30,10 @@ import Foundation
 
 /// Generator for "Lorem" texts.
 public enum Lorem {
-	
+
 	// MARK: Private properties
-	
-	private static let allWords: Array<String> = [
+
+	private static let allWords: [String] = [
 		"orci", "risus", "mauris", "vulputate", "dictumst",
 		"ultrices", "suscipit", "vel", "quis", "sagittis",
 		"nisi", "tincidunt", "hendrerit", "aliquet", "ligula",
@@ -64,74 +64,74 @@ public enum Lorem {
 		"commodo", "facilisi", "dui", "placerat", "mattis",
 		"ultricies", "aenean", "ut"
 	]
-	
+
 	// MARK: Exposed properites
-	
+
 	/// Random sentence of *length* words.
 	public static func sentence(ofLength length: Int) -> String {
 		let rawSentance: String = Range(0...length)
 			.map { _ in word }
 			.joined(separator: " ")
-		
+
 		return rawSentance.firstLetterCapitalized + "."
 	}
-	
+
 	/// Random paragraph with *length* sentences.
 	public static func paragraph(ofLength length: Int) -> String {
 		return Range(0...length)
 			.map { _ in sentence(ofLength: .random(in: 3...16)) }
 			.joined(separator: " ")
 	}
-	
+
 	/// Random "Lorem Ipsum" lowercased word.
 	public static var word: String {
 		return allWords.randomElement()!
 	}
-	
+
 	/// Random "Lorem Ipsum" capitalized word.
 	public static var capitalizedWord: String {
 		return word.firstLetterCapitalized
 	}
-	
+
 	/// Random fullname consisting of "Lorem Ipsum" words.
 	public static var fullname: String {
 		return capitalizedWord + " " + capitalizedWord
 	}
-	
+
 	/// Random email consisting of "Lorem Ipsum" words.
 	public static var email: String {
 		return word + "_" + word + "@" + word + ".com"
 	}
-	
+
 	/// Random "Lorem Ipsum" sentence that contains from 3 to 5 words.
 	public static var shortSentence: String {
 		return sentence(ofLength: .random(in: 3...5))
 	}
-	
+
 	/// Random "Lorem Ipsum" sentence that contains from 6 to 10 words.
 	public static var sentence: String {
 		return sentence(ofLength: .random(in: 6...10))
 	}
-	
+
 	/// Random "Lorem Ipsum" sentence that contains from 11 to 16 words.
 	public static var longSentence: String {
 		return sentence(ofLength: .random(in: 11...16))
 	}
-	
+
 	/// Random "Lorem Ipsum" paragraph that contains from 3 to 5 senences.
 	public static var shortParagraph: String {
 		return paragraph(ofLength: .random(in: 3...5))
 	}
-	
+
 	/// Random "Lorem Ipsum" paragraph that contains from 6 to 10 senences.
 	public static var paragraph: String {
 		return paragraph(ofLength: .random(in: 6...10))
 	}
-	
+
 	/// Random "Lorem Ipsum" paragraph that contains from 11 to 16 senences.
 	public static var longParagraph: String {
 		return paragraph(ofLength: .random(in: 11...16))
 	}
-	
+
 }
 #endif

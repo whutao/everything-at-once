@@ -43,30 +43,29 @@ import Foundation
 /// print(weather.$humidity.value) // "146"
 /// ```
 @propertyWrapper public struct Clamping<Value: Comparable> {
-	
+
 	// MARK: Exposed properties
-	
+
 	/// Lower bound of a clamping.
 	public let lowerBound: Value?
-	
+
 	/// Upper bound of a clamping.
 	public let upperBound: Value?
-	
+
 	/// Raw value of a clamping
 	public private(set) var value: Value
-	
+
 	public var wrappedValue: Value {
 		get { clamped(value) }
 		set { value = newValue }
 	}
-	
+
 	public var projectedValue: Clamping {
 		return self
 	}
-	
-	
+
 	// MARK: Init
-	
+
 	/// Creates a clamping of a value.
 	///
 	/// - Parameters:
@@ -77,7 +76,7 @@ import Foundation
 		self.upperBound = nil
 		self.value = wrappedValue
 	}
-	
+
 	/// Creates a clamping of a value.
 	///
 	/// - Parameters:
@@ -88,7 +87,7 @@ import Foundation
 		self.upperBound = upperBound
 		self.value = wrappedValue
 	}
-	
+
 	/// Creates a clamping of a value.
 	///
 	/// - Parameters:
@@ -103,7 +102,7 @@ import Foundation
 		self.upperBound = upperBound
 		self.value = wrappedValue
 	}
-	
+
 	/// Creates a clamping of a value.
 	///
 	/// - Parameters:
@@ -112,10 +111,9 @@ import Foundation
 	public init(wrappedValue: Value, _ range: ClosedRange<Value>) {
 		self.init(wrappedValue: wrappedValue, from: range.lowerBound, to: range.upperBound)
 	}
-	
-	
+
 	// MARK: Private methods
-	
+
 	/// Consider the lower bound if needed.
 	private func clampedUp(_ newValue: Value) -> Value {
 		if let lowerbound = lowerBound {
@@ -124,7 +122,7 @@ import Foundation
 			return newValue
 		}
 	}
-	
+
 	/// Consider the upper bound if needed.
 	private func clampedDown(_ newValue: Value) -> Value {
 		if let upperbound = upperBound {
@@ -133,11 +131,11 @@ import Foundation
 			return newValue
 		}
 	}
-	
+
 	/// Consider both lower and upper bounds if needed.
 	private func clamped(_ newValue: Value) -> Value {
 		return clampedUp(clampedDown(newValue))
 	}
-	
+
 }
 #endif

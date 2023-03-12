@@ -33,13 +33,12 @@ import Foundation
 import Combine
 #endif
 
-
 // MARK: Wrapper
 
 #if canImport(Foundation)
 /// Provides an API for a UserDefaults stored values.
 @propertyWrapper public struct UserDefault<Value> {
-	
+
 	public var wrappedValue: Value {
 		get {
 			return getValue()
@@ -49,29 +48,28 @@ import Combine
 			valueChangePublisherInternal.send(newValue)
 		}
 	}
-	
+
 	#if canImport(Combine)
 	/// Publishes wrapped value changes and only changes. Does **not** publish the initial value.
 	public var valueChangePublisher: AnyPublisher<Value, Never> {
 		return valueChangePublisherInternal.eraseToAnyPublisher()
 	}
-	
+
 	private let valueChangePublisherInternal: PassthroughSubject<Value, Never> = .init()
 	#endif
-	
+
 	/// Value getter.
 	private let getValue: () -> Value
-	
+
 	/// Value setter.
 	private let setValue: (Value) -> Void
-	
-}
 
+}
 
 // MARK: Standard types
 
 extension UserDefault {
-	
+
 	/// Common init. Should be used for standard value types.
 	private init<Key: UserDefaultKey>(
 		defaultValue: Value,
@@ -85,12 +83,12 @@ extension UserDefault {
 				return defaultValue
 			}
 		}
-		
+
 		setValue = { newValue in
 			storage.set(newValue, forKey: key.string)
 		}
 	}
-	
+
 	/// Creates a wrapper for UserDefaults storage for a standard value.
 	public init<Key: UserDefaultKey>(
 		wrappedValue: Value,
@@ -99,7 +97,7 @@ extension UserDefault {
 	) where Value == Int {
 		self.init(defaultValue: wrappedValue, key, storage: storage)
 	}
-	
+
 	/// Creates a wrapper for UserDefaults storage for a standard value.
 	public init<Key: UserDefaultKey>(
 		wrappedValue: Value,
@@ -108,7 +106,7 @@ extension UserDefault {
 	) where Value == Double {
 		self.init(defaultValue: wrappedValue, key, storage: storage)
 	}
-	
+
 	/// Creates a wrapper for UserDefaults storage for a standard value.
 	public init<Key: UserDefaultKey>(
 		wrappedValue: Value,
@@ -117,7 +115,7 @@ extension UserDefault {
 	) where Value == String {
 		self.init(defaultValue: wrappedValue, key, storage: storage)
 	}
-	
+
 	/// Creates a wrapper for UserDefaults storage for a standard value.
 	public init<Key: UserDefaultKey>(
 		wrappedValue: Value,
@@ -126,7 +124,7 @@ extension UserDefault {
 	) where Value == Bool {
 		self.init(defaultValue: wrappedValue, key, storage: storage)
 	}
-	
+
 	/// Creates a wrapper for UserDefaults storage for a standard value.
 	public init<Key: UserDefaultKey>(
 		wrappedValue: Value,
@@ -135,7 +133,7 @@ extension UserDefault {
 	) where Value == URL {
 		self.init(defaultValue: wrappedValue, key, storage: storage)
 	}
-	
+
 	/// Creates a wrapper for UserDefaults storage for a standard value.
 	public init<Key: UserDefaultKey>(
 		wrappedValue: Value,
@@ -144,7 +142,7 @@ extension UserDefault {
 	) where Value == Data {
 		self.init(defaultValue: wrappedValue, key, storage: storage)
 	}
-	
+
 	/// Creates a wrapper for UserDefaults storage for a standard value.
 	public init<Key: UserDefaultKey>(
 		wrappedValue defaultValue: Value,
@@ -159,25 +157,23 @@ extension UserDefault {
 				return value
 			} else {
 				return defaultValue
-				
+
 			}
 		}
-		
+
 		setValue = { newValue in
 			if let data = try? JSONEncoder().encode(newValue) {
 				storage.set(data, forKey: key.string)
 			}
 		}
 	}
-	
-}
 
+}
 
 // MARK: Nullable standard values
 
 extension UserDefault where Value: ExpressibleByNilLiteral {
-	
-	
+
 	/// Common init. Should be used for nullable standard value types.
 	private init<WrappedType, Key: UserDefaultKey>(
 		wrappedType: WrappedType.Type,
@@ -191,7 +187,7 @@ extension UserDefault where Value: ExpressibleByNilLiteral {
 				return nil
 			}
 		}
-		
+
 		setValue = { newValue in
 			if let newValue = newValue as? WrappedType? {
 				storage.set(newValue, forKey: key.string)
@@ -200,7 +196,7 @@ extension UserDefault where Value: ExpressibleByNilLiteral {
 			}
 		}
 	}
-	
+
 	/// Creates a wrapper for UserDefaults storage for a standard nullable value.
 	public init<Key: UserDefaultKey>(
 		wrappedValue: Value,
@@ -209,7 +205,7 @@ extension UserDefault where Value: ExpressibleByNilLiteral {
 	) where Value == Int? {
 		self.init(defaultValue: wrappedValue, key, storage: storage)
 	}
-	
+
 	/// Creates a wrapper for UserDefaults storage for a standard nullable value.
 	public init<Key: UserDefaultKey>(
 		wrappedValue: Value,
@@ -218,7 +214,7 @@ extension UserDefault where Value: ExpressibleByNilLiteral {
 	) where Value == Double? {
 		self.init(defaultValue: wrappedValue, key, storage: storage)
 	}
-	
+
 	/// Creates a wrapper for UserDefaults storage for a standard nullable value.
 	public init<Key: UserDefaultKey>(
 		wrappedValue: Value,
@@ -227,7 +223,7 @@ extension UserDefault where Value: ExpressibleByNilLiteral {
 	) where Value == String? {
 		self.init(defaultValue: wrappedValue, key, storage: storage)
 	}
-	
+
 	/// Creates a wrapper for UserDefaults storage for a standard nullable value.
 	public init<Key: UserDefaultKey>(
 		wrappedValue: Value,
@@ -236,7 +232,7 @@ extension UserDefault where Value: ExpressibleByNilLiteral {
 	) where Value == Bool? {
 		self.init(defaultValue: wrappedValue, key, storage: storage)
 	}
-	
+
 	/// Creates a wrapper for UserDefaults storage for a standard nullable value.
 	public init<Key: UserDefaultKey>(
 		wrappedValue: Value,
@@ -245,7 +241,7 @@ extension UserDefault where Value: ExpressibleByNilLiteral {
 	) where Value == URL? {
 		self.init(defaultValue: wrappedValue, key, storage: storage)
 	}
-	
+
 	/// Creates a wrapper for UserDefaults storage for a standard nullable value.
 	public init<Key: UserDefaultKey>(
 		wrappedValue: Value,
@@ -254,15 +250,13 @@ extension UserDefault where Value: ExpressibleByNilLiteral {
 	) where Value == Data? {
 		self.init(defaultValue: wrappedValue, key, storage: storage)
 	}
-	
-}
 
+}
 
 // MARK: RawRepresentable values
 
 extension UserDefault where Value: RawRepresentable {
-	
-	
+
 	/// Common init. Should be used for enums and option sets.
 	private init<Key: UserDefaultKey>(
 		defaultValue: Value,
@@ -273,18 +267,18 @@ extension UserDefault where Value: RawRepresentable {
 			guard let rawValue = storage.value(forKey: key.string) as? Value.RawValue else {
 				return defaultValue
 			}
-			
+
 			if let value = Value(rawValue: rawValue) {
 				return value
 			}
 			return defaultValue
 		}
-		
+
 		setValue = { newValue in
 			storage.set(newValue.rawValue, forKey: key.string)
 		}
 	}
-	
+
 	/// Creates a wrapper for UserDefaults storage for raw representable value.
 	public init<Key: UserDefaultKey>(
 		wrappedValue: Value,
@@ -293,7 +287,7 @@ extension UserDefault where Value: RawRepresentable {
 	) where Value.RawValue == String {
 		self.init(defaultValue: wrappedValue, key: key, storage: storage)
 	}
-	
+
 	/// Creates a wrapper for UserDefaults storage for raw representable value.
 	public init<Key: UserDefaultKey>(
 		wrappedValue: Value,
@@ -302,14 +296,13 @@ extension UserDefault where Value: RawRepresentable {
 	) where Value.RawValue == Int {
 		self.init(defaultValue: wrappedValue, key: key, storage: storage)
 	}
-	
-}
 
+}
 
 // MARK: Nullable RawRepresentable values
 
 extension UserDefault {
-	
+
 	/// Common init. Should be used for nullable enums and option sets.
 	private init<V: RawRepresentable, Key: UserDefaultKey>(
 		key: Key,
@@ -322,7 +315,7 @@ extension UserDefault {
 				return nil
 			}
 		}
-		
+
 		setValue = { newValue in
 			if let newValue = newValue as V? {
 				storage.set(newValue.rawValue, forKey: key.string)
@@ -331,7 +324,7 @@ extension UserDefault {
 			}
 		}
 	}
-	
+
 	/// Creates a wrapper for UserDefaults storage for nullable raw representable value.
 	public init<R: RawRepresentable, Key: UserDefaultKey>(
 		_ key: Key,
@@ -339,7 +332,7 @@ extension UserDefault {
 	) where Value == R?, R.RawValue == Int {
 		self.init(key: key, storage: storage)
 	}
-	
+
 	/// Creates a wrapper for UserDefaults storage for nullable raw representable value.
 	public init<R: RawRepresentable, Key: UserDefaultKey>(
 		_ key: Key,
@@ -347,7 +340,7 @@ extension UserDefault {
 	) where Value == R?, R.RawValue == String {
 		self.init(key: key, storage: storage)
 	}
-	
+
 }
 #endif
 
@@ -357,6 +350,6 @@ extension UserDefault {
 import SwiftUI
 
 extension UserDefault: DynamicProperty {
-	
+
 }
 #endif

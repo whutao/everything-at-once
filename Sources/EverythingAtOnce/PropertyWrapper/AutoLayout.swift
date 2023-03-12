@@ -30,21 +30,21 @@ import UIKit
 
 /// Property wrapper that automatically sets `translatesAutoresizingMaskIntoConstraints` to false for a view.
 @propertyWrapper public struct AutoLayout<WrappedView: UIView> {
-	
+
 	// MARK: Exposed proeprties
-	
+
 	public var wrappedValue: WrappedView {
 		didSet {
 			wrappedValue.translatesAutoresizingMaskIntoConstraints = false
 		}
 	}
-	
+
 	// MARK: Init
-	
+
 	public init(wrappedValue value: WrappedView) {
 		self.wrappedValue = value
 		self.wrappedValue.translatesAutoresizingMaskIntoConstraints = false
 	}
-	
+
 }
 #endif

@@ -32,14 +32,14 @@ import Foundation
 ///
 /// - Note: The *os_unfair_lock* mutex is currently the fastest lock available on the iOS.
 public final class UnfairLock {
-	
+
 	// MARK: Private properties
 
 	/// Wrapper raw pointer to the C lock.
 	private var lock: os_unfair_lock_t
-	
+
 	// MARK: Init/deinit
-	
+
 	/// Creates an instance of the unfair lock. Initializer does not block the current thread.
 	public init() {
 		lock = os_unfair_lock_t.allocate(capacity: 1)
@@ -50,7 +50,7 @@ public final class UnfairLock {
 	deinit {
 		lock.deallocate()
 	}
-	
+
 	// MARK: Exposed properties
 
 	/// Executes a closure blocking the current thread and releasing it after the closure.

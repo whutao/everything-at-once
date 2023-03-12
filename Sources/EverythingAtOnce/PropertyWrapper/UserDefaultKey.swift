@@ -30,20 +30,19 @@ import Foundation
 
 /// Should be adopted by type you need to used as a key to store in the UserDefaults.
 public protocol UserDefaultKey {
-	
+
 	/// String value used to store in defaults.
 	var string: String { get }
-	
-}
 
+}
 
 // MARK: String+UserDefaultKey
 
 extension String: UserDefaultKey {
-	
+
 	public var string: String {
 		return self
 	}
-	
+
 }
 #endif

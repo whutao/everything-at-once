@@ -30,34 +30,34 @@ import Foundation
 
 /// Atomic property can be safely read and written from different threads by sacrificing an access speed.
 @propertyWrapper public struct Atomic<Value> {
-	
+
 	// MARK: Exposed properties
-	
+
 	/// Getter and setter for the wrapped value.
 	public var wrappedValue: Value {
 		get { lock.perform { value } }
 		set { lock.perform { value = newValue } }
 	}
-	
+
 	public var projectedValue: Atomic<Value> {
 		return self
 	}
-	
+
 	// MARK: Private properties
-	
+
 	/// Lock used to synchronize reads and writes.
 	///
 	/// As reads and writes are done fast, the *os_unfair_lock* will demonstrate the best performance here.
 	private let lock = UnfairLock()
-	
+
 	/// Wrapped value to be read/written.
 	private var value: Value
-	
+
 	// MARK: Init
-	
+
 	public init(wrappedValue: Value) {
 		self.value = wrappedValue
 	}
-	
+
 }
 #endif
