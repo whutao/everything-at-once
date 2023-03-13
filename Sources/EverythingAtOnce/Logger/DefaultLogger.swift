@@ -32,21 +32,21 @@ import Foundation
 #if canImport(Foundation)
 /// Standard primitive logger.
 public final class DefaultLogger: LoggerProtocol {
-	
+
 	// MARK: Exposed properties
-	
+
 	public var isEnabled: Bool = false
-	
+
 	// MARK: Private properties
-	
+
 	private var destinations: [LoggerDestinationProtocol] = []
-	
+
 	private let logFormat: LogFormat
-	
+
 	private let dateFormat: String
-	
+
 	// MARK: Init
-	
+
 	public init(
 		logFormat: LogFormat = .default,
 		dateFormat: String = "yyyy-MM-dd HH:mm:ss"
@@ -54,9 +54,9 @@ public final class DefaultLogger: LoggerProtocol {
 		self.logFormat = logFormat
 		self.dateFormat = dateFormat
 	}
-	
+
 	// MARK: Exposed methods
-	
+
 	public func log(
 		_ message: @autoclosure @escaping () -> Any?,
 		level: LogLevel,
@@ -65,7 +65,7 @@ public final class DefaultLogger: LoggerProtocol {
 		lineNumber: Int
 	) {
 		guard isEnabled else { return }
-		
+
 		let message: String = {
 			if let text = message() {
 				return String(describing: text)
@@ -73,7 +73,7 @@ public final class DefaultLogger: LoggerProtocol {
 				return "nil"
 			}
 		}()
-		
+
 		let fileName: String = {
 			if let fileNameComponent = String(describing: fileName).split(separator: "/").last {
 				return String(fileNameComponent)
@@ -81,16 +81,16 @@ public final class DefaultLogger: LoggerProtocol {
 				return String(describing: fileName)
 			}
 		}()
-		
+
 		let string = logFormat.format(
-			string:  message,
+			string: message,
 			level: level,
 			dateFormat: dateFormat,
 			functionName: String(describing: functionName),
 			fileName: fileName,
 			lineNumber: lineNumber
 		)
-		
+
 		destinations
 			.filter({ $0.outputLevel <= level })
 			.forEach({ destination in
@@ -100,10 +100,10 @@ public final class DefaultLogger: LoggerProtocol {
 				)
 			})
 	}
-	
+
 	public func addDestination(_ destination: LoggerDestinationProtocol) {
 		destinations.append(destination)
 	}
-	
+
 }
 #endif

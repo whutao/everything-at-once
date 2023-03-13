@@ -30,18 +30,18 @@ import Foundation
 
 /// Box that contains a weak refernce to a reference type object.
 public final class Weak<Object: AnyObject> {
-	
+
 	// MARK: Exposed properties
-	
+
 	/// Object reference.
-	public weak var value : Object?
-	
+	public weak var value: Object?
+
 	// MARK: Init
-	
+
 	/// Wraps an object with weak reference.
 	public init(value: Object) {
 		self.value = value
 	}
-	
+
 }
 #endif

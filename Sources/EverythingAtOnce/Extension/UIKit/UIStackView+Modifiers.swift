@@ -23,72 +23,49 @@
 //  THE SOFTWARE.
 //  
 
-#if canImport(Foundation)
-import Foundation
+#if canImport(UIKit)
+import UIKit
 #endif
 
-// MARK: - Format
+// MARK: Modifiers
 
-#if canImport(Foundation)
-/// Log levels ordered according to their prioriry.
-///
-/// The order is *verbose -> info -> debug -> warning -> error -> severe*.
-public enum LogLevel: UInt8, Comparable {
+#if canImport(UIKit)
+extension UIStackView {
 
-	// MARK: Exposed properties
-
-	public var name: String {
-		switch self {
-		case .verbose:
-			return "verbose"
-		case .info:
-			return "info"
-		case .debug:
-			return "debug"
-		case .warning:
-			return "warning"
-		case .error:
-			return "error"
-		case .severe:
-			return "severe"
-		}
+	/// Declaratively sets the propery of a view. Does **not** create a new view.
+	/// - Returns: This view with modified property.
+	@discardableResult public func setAxis(
+		_ axis: NSLayoutConstraint.Axis
+	) -> Self {
+		self.axis = axis
+		return self
 	}
 
-	public var symbol: String {
-		switch self {
-		case .verbose:
-			return "🔈"
-		case .info:
-			return "ℹ️"
-		case .debug:
-			return "🪲"
-		case .warning:
-			return "⚠️"
-		case .error:
-			return "⛔️"
-		case .severe:
-			return "🔥"
-		}
+	/// Declaratively sets the propery of a view. Does **not** create a new view.
+	/// - Returns: This view with modified property.
+	@discardableResult public func setSpacing(
+		_ value: CGFloat
+	) -> Self {
+		self.spacing = value
+		return self
 	}
 
-	// MARK: Cases
+	/// Declaratively sets the propery of a view. Does **not** create a new view.
+	/// - Returns: This view with modified property.
+	@discardableResult public func setAlignemnt(
+		_ alignment: UIStackView.Alignment
+	) -> Self {
+		self.alignment = alignment
+		return self
+	}
 
-	case verbose = 0
-
-	case info = 1
-
-	case debug = 2
-
-	case warning = 3
-
-	case error = 4
-
-	case severe = 5
-
-	// MARK: Exposed methods
-
-	public static func < (lhs: LogLevel, rhs: LogLevel) -> Bool {
-		return lhs.rawValue < rhs.rawValue
+	/// Declaratively sets the propery of a view. Does **not** create a new view.
+	/// - Returns: This view with modified property.
+	@discardableResult public func setDistribution(
+		_ distribution: UIStackView.Distribution
+	) -> Self {
+		self.distribution = distribution
+		return self
 	}
 
 }

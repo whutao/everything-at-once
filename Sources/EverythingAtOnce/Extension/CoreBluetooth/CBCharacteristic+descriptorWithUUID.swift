@@ -29,11 +29,11 @@ import CoreBluetooth
 
 #if canImport(CoreBluetooth)
 extension CBCharacteristic {
-	
+
 	/// Returns the descriptor with specified CBUUID if present.
 	public func descriptor(withUUID uuid: CBUUID) -> CBDescriptor? {
 		return descriptors?.first(where: \.uuid == uuid)
 	}
-	
+
 }
 #endif

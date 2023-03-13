@@ -32,16 +32,16 @@ import Foundation
 #if canImport(Foundation)
 /// Interface for logger destination.
 public protocol LoggerDestinationProtocol {
-	
+
 	// MARK: Properties
-	
+
 	/// Log level at after which a destination accepts messages.
 	var outputLevel: LogLevel { get set }
-	
+
 	// MARK: Methods
-	
+
 	/// Sends a log message to the destination.
 	func process(string: String, level: LogLevel)
-	
+
 }
 #endif

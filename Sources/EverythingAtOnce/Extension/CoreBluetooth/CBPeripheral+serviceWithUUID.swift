@@ -29,12 +29,12 @@ import CoreBluetooth
 
 #if canImport(CoreBluetooth)
 extension CBPeripheral {
-	
+
 	/// Returns a service with specified CBUUID if present.
 	public func service(withUUID uuid: CBUUID) -> CBService? {
 		return services?.first(where: \.uuid == uuid)
 	}
-	
+
 	/// Returns existing services with specified CBUUID if present and a list of CBUUIDs of missing services.
 	public func services(
 		withUUIDs servicesUUIDs: [CBUUID]
@@ -45,20 +45,20 @@ extension CBPeripheral {
 		else {
 			return (foundServices: [], missingServicesUUIDs: servicesUUIDs)
 		}
-		
+
 		let currentServicesUUIDs = currentServices.map(\.uuid)
-		
+
 		let currentServicesUUIDsSet = Set(currentServicesUUIDs)
 		let requestedServicesUUIDsSet = Set(servicesUUIDs)
-		
+
 		let foundServicesUUIDsSet = requestedServicesUUIDsSet.intersection(currentServicesUUIDsSet)
 		let missingServicesUUIDsSet = requestedServicesUUIDsSet.subtracting(currentServicesUUIDsSet)
-		
+
 		let foundServices = currentServices.filter({ foundServicesUUIDsSet.contains($0.uuid) })
 		let missingServicesUUIDs = Array(missingServicesUUIDsSet)
-		
+
 		return (foundServices, missingServicesUUIDs)
 	}
-	
+
 }
 #endif

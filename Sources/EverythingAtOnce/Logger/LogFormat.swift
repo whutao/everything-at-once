@@ -32,9 +32,9 @@ import Foundation
 #if canImport(Foundation)
 /// Logger output format.
 public struct LogFormat {
-	
+
 	// MARK: Exposed properties
-	
+
 	/// Default format with extensive format.
 	public static let `default`: LogFormat = LogFormat(arguments: [
 		.leftBracket, .date, .rightBracket,
@@ -47,19 +47,19 @@ public struct LogFormat {
 		.rightParanthesis,
 		.space(), .dash, .space(), .text("\""), .logString, .text("\"")
 	])
-	
+
 	/// Format arguments.
 	public let arguments: [LogFormatElement]
-	
+
 	// MARK: Init
-	
+
 	/// Creates a format from arguments.
 	public init(arguments: [LogFormatElement]) {
 		self.arguments = arguments
 	}
-	
+
 	// MARK: Exposed methods
-	
+
 	/// Transform log event into a string using format.
 	public func format(
 		string: String,
@@ -113,6 +113,6 @@ public struct LogFormat {
 		}
 		.joined(separator: .emptyString)
 	}
-	
+
 }
 #endif

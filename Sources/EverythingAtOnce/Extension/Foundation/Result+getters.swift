@@ -27,21 +27,21 @@
 import Foundation
 
 extension Result {
-	
+
 	/// Returns success if present.
 	public var success: Success? {
 		return try? self.get()
 	}
-	
+
 	/// Returns error if present.
 	public var failure: Error? {
 		do {
-			let _ = try get()
+			_ = try get()
 			return nil
 		} catch {
 			return error
 		}
 	}
-	
+
 }
 #endif

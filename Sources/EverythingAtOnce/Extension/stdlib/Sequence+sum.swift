@@ -24,17 +24,17 @@
 //  
 
 extension Sequence where Element: AdditiveArithmetic {
-	
+
 	/// Sum of all elements in a sequence.
 	/// - Returns: Sum of the elements.
 	public func sum() -> Element {
 		return reduce(.zero, +)
 	}
-	
+
 }
 
 extension Sequence {
-	
+
 	/// Sum of all element properties in a sequence.
 	public func sum<Property: AdditiveArithmetic>(
 		for keyPath: KeyPath<Element, Property>
@@ -42,5 +42,5 @@ extension Sequence {
 		// Inspired by: https://swiftbysundell.com/articles/reducers-in-swift/
 		return reduce(.zero) { $0 + $1[keyPath: keyPath] }
 	}
-	
+
 }

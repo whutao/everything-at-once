@@ -2,7 +2,7 @@
 //
 //  MIT License
 //
-//  Copyright (c) 2022-Present EverythingAtOnce
+//  Copyright (c) 2022-Present SugarKit
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -21,21 +21,58 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
-//  
+//
 
 #if canImport(UIKit)
 import UIKit
+#endif
 
-extension UIDevice {
+// MARK: Center X anchor to sibling
 
-	/// Returns true if the current device is simulator.
-	public class var isSimulator: Bool {
-		#if targetEnvironment(simulator)
-		return true
-		#else
-		return false
-		#endif
-	}
+#if canImport(UIKit)
+public func pinCenterX(
+	to destinationAnchor: _HorizontalAnchor,
+	of destination: _Anchorable,
+	relation: NSLayoutConstraint.Relation = .equal,
+	offset: CGFloat = 0.0,
+	multiplier: CGFloat = 1.0,
+	priority: UILayoutPriority = .required,
+	identifier: String? = nil
+) -> ConstraintDescription {
+	
+	return _pin(
+		\.centerXAnchor,
+		 to: destinationAnchor.keyPath,
+		 of: destination,
+		 relation: relation,
+		 offset: offset,
+		 multiplier: multiplier,
+		 priority: priority,
+		 identifier: identifier
+	)
+	
+}
+#endif
 
+// MARK: Center X anchor to superview
+
+#if canImport(UIKit)
+public func pinCenterX(
+	toSuperview destinationAnchor: _HorizontalAnchor,
+	relation: NSLayoutConstraint.Relation = .equal,
+	offset: CGFloat = 0.0,
+	multiplier: CGFloat = 1.0,
+	priority: UILayoutPriority = .required,
+	identifier: String? = nil
+) -> ConstraintDescription {
+	return _pin(
+		\.centerXAnchor,
+		 toSuperview: destinationAnchor.keyPath,
+		 relation: relation,
+		 offset: offset,
+		 multiplier: multiplier,
+		 priority: priority,
+		 identifier: identifier
+	)
 }
 #endif

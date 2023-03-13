@@ -33,9 +33,9 @@ public func md5File(from url: URL, bufferSize: Int = 1024 * 1024) throws -> Data
 	defer {
 		file.closeFile()
 	}
-	
+
 	var md5 = CryptoKit.Insecure.MD5()
-	
+
 	while autoreleasepool(invoking: {
 		let data = file.readData(ofLength: bufferSize)
 		if data.isNotEmpty {
@@ -45,9 +45,9 @@ public func md5File(from url: URL, bufferSize: Int = 1024 * 1024) throws -> Data
 			return false
 		}
 	}) {
-		
+
 	}
-	
+
 	return Data(md5.finalize())
 }
 #endif

@@ -2,7 +2,7 @@
 //
 //  MIT License
 //
-//  Copyright (c) 2022-Present EverythingAtOnce
+//  Copyright (c) 2022-Present SugarKit
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -23,73 +23,31 @@
 //  THE SOFTWARE.
 //  
 
-#if canImport(Foundation)
-import Foundation
+#if canImport(UIKit)
+import UIKit
 #endif
 
-// MARK: - Format
+// MARK: Modifier
 
-#if canImport(Foundation)
-/// Log levels ordered according to their prioriry.
-///
-/// The order is *verbose -> info -> debug -> warning -> error -> severe*.
-public enum LogLevel: UInt8, Comparable {
-
-	// MARK: Exposed properties
-
-	public var name: String {
-		switch self {
-		case .verbose:
-			return "verbose"
-		case .info:
-			return "info"
-		case .debug:
-			return "debug"
-		case .warning:
-			return "warning"
-		case .error:
-			return "error"
-		case .severe:
-			return "severe"
+#if canImport(UIKit)
+extension UIView {
+	
+	/// Declaratively specifies the constraints for this view. Does **not** create a new view.
+	///
+	/// There can be 2 cases:
+	/// 1. The superview is aleady defined. Constraints will be set immediately.
+	/// 2. The superview is not defined yet. Constraints will be stored as pending and will be set right after the view is added to some superview.
+	/// - Returns: This view.
+	@discardableResult public func withConstraints(
+		@_ConstraintDescriptionBuilder _ constraints: () -> Array<ConstraintDescription>
+	) -> Self {
+		if superview == nil {
+			constraintDescriptionBag.append(contentsOf: constraints())
+		} else {
+			activate(constraints())
 		}
+		return self
 	}
-
-	public var symbol: String {
-		switch self {
-		case .verbose:
-			return "🔈"
-		case .info:
-			return "ℹ️"
-		case .debug:
-			return "🪲"
-		case .warning:
-			return "⚠️"
-		case .error:
-			return "⛔️"
-		case .severe:
-			return "🔥"
-		}
-	}
-
-	// MARK: Cases
-
-	case verbose = 0
-
-	case info = 1
-
-	case debug = 2
-
-	case warning = 3
-
-	case error = 4
-
-	case severe = 5
-
-	// MARK: Exposed methods
-
-	public static func < (lhs: LogLevel, rhs: LogLevel) -> Bool {
-		return lhs.rawValue < rhs.rawValue
-	}
-
+	
 }
 #endif

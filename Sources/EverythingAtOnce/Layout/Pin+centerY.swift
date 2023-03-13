@@ -2,7 +2,7 @@
 //
 //  MIT License
 //
-//  Copyright (c) 2022-Present EverythingAtOnce
+//  Copyright (c) 2022-Present SugarKit
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -25,17 +25,52 @@
 
 #if canImport(UIKit)
 import UIKit
+#endif
 
-extension UIDevice {
+// MARK: Center Y anchor to sibling
 
-	/// Returns true if the current device is simulator.
-	public class var isSimulator: Bool {
-		#if targetEnvironment(simulator)
-		return true
-		#else
-		return false
-		#endif
-	}
+#if canImport(UIKit)
+public func pinCenterY(
+	to destinationAnchor: _VerticalAnchor,
+	of destination: _Anchorable,
+	relation: NSLayoutConstraint.Relation = .equal,
+	offset: CGFloat = 0.0,
+	multiplier: CGFloat = 1.0,
+	priority: UILayoutPriority = .required,
+	identifier: String? = nil
+) -> ConstraintDescription {
+	return _pin(
+		\.centerYAnchor,
+		 to: destinationAnchor.keyPath,
+		 of: destination,
+		 relation: relation,
+		 offset: offset,
+		 multiplier: multiplier,
+		 priority: priority,
+		 identifier: identifier
+	)
+}
+#endif
 
+// MARK: Center Y anchor to superview
+
+#if canImport(UIKit)
+public func pinCenterY(
+	toSuperview destinationAnchor: _VerticalAnchor,
+	relation: NSLayoutConstraint.Relation = .equal,
+	offset: CGFloat = 0.0,
+	multiplier: CGFloat = 1.0,
+	priority: UILayoutPriority = .required,
+	identifier: String? = nil
+) -> ConstraintDescription {
+	return _pin(
+		\.centerYAnchor,
+		 toSuperview: destinationAnchor.keyPath,
+		 relation: relation,
+		 offset: offset,
+		 multiplier: multiplier,
+		 priority: priority,
+		 identifier: identifier
+	)
 }
 #endif

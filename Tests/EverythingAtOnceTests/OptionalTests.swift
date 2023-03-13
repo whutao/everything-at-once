@@ -27,49 +27,49 @@
 import XCTest
 
 final class OptionalTests: XCTestCase {
-	
+
 	let someString: String? = "Meow"
 	let nilString: String? = nil
 	let emptyString: String? = .emptyString
-	
+
 	let someArray: [String]? = ["Meow"]
 	let nilArray: [String]? = nil
 	let emptyArray: [String]? = []
-	
+
 	func testNillable() {
 		XCTAssertFalse(someString.isNil)
 		XCTAssertFalse(someString.isNilOrEmpty)
 		XCTAssertTrue(someString.isNotNil)
-		
+
 		XCTAssertTrue(nilString.isNil)
 		XCTAssertTrue(nilString.isNilOrEmpty)
 		XCTAssertFalse(nilString.isNotNil)
-		
+
 		XCTAssertFalse(emptyString.isNil)
 		XCTAssertTrue(emptyString.isNilOrEmpty)
 		XCTAssertTrue(emptyString.isNotNil)
-		
+
 		XCTAssertFalse(someArray.isNil)
 		XCTAssertFalse(someArray.isNilOrEmpty)
 		XCTAssertTrue(someArray.isNotNil)
-		
+
 		XCTAssertTrue(nilArray.isNil)
 		XCTAssertTrue(nilArray.isNilOrEmpty)
 		XCTAssertFalse(nilArray.isNotNil)
-		
+
 		XCTAssertFalse(emptyArray.isNil)
 		XCTAssertTrue(emptyArray.isNilOrEmpty)
 		XCTAssertTrue(emptyString.isNotNil)
 	}
-	
+
 	func testOptionalFilter() {
 		XCTAssertNil(nilArray.filter { $0.count == 1023 })
-		
+
 		XCTAssertNil(emptyArray.filter { $0.count == 1023 })
 		XCTAssertNotNil(emptyArray.filter { $0.count == 0 })
-		
+
 		XCTAssertNil(someArray.filter { $0.count == 1023 })
 		XCTAssertNotNil(someArray.filter { $0.count == 1 })
 	}
-	
+
 }

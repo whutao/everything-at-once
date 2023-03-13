@@ -32,14 +32,14 @@ import Foundation
 #if canImport(Foundation)
 /// Interface to work with logger.
 public protocol LoggerProtocol {
-	
+
 	// MARK: Properties
-	
+
 	/// True if a logger is able to log events now.
 	var isEnabled: Bool { get set }
-	
+
 	// MARK: Methods
-	
+
 	/// Sends a log event.
 	func log(
 		_ message: @autoclosure @escaping () -> Any?,
@@ -48,10 +48,10 @@ public protocol LoggerProtocol {
 		functionName: StaticString,
 		lineNumber: Int
 	)
-	
+
 	/// Adds a destination for log messages.
 	func addDestination(_ destination: LoggerDestinationProtocol)
-	
+
 }
 #endif
 
@@ -59,7 +59,7 @@ public protocol LoggerProtocol {
 
 #if canImport(Foundation)
 extension LoggerProtocol {
-	
+
 	/// Sends verbose message.
 	public func verbose(
 		_ message: @autoclosure @escaping () -> Any?,
@@ -75,7 +75,7 @@ extension LoggerProtocol {
 			lineNumber: lineNumber
 		)
 	}
-	
+
 	/// Sends info message.
 	public func info(
 		_ message: @autoclosure @escaping () -> Any?,
@@ -91,7 +91,7 @@ extension LoggerProtocol {
 			lineNumber: lineNumber
 		)
 	}
-	
+
 	/// Sends debug message.
 	public func debug(
 		_ message: @autoclosure @escaping () -> Any?,
@@ -107,7 +107,7 @@ extension LoggerProtocol {
 			lineNumber: lineNumber
 		)
 	}
-	
+
 	/// Sends warning message.
 	public func warning(
 		_ message: @autoclosure @escaping () -> Any?,
@@ -123,7 +123,7 @@ extension LoggerProtocol {
 			lineNumber: lineNumber
 		)
 	}
-	
+
 	/// Sends error message.
 	public func error(
 		_ message: @autoclosure @escaping () -> Any?,
@@ -139,7 +139,7 @@ extension LoggerProtocol {
 			lineNumber: lineNumber
 		)
 	}
-	
+
 	/// Sends severe error message.
 	public func severe(
 		_ message: @autoclosure @escaping () -> Any?,
@@ -155,6 +155,6 @@ extension LoggerProtocol {
 			lineNumber: lineNumber
 		)
 	}
-	
+
 }
 #endif
