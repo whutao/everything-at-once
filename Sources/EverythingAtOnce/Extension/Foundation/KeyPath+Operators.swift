@@ -39,6 +39,14 @@ public func == <Root, Property: Equatable>(
 	return { $0[keyPath: lhs] == rhs }
 }
 
+/// Allows to produce expressions of kind `...filter(\.isEnabled != true)...`.
+public func != <Root, Property: Equatable>(
+	lhs: KeyPath<Root, Property>,
+	rhs: Property
+) -> (Root) -> Bool {
+	return { $0[keyPath: lhs] != rhs }
+}
+
 /// Allows to produce expressions of kind `...filter(\.count < 4)...`.
 public func < <Root, Property: Comparable>(
 	lhs: KeyPath<Root, Property>,
