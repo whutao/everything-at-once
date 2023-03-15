@@ -37,7 +37,7 @@ public protocol _AutoAccessibilityIdentifiers {
 extension _AutoAccessibilityIdentifiers {
 	
 	/// Sets accessibility identifiers for subviews.
-	func makeAccessibilityIdentifiersForChildren() {
+	public func makeAccessibilityIdentifiersForChildren() {
 		for child in Mirror(reflecting: self).children {
 			guard
 				let label = child.label,
