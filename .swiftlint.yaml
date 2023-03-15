@@ -7,12 +7,14 @@
 ################
 
 disabled_rules: # Rule identifiers to exclude from running
+- discouraged_optional_boolean
 - extension_access_modifier # Prefer to use extension access modifiers
 - force_cast #Force cast should be avoided.
 - force_try # Force tries should be avoided.
 - force_unwrapping # Force unwrapping should be avoided. later as an error
 - function_default_parameter_at_end # Prefer to locate parameters with defaults toward the end of the parameter list.
 - generic_type_name # Generic type name should only contain alphanumeric characters, start with an uppercase character and span between 1 and 20 characters in length.
+- identifier_name: #Identifier names should only contain alphanumeric characters and start with a lowercase character or should only contain capital letters. In an exception to the above, variable names may start with a capital letter when they are declared static and immutable. Variable names should not be too long or too short.
 - implicit_return # Prefer implicit returns in closures, functions and getters.
 - indentation_width # Indent code using either one tab or the configured amount of spaces, unindent to match previous indentations. Don’t indent the first line.
 - inclusive_language # ...
@@ -41,6 +43,7 @@ disabled_rules: # Rule identifiers to exclude from running
 - redundant_optional_initialization
 - redundant_string_enum_value # String enum values can be omitted when they are equal to the enumcase name.
 - shorthand_operator # Prefer shorthand operators (+=, -=, *=, /=) over doing the operation and assigning.
+- static_operator # Operators should be declared as static functions, not free functions.
 - strict_fileprivate # fileprivate should be avoided.
 - strong_iboutlet # @IBOutlets shouldn’t be declared as weak.
 - sorted_first_last # Prefer using min() or max() over sorted().first or sorted().last
@@ -49,8 +52,8 @@ disabled_rules: # Rule identifiers to exclude from running
 - trailing_closure # Trailing closure syntax should be used whenever possible.
 - unavailable_function # Unimplemented functions should be marked as unavailable.
 - vertical_parameter_alignment_on_call # Function parameters should be aligned vertically if they’re in multiple lines in a method call.
+- unused_declaration # Declarations should be referenced at least once within all files linted.
 - unowned_variable_capture # Prefer capturing references as weak to avoid potential crashes. To implement perhaps later
-- discouraged_optional_boolean
 - file_types_order
 - reduce_into
 - implicitly_unwrapped_optional
@@ -119,14 +122,12 @@ opt_in_rules: # some rules are only opt-in
 - reduce_into # Prefer reduce(into:_:) over reduce(_:_:) for copy-on-write types
 - redundant_set_access_control # Property setter access level shouldn’t be explicit if it’s the same as the variable access level.
 - required_enum_case # Enums conforming to a specified protocol must implement a specific case(s).
-- static_operator # Operators should be declared as static functions, not free functions.
 - superfluous_disable_command # SwiftLint ‘disable’ commands are superfluous when the disabled rule would not have triggered a violation in the disabled region. Use “ - ” if you wish to document a command.
 - switch_case_alignment # Case statements should vertically align with their enclosing switch statement, or indented if configured otherwise.
 - todo # TODOs and FIXMEs should be resolved.
 - type_contents_order # Specifies the order of subtypes, properties, methods & more within a type.
 - unneeded_break_in_switch # Avoid using unneeded break statements.
 - unused_capture_list # Unused reference in a capture list should be removed.
-- unused_declaration # Declarations should be referenced at least once within all files linted.
 - unused_enumerated # When the index or the item is not used, .enumerated() can be removed.
 - unused_optional_binding # Prefer != nil over let _ =
 - unused_setter_value # Setter value is not used.
@@ -160,8 +161,8 @@ closure_body_length:
  error: 300
  
 function_parameter_count:
- warning: 5
- error: 10
+ warning: 8
+ error: 12
 
 file_length:
  warning: 500
@@ -178,6 +179,30 @@ function_body_length: # Functions bodies should not span too many lines.
 large_tuple:
  warning: 2 # only warning
  error: 4 # only error
+ 
+identifier_name:
+ min_length: # only min_length
+  warning: 1 # only error
+ max_length: # only min_length
+  warning: 80 # only error
+ validates_start_with_lowercase: false
+ allowed_symbols: ["_"] # these are allowed in identifier names
+ excluded: # excluded via string array
+  - id
+  - URL
+  - Url
+  - to
+  - at
+  - in
+  - i
+  - x
+  - y
+  - z
+  - t
+  - dx
+  - dy
+  - dz
+  - dt
 
 type_name:
  min_length: 1 # only warning
@@ -186,7 +211,6 @@ type_name:
   error: 70
  excluded: iPhone # excluded via string
  allowed_symbols: ["_"] # these are allowed in type names
-identifier_name: #Identifier names should only contain alphanumeric characters and start with a lowercase character or should only contain capital letters. In an exception to the above, variable names may start with a capital letter when they are declared static and immutable. Variable names should not be too long or too short.
  min_length: # only min_length
   warning: 1 # only error
  max_length: # only min_length
@@ -194,9 +218,11 @@ identifier_name: #Identifier names should only contain alphanumeric characters a
  excluded: # excluded via string array
   - id
   - URL
+  - Url
   - to
   - at
   - in
+  - i
  reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji, sonarqube, markdown, github-actions-logging)
 
 # configurable rules can be customized from this configuration file

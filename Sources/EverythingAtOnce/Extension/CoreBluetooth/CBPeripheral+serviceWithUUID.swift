@@ -41,7 +41,7 @@ extension CBPeripheral {
 	) -> (foundServices: [CBService], missingServicesUUIDs: [CBUUID]) {
 		guard
 			let currentServices = self.services,
-			currentServices.count > 0
+			currentServices.isNotEmpty
 		else {
 			return (foundServices: [], missingServicesUUIDs: servicesUUIDs)
 		}

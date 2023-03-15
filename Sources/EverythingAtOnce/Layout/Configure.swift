@@ -34,6 +34,6 @@ public enum EverythingAtOnceDeclarativeLayout {
 	public static func configure() {
 		_ = UIView.swizzleDidMoveToSuperviewImplementation
 	}
-	
+
 }
 #endif

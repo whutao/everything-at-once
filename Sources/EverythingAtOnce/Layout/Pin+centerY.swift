@@ -41,13 +41,13 @@ public func pinCenterY(
 ) -> ConstraintDescription {
 	return _pin(
 		\.centerYAnchor,
-		 to: destinationAnchor.keyPath,
-		 of: destination,
-		 relation: relation,
-		 offset: offset,
-		 multiplier: multiplier,
-		 priority: priority,
-		 identifier: identifier
+		to: destinationAnchor.keyPath,
+		of: destination,
+		relation: relation,
+		offset: offset,
+		multiplier: multiplier,
+		priority: priority,
+		identifier: identifier
 	)
 }
 #endif
@@ -65,12 +65,12 @@ public func pinCenterY(
 ) -> ConstraintDescription {
 	return _pin(
 		\.centerYAnchor,
-		 toSuperview: destinationAnchor.keyPath,
-		 relation: relation,
-		 offset: offset,
-		 multiplier: multiplier,
-		 priority: priority,
-		 identifier: identifier
+		toSuperview: destinationAnchor.keyPath,
+		relation: relation,
+		offset: offset,
+		multiplier: multiplier,
+		priority: priority,
+		identifier: identifier
 	)
 }
 #endif

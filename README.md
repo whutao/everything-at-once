@@ -16,7 +16,7 @@ QuartzCore, Combine etc.
 
 ## Requirements
 
-The package is available for the Swift versions above 5.5 and
+The package is available for the Swift versions above 5.7 and
 the following platforms:
 
 - **iOS** 13.0+

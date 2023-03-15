@@ -2,7 +2,7 @@
 //
 //  MIT License
 //
-//  Copyright (c) 2022-Present SugarKit
+//  Copyright (c) 2022-Present EverythingAtOnce
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -27,27 +27,47 @@
 import UIKit
 #endif
 
-// MARK: Helper
+// MARK: - Protcol
 
 #if canImport(UIKit)
-extension NSLayoutConstraint {
+public protocol _AutoAccessibilityIdentifiers {
+	
+}
 
-	/// Helper method. Creates a copy of this constraint with provided multiplier property.
-	internal func withMultiplier(_ multiplier: CGFloat) -> NSLayoutConstraint {
-		let newConstraint = NSLayoutConstraint(
-			item: firstItem as Any,
-			attribute: firstAttribute,
-			relatedBy: relation,
-			toItem: secondItem,
-			attribute: secondAttribute,
-			multiplier: multiplier,
-			constant: constant
-		)
-		newConstraint.priority = priority
-		newConstraint.shouldBeArchived = shouldBeArchived
-		newConstraint.identifier = identifier
-		return newConstraint
+extension _AutoAccessibilityIdentifiers {
+	
+	/// Sets accessibility identifiers for subviews.
+	func makeAccessibilityIdentifiersForChildren() {
+		for child in Mirror(reflecting: self).children {
+			guard
+				let label = child.label,
+				let view = child.value as? UIView
+			else {
+				continue
+			}
+			
+			let sanitizedPropertyName: String = label.replacingOccurrences(
+				of: "^\\$[-_a-z0-9]+\\$_",
+				with: "",
+				options: .regularExpression,
+				range: nil
+			)
+			
+			view.accessibilityIdentifier = sanitizedPropertyName + "_" + String(describing: type(of: self))
+		}
 	}
+	
+}
+#endif
 
+// MARK: - Conformance
+
+#if canImport(UIKit)
+extension UIViewController: _AutoAccessibilityIdentifiers {
+	
+}
+
+extension UIView: _AutoAccessibilityIdentifiers {
+	
 }
 #endif

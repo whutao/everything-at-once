@@ -40,7 +40,7 @@ internal func _pin(
 	priority: UILayoutPriority = .required,
 	identifier: String? = nil
 ) -> ConstraintDescription {
-	
+
 	return _pin(
 		sourceAnchor.keyPath,
 		to: destinationAnchor.keyPath,
@@ -51,7 +51,7 @@ internal func _pin(
 		priority: priority,
 		identifier: identifier
 	)
-	
+
 }
 #endif
 

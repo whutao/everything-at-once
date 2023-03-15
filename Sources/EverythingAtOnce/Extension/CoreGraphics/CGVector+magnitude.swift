@@ -27,11 +27,11 @@
 import CoreGraphics
 
 extension CGVector {
-	
+
 	/// Vector length.
 	public var magnitude: CGFloat {
 		return hypot(dx, dy)
 	}
-	
+
 }
 #endif

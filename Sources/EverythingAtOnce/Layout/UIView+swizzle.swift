@@ -31,7 +31,7 @@ import UIKit
 
 #if canImport(UIKit)
 extension UIView {
-	
+
 	/// Custom implementation of `didMoveToSuperview` method that applies pending autolayout constraints.
 	@objc internal func _didMoveToSuperview() {
 		if !(constraintDescriptionBag.isEmpty) {
@@ -39,21 +39,21 @@ extension UIView {
 			constraintDescriptionBag = []
 		}
 	}
-	
+
 	/// Swizzles the `didMoveToSuperview` method implementation.
 	internal static let swizzleDidMoveToSuperviewImplementation: Void = {
 		let aSelector: Selector = #selector(UIView.didMoveToSuperview)
 		let swizzledSelector: Selector = #selector(UIView._didMoveToSuperview)
-		
+
 		let aMethod: Method? = class_getInstanceMethod(UIView.self, aSelector)
 		let swizzledMethod: Method? = class_getInstanceMethod(UIView.self, swizzledSelector)
-		
+
 		guard let aMethod, let swizzledMethod else {
-			fatalError()
+			fatalError("Cannot swizzle UIView.didMoveToSuperView method.")
 		}
-		
+
 		method_exchangeImplementations(aMethod, swizzledMethod)
 	}()
-	
+
 }
 #endif

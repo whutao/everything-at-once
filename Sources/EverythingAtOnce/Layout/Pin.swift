@@ -42,7 +42,7 @@ internal func _pin<Anchor, Axis>(
 ) -> ConstraintDescription where Anchor: NSLayoutAnchor<Axis> {
 	return { anchorable in
 		let constraint: NSLayoutConstraint
-		
+
 		switch relation {
 		case .equal:
 			constraint = anchorable[keyPath: sourceKeyPath].constraint(
@@ -62,7 +62,7 @@ internal func _pin<Anchor, Axis>(
 		@unknown default:
 			fatalError("Unknown NSLayoutConstraint relation case. Contact the developer ASAP.")
 		}
-		
+
 		constraint.priority = priority
 		constraint.identifier = identifier
 		return constraint.withMultiplier(multiplier)
@@ -86,9 +86,9 @@ internal func _pin<Anchor, Axis>(
 		guard let superview = anchorable.superview else {
 			fatalError("No superview found.")
 		}
-		
+
 		let constraint: NSLayoutConstraint
-		
+
 		switch relation {
 		case .equal:
 			constraint = anchorable[keyPath: sourceKeyPath].constraint(
@@ -108,7 +108,7 @@ internal func _pin<Anchor, Axis>(
 		@unknown default:
 			fatalError("Unknown NSLayoutConstraint relation case. Contact the developer ASAP.")
 		}
-		
+
 		constraint.priority = priority
 		constraint.identifier = identifier
 		return constraint.withMultiplier(multiplier)
@@ -131,7 +131,7 @@ internal func _pin<Dimension>(
 ) -> ConstraintDescription where Dimension: NSLayoutDimension {
 	return { anchorable in
 		let constraint: NSLayoutConstraint
-		
+
 		switch relation {
 		case .equal:
 			constraint = anchorable[keyPath: sourceKeyPath].constraint(
@@ -154,7 +154,7 @@ internal func _pin<Dimension>(
 		@unknown default:
 			fatalError("Unknown NSLayoutConstraint relation case. Contact the developer ASAP.")
 		}
-		
+
 		constraint.identifier = identifier
 		constraint.priority = priority
 		return constraint
@@ -178,9 +178,9 @@ internal func _pin<Dimension>(
 		guard let superview = anchorable.superview else {
 			fatalError("No superview found.")
 		}
-		
+
 		let constraint: NSLayoutConstraint
-		
+
 		switch relation {
 		case .equal:
 			constraint = anchorable[keyPath: originKeyPath].constraint(
@@ -203,7 +203,7 @@ internal func _pin<Dimension>(
 		@unknown default:
 			fatalError("Unknown NSLayoutConstraint relation case. Contact the developer ASAP.")
 		}
-		
+
 		constraint.identifier = identifier
 		constraint.priority = priority
 		return constraint

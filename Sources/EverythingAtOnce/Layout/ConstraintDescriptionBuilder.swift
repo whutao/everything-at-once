@@ -30,14 +30,14 @@ import UIKit
 #if canImport(UIKit)
 /// Internal result builder used for constaint descriptions.
 @resultBuilder public struct _ConstraintDescriptionBuilder {
-	
+
 	public static func buildBlock(_ components: ConstraintDescription...) -> [ConstraintDescription] {
 		return components
 	}
-	
+
 	public static func buildArray(_ components: [[ConstraintDescription]]) -> [ConstraintDescription] {
 		return components.flatMap({ $0 })
 	}
-	
+
 }
 #endif

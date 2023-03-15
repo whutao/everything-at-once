@@ -31,7 +31,7 @@ import UIKit
 
 #if canImport(UIKit)
 public extension _Anchorable {
-	
+
 	/// Activates provided constraint descriptions for this anchorable. Prepares it for autolayout.
 	@discardableResult func activate(
 		@_ConstraintDescriptionBuilder _ descriptions: () -> Array<ConstraintDescription>
@@ -41,7 +41,7 @@ public extension _Anchorable {
 		NSLayoutConstraint.activate(constraints)
 		return constraints
 	}
-	
+
 	/// Activates provided constraint descriptions for this anchorable. Prepares it for autolayout.
 	@discardableResult func activate(
 		_ descriptions: [ConstraintDescription]
@@ -51,7 +51,7 @@ public extension _Anchorable {
 		NSLayoutConstraint.activate(constraints)
 		return constraints
 	}
-	
+
 	/// Activates provided constraint descriptions for this anchorable. Prepares it for autolayout.
 	@discardableResult func activate(
 		_ descriptions: ConstraintDescription...
@@ -61,6 +61,6 @@ public extension _Anchorable {
 		NSLayoutConstraint.activate(constraints)
 		return constraints
 	}
-	
+
 }
 #endif

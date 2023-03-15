@@ -34,7 +34,7 @@ private var constraintDescriptionBagKey: String = "sugarkit.constraintdescriptio
 // MARK: Bag
 
 extension UIView {
-	
+
 	/// Bag of pending constaints.
 	internal var constraintDescriptionBag: [ConstraintDescription] {
 		get {
@@ -44,6 +44,6 @@ extension UIView {
 			objc_setAssociatedObject(self, &constraintDescriptionBagKey, newValue, .OBJC_ASSOCIATION_RETAIN)
 		}
 	}
-	
+
 }
 #endif

@@ -2,14 +2,22 @@ Pod::Spec.new do |spec|
 
 spec.name = 'EverythingAtOnce'
 spec.module_name = 'EverythingAtOnce'
-spec.version = '0.1.11'
+spec.version = '1.0.0'
 spec.summary = 'A flexible set of extensions for many apple frameworks.'
 
-spec.author = { 'whutao' => 'nabroman42@gmail.com' }
+spec.author = {
+	'whutao' => 'whutao.dev@gmail.com'
+}
 spec.homepage = 'https://github.com/whutao/everything-at-once'
-spec.license = { type: 'MIT', file: 'LICENSE' }
+spec.license = {
+	type: 'MIT',
+	file: 'LICENSE'
+}
 
-spec.source = { git: 'https://github.com/whutao/everything-at-once.git', tag: spec.version.to_s }
+spec.source = {
+	git: 'https://github.com/whutao/everything-at-once.git',
+	tag: spec.version.to_s
+}
 
 spec.swift_versions = '5.0'
 spec.requires_arc = true

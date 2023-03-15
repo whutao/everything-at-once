@@ -32,35 +32,35 @@ import UIKit
 #if canImport(UIKit)
 /// Type that has pinning anchors and can be an autolayout subject.
 public protocol _Anchorable {
-	
+
 	var superview: UIView? { get }
-	
+
 	var leadingAnchor: NSLayoutXAxisAnchor { get }
-	
+
 	var trailingAnchor: NSLayoutXAxisAnchor { get }
-	
+
 	var leftAnchor: NSLayoutXAxisAnchor { get }
-	
+
 	var rightAnchor: NSLayoutXAxisAnchor { get }
-	
+
 	var topAnchor: NSLayoutYAxisAnchor { get }
-	
+
 	var bottomAnchor: NSLayoutYAxisAnchor { get }
-	
+
 	var widthAnchor: NSLayoutDimension { get }
-	
+
 	var heightAnchor: NSLayoutDimension { get }
-	
+
 	var centerXAnchor: NSLayoutXAxisAnchor { get }
-	
+
 	var centerYAnchor: NSLayoutYAxisAnchor { get }
-	
+
 	var firstBaselineAnchor: NSLayoutYAxisAnchor { get }
-	
+
 	var lastBaselineAnchor: NSLayoutYAxisAnchor { get }
-	
+
 	@discardableResult func prepareForAutoLayout() -> Self
-	
+
 }
 #endif
 
@@ -68,12 +68,12 @@ public protocol _Anchorable {
 
 #if canImport(UIKit)
 extension UIView: _Anchorable {
-	
+
 	@discardableResult public func prepareForAutoLayout() -> Self {
 		translatesAutoresizingMaskIntoConstraints = false
 		return self
 	}
-	
+
 }
 #endif
 
@@ -81,22 +81,22 @@ extension UIView: _Anchorable {
 
 #if canImport(UIKit)
 extension UILayoutGuide: _Anchorable {
-	
+
 	public var superview: UIView? {
 		fatalError("Superview of a layout guide is not defined.")
 	}
-	
+
 	public var firstBaselineAnchor: NSLayoutYAxisAnchor {
 		return topAnchor
 	}
-	
+
 	public var lastBaselineAnchor: NSLayoutYAxisAnchor {
 		return bottomAnchor
 	}
-	
+
 	@discardableResult public func prepareForAutoLayout() -> Self {
 		return self
 	}
-	
+
 }
 #endif

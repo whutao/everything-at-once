@@ -31,7 +31,7 @@ import UIKit
 
 #if canImport(UIKit)
 extension UIView {
-	
+
 	/// Declaratively specifies the constraints for this view. Does **not** create a new view.
 	///
 	/// There can be 2 cases:
@@ -48,6 +48,6 @@ extension UIView {
 		}
 		return self
 	}
-	
+
 }
 #endif

@@ -39,18 +39,18 @@ public func pinCenterX(
 	priority: UILayoutPriority = .required,
 	identifier: String? = nil
 ) -> ConstraintDescription {
-	
+
 	return _pin(
 		\.centerXAnchor,
-		 to: destinationAnchor.keyPath,
-		 of: destination,
-		 relation: relation,
-		 offset: offset,
-		 multiplier: multiplier,
-		 priority: priority,
-		 identifier: identifier
+		to: destinationAnchor.keyPath,
+		of: destination,
+		relation: relation,
+		offset: offset,
+		multiplier: multiplier,
+		priority: priority,
+		identifier: identifier
 	)
-	
+
 }
 #endif
 
@@ -67,12 +67,12 @@ public func pinCenterX(
 ) -> ConstraintDescription {
 	return _pin(
 		\.centerXAnchor,
-		 toSuperview: destinationAnchor.keyPath,
-		 relation: relation,
-		 offset: offset,
-		 multiplier: multiplier,
-		 priority: priority,
-		 identifier: identifier
+		toSuperview: destinationAnchor.keyPath,
+		relation: relation,
+		offset: offset,
+		multiplier: multiplier,
+		priority: priority,
+		identifier: identifier
 	)
 }
 #endif

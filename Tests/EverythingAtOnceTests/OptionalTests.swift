@@ -66,7 +66,7 @@ final class OptionalTests: XCTestCase {
 		XCTAssertNil(nilArray.filter { $0.count == 1023 })
 
 		XCTAssertNil(emptyArray.filter { $0.count == 1023 })
-		XCTAssertNotNil(emptyArray.filter { $0.count == 0 })
+		XCTAssertNotNil(emptyArray.filter { $0.isEmpty })
 
 		XCTAssertNil(someArray.filter { $0.count == 1023 })
 		XCTAssertNotNil(someArray.filter { $0.count == 1 })

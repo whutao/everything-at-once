@@ -27,12 +27,11 @@
 import CoreGraphics
 
 extension CGVector {
-	
+
 	/// Vector angle measured in *radians*.
 	public var angle: CGFloat {
 		return atan2(dy, dx)
 	}
-	
+
 }
 #endif
-
