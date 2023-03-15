@@ -102,7 +102,7 @@ public enum Picsum {
 
 	/// Size component in format */seed/SEED*.
 	private static func seedComponent(seed: String? = nil) -> String {
-		return "seed/" + (seed ?? Picsum.defaultSeed)
+		return "seed/" + (seed ?? UUID().uuidString.lowercased())
 	}
 
 }
