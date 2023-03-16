@@ -26,57 +26,115 @@
 #if canImport(SwiftUI)
 import SwiftUI
 
+// MARK: - Devices
+
 public extension PreviewDevice {
+	
+	// MARK: iPhone
 
-	static let iPhone6: PreviewDevice = .init(rawValue: "iPhone 6")
+	static let iPhone6 = PreviewDevice(rawValue: "iPhone 6")
 
-	static let iPhone6s: PreviewDevice = .init(rawValue: "iPhone 6s")
+	static let iPhone6s = PreviewDevice(rawValue: "iPhone 6s")
 
-	static let iPhone6Plus: PreviewDevice = .init(rawValue: "iPhone 6 Plus")
+	static let iPhone6Plus = PreviewDevice(rawValue: "iPhone 6 Plus")
 
-	static let iPhone6sPlus: PreviewDevice = .init(rawValue: "iPhone 6s Plus")
+	static let iPhone6sPlus = PreviewDevice(rawValue: "iPhone 6s Plus")
 
-	static let iPhoneSE1stGeneration: PreviewDevice = .init(rawValue: "iPhone SE (1st generation)")
+	static let iPhoneSE1stGeneration = PreviewDevice(rawValue: "iPhone SE (1st generation)")
 
-	static let iPhoneSE2ndGeneration: PreviewDevice = .init(rawValue: "iPhone SE (2nd generation)")
+	static let iPhoneSE2ndGeneration = PreviewDevice(rawValue: "iPhone SE (2nd generation)")
 
-	static let iPhone7: PreviewDevice = .init(rawValue: "iPhone 7")
+	static let iPhone7 = PreviewDevice(rawValue: "iPhone 7")
 
-	static let iPhone7Plus: PreviewDevice = .init(rawValue: "iPhone 7 Plus")
+	static let iPhone7Plus = PreviewDevice(rawValue: "iPhone 7 Plus")
 
-	static let iPhone8: PreviewDevice = .init(rawValue: "iPhone 8")
+	static let iPhone8 = PreviewDevice(rawValue: "iPhone 8")
 
-	static let iPhone8Plus: PreviewDevice = .init(rawValue: "iPhone 8 Plus")
+	static let iPhone8Plus = PreviewDevice(rawValue: "iPhone 8 Plus")
 
-	static let iPhoneX: PreviewDevice = .init(rawValue: "iPhone X")
+	static let iPhoneX = PreviewDevice(rawValue: "iPhone X")
 
-	static let iPhoneXs: PreviewDevice = .init(rawValue: "iPhone Xs")
+	static let iPhoneXs = PreviewDevice(rawValue: "iPhone Xs")
 
-	static let iPhoneXsMax: PreviewDevice = .init(rawValue: "iPhone Xs Max")
+	static let iPhoneXsMax = PreviewDevice(rawValue: "iPhone Xs Max")
 
-	static let iPhoneXr: PreviewDevice = .init(rawValue: "iPhone Xʀ")
+	static let iPhoneXr = PreviewDevice(rawValue: "iPhone Xʀ")
 
-	static let iPhone11: PreviewDevice = .init(rawValue: "iPhone 11")
+	static let iPhone11 = PreviewDevice(rawValue: "iPhone 11")
 
-	static let iPhone11Pro: PreviewDevice = .init(rawValue: "iPhone 11 Pro")
+	static let iPhone11Pro = PreviewDevice(rawValue: "iPhone 11 Pro")
 
-	static let iPhone11ProMax: PreviewDevice = .init(rawValue: "iPhone 11 Pro Max")
+	static let iPhone11ProMax = PreviewDevice(rawValue: "iPhone 11 Pro Max")
 
-	static let iPhone12mini: PreviewDevice = .init(rawValue: "iPhone 12 mini")
+	static let iPhone12mini = PreviewDevice(rawValue: "iPhone 12 mini")
 
-	static let iPhone12: PreviewDevice = .init(rawValue: "iPhone 12")
+	static let iPhone12 = PreviewDevice(rawValue: "iPhone 12")
 
-	static let iPhone12Pro: PreviewDevice = .init(rawValue: "iPhone 12 Pro")
+	static let iPhone12Pro = PreviewDevice(rawValue: "iPhone 12 Pro")
 
-	static let iPhone12ProMax: PreviewDevice = .init(rawValue: "iPhone 12 Pro Max")
+	static let iPhone12ProMax = PreviewDevice(rawValue: "iPhone 12 Pro Max")
 
-	static let iPhone13: PreviewDevice = .init(rawValue: "iPhone 13")
+	static let iPhone13 = PreviewDevice(rawValue: "iPhone 13")
 
-	static let iPhone13Pro: PreviewDevice = .init(rawValue: "iPhone 13 Pro")
+	static let iPhone13Pro = PreviewDevice(rawValue: "iPhone 13 Pro")
 
-	static let iPhone13ProMax: PreviewDevice = .init(rawValue: "iPhone 13 Pro Max")
+	static let iPhone13ProMax = PreviewDevice(rawValue: "iPhone 13 Pro Max")
 
-	static let iPhone13mini: PreviewDevice = .init(rawValue: "iPhone 13 mini")
+	static let iPhone13mini = PreviewDevice(rawValue: "iPhone 13 mini")
+	
+	static let iPhoneSE3rdGeneration = PreviewDevice(rawValue: "iPhone SE (3rd generation)")
+	
+	static let iPhone14 = PreviewDevice(rawValue: "iPhone 14")
+	
+	static let iPhone14Pro = PreviewDevice(rawValue: "iPhone 14 Pro")
+	
+	static let iPhone14ProMax = PreviewDevice(rawValue: "iPhone 14 Pro Max")
+	
+	static let iPhone14Plus = PreviewDevice(rawValue: "iPhone 14 Plus")
+	
+	// MARK: - AppleWatch
+	
+	static let appleWatch_38mm = PreviewDevice(rawValue: "Apple Watch (38mm)")
+	
+	static let appleWatch_42mm = PreviewDevice(rawValue: "Apple Watch (42mm)")
+	
+	static let appleWatch2_38mm = PreviewDevice(rawValue: "Apple Watch Series 2 (38mm)")
+	
+	static let appleWatch2_42mm = PreviewDevice(rawValue: "Apple Watch Series 2 (42mm)")
+	
+	static let appleWatch3_38mm = PreviewDevice(rawValue: "Apple Watch Series 3 (38mm)")
+	
+	static let appleWatch3_42mm = PreviewDevice(rawValue: "Apple Watch Series 3 (42mm)")
+	
+	static let appleWatch4_40mm = PreviewDevice(rawValue: "Apple Watch Series 4 (40mm)")
+	
+	static let appleWatch4_44mm = PreviewDevice(rawValue: "Apple Watch Series 4 (44mm)")
+	
+	static let appleWatch5_40mm = PreviewDevice(rawValue: "Apple Watch Series 5 (40mm)")
+	
+	static let appleWatch5_44mm = PreviewDevice(rawValue: "Apple Watch Series 5 (44mm)")
+	
+	static let appleWatchSE_40mm = PreviewDevice(rawValue: "Apple Watch Series SE (40mm)")
+	
+	static let appleWatchSE_44mm = PreviewDevice(rawValue: "Apple Watch Series SE (44mm)")
+	
+	static let appleWatch6_40mm = PreviewDevice(rawValue: "Apple Watch Series 6 (40mm)")
+	
+	static let appleWatch6_44mm = PreviewDevice(rawValue: "Apple Watch Series 6 (44mm)")
+	
+	static let appleWatch7_41mm = PreviewDevice(rawValue: "Apple Watch Series 7 (41mm)")
 
+	static let appleWatch7_45mm = PreviewDevice(rawValue: "Apple Watch Series 7 (45mm)")
+	
+	static let appleWatchSE2_40mm = PreviewDevice(rawValue: "Apple Watch Series SE (40mm) (2nd generation)")
+	
+	static let appleWatchSE2_44mm = PreviewDevice(rawValue: "Apple Watch Series SE (44mm) (2nd generation)")
+	
+	static let appleWatch8_41mm = PreviewDevice(rawValue: "Apple Watch Series 8 (41mm)")
+	
+	static let appleWatch8_45mm = PreviewDevice(rawValue: "Apple Watch Series 8 (45mm)")
+	
+	static let appleWatchUltra_49mm = PreviewDevice(rawValue: "Apple Watch Ultra (49mm)")
+	
 }
 #endif
